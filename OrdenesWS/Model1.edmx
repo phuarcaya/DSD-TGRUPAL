@@ -1,0 +1,672 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="DBProduccionModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Articulo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="100" />
+          <Property Name="TipoExistencia" Type="char" MaxLength="1" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="StockActual" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="IdFormulaProduccion" Type="int" />
+        </EntityType>
+        <EntityType Name="ArticuloFormulaProduccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="char" MaxLength="18" />
+          <Property Name="IdArticulo" Type="int" />
+          <Property Name="IdFormulaProduccion" Type="int" />
+        </EntityType>
+        <EntityType Name="Movimiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="FechaRegistro" Type="datetime" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="TipoMovimiento" Type="char" MaxLength="1" />
+          <Property Name="IdAlmacen" Type="int" />
+          <Property Name="IdOrdenTrabajo" Type="int" />
+        </EntityType>
+        <EntityType Name="MovimientoDetalle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="IdMovimiento" Type="int" />
+          <Property Name="IdArticulo" Type="int" />
+        </EntityType>
+        <EntityType Name="OrdenTrabajo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" />
+          <Property Name="FechaRegistro" Type="datetime" />
+          <Property Name="FechaModificacion" Type="datetime" />
+          <Property Name="Activo" Type="bit" />
+          <Property Name="IdEstado" Type="int" />
+        </EntityType>
+        <EntityType Name="OrdenTrabajoDetalle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="IdOrdenTrabajo" Type="int" Nullable="false" />
+          <Property Name="Cantidad" Type="decimal" Precision="12" Scale="2" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IdArticulo" Type="int" />
+        </EntityType>
+        <EntityType Name="Parametro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="30" />
+        </EntityType>
+        <EntityType Name="ParametroDetalle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Descripcion" Type="varchar" MaxLength="30" />
+          <Property Name="IdPadre" Type="int" />
+        </EntityType>
+        <Association Name="R_10">
+          <End Role="ParametroDetalle" Type="Self.ParametroDetalle" Multiplicity="0..1" />
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParametroDetalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Movimiento">
+              <PropertyRef Name="IdAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_11">
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="0..1" />
+          <End Role="MovimientoDetalle" Type="Self.MovimientoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movimiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovimientoDetalle">
+              <PropertyRef Name="IdMovimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_12">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="0..1" />
+          <End Role="MovimientoDetalle" Type="Self.MovimientoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovimientoDetalle">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_13">
+          <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdenTrabajo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Movimiento">
+              <PropertyRef Name="IdOrdenTrabajo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_16">
+          <End Role="ParametroDetalle" Type="Self.ParametroDetalle" Multiplicity="0..1" />
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParametroDetalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="IdFormulaProduccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_17">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="0..1" />
+          <End Role="ArticuloFormulaProduccion" Type="Self.ArticuloFormulaProduccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticuloFormulaProduccion">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_18">
+          <End Role="ParametroDetalle" Type="Self.ParametroDetalle" Multiplicity="0..1" />
+          <End Role="ArticuloFormulaProduccion" Type="Self.ArticuloFormulaProduccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParametroDetalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticuloFormulaProduccion">
+              <PropertyRef Name="IdFormulaProduccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_3">
+          <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="1" />
+          <End Role="OrdenTrabajoDetalle" Type="Self.OrdenTrabajoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdenTrabajo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdenTrabajoDetalle">
+              <PropertyRef Name="IdOrdenTrabajo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_6">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="0..1" />
+          <End Role="OrdenTrabajoDetalle" Type="Self.OrdenTrabajoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdenTrabajoDetalle">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_7">
+          <End Role="Parametro" Type="Self.Parametro" Multiplicity="0..1" />
+          <End Role="ParametroDetalle" Type="Self.ParametroDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parametro">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParametroDetalle">
+              <PropertyRef Name="IdPadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_8">
+          <End Role="ParametroDetalle" Type="Self.ParametroDetalle" Multiplicity="0..1" />
+          <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParametroDetalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdenTrabajo">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBProduccionModel1StoreContainer">
+          <EntitySet Name="Articulo" EntityType="Self.Articulo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ArticuloFormulaProduccion" EntityType="Self.ArticuloFormulaProduccion" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Movimiento" EntityType="Self.Movimiento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MovimientoDetalle" EntityType="Self.MovimientoDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrdenTrabajo" EntityType="Self.OrdenTrabajo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OrdenTrabajoDetalle" EntityType="Self.OrdenTrabajoDetalle" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Parametro" EntityType="Self.Parametro" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ParametroDetalle" EntityType="Self.ParametroDetalle" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="R_10" Association="Self.R_10">
+            <End Role="ParametroDetalle" EntitySet="ParametroDetalle" />
+            <End Role="Movimiento" EntitySet="Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="R_11" Association="Self.R_11">
+            <End Role="Movimiento" EntitySet="Movimiento" />
+            <End Role="MovimientoDetalle" EntitySet="MovimientoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="R_12" Association="Self.R_12">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="MovimientoDetalle" EntitySet="MovimientoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="R_13" Association="Self.R_13">
+            <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+            <End Role="Movimiento" EntitySet="Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="R_16" Association="Self.R_16">
+            <End Role="ParametroDetalle" EntitySet="ParametroDetalle" />
+            <End Role="Articulo" EntitySet="Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="R_17" Association="Self.R_17">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="ArticuloFormulaProduccion" EntitySet="ArticuloFormulaProduccion" />
+          </AssociationSet>
+          <AssociationSet Name="R_18" Association="Self.R_18">
+            <End Role="ParametroDetalle" EntitySet="ParametroDetalle" />
+            <End Role="ArticuloFormulaProduccion" EntitySet="ArticuloFormulaProduccion" />
+          </AssociationSet>
+          <AssociationSet Name="R_3" Association="Self.R_3">
+            <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+            <End Role="OrdenTrabajoDetalle" EntitySet="OrdenTrabajoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="R_6" Association="Self.R_6">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="OrdenTrabajoDetalle" EntitySet="OrdenTrabajoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="R_7" Association="Self.R_7">
+            <End Role="Parametro" EntitySet="Parametro" />
+            <End Role="ParametroDetalle" EntitySet="ParametroDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="R_8" Association="Self.R_8">
+            <End Role="ParametroDetalle" EntitySet="ParametroDetalle" />
+            <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DBProduccionModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Articulo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="TipoExistencia" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="StockActual" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="IdFormulaProduccion" Type="Int32" />
+          <NavigationProperty Name="MovimientoDetalle" Relationship="Self.R_12" FromRole="Articulo" ToRole="MovimientoDetalle" />
+          <NavigationProperty Name="ParametroDetalle" Relationship="Self.R_16" FromRole="Articulo" ToRole="ParametroDetalle" />
+          <NavigationProperty Name="ArticuloFormulaProduccion" Relationship="Self.R_17" FromRole="Articulo" ToRole="ArticuloFormulaProduccion" />
+          <NavigationProperty Name="OrdenTrabajoDetalle" Relationship="Self.R_6" FromRole="Articulo" ToRole="OrdenTrabajoDetalle" />
+        </EntityType>
+        <EntityType Name="ArticuloFormulaProduccion">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="String" MaxLength="18" FixedLength="true" Unicode="false" />
+          <Property Name="IdArticulo" Type="Int32" />
+          <Property Name="IdFormulaProduccion" Type="Int32" />
+          <NavigationProperty Name="Articulo" Relationship="Self.R_17" FromRole="ArticuloFormulaProduccion" ToRole="Articulo" />
+          <NavigationProperty Name="ParametroDetalle" Relationship="Self.R_18" FromRole="ArticuloFormulaProduccion" ToRole="ParametroDetalle" />
+        </EntityType>
+        <EntityType Name="Movimiento">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="TipoMovimiento" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+          <Property Name="IdAlmacen" Type="Int32" />
+          <Property Name="IdOrdenTrabajo" Type="Int32" />
+          <NavigationProperty Name="ParametroDetalle" Relationship="Self.R_10" FromRole="Movimiento" ToRole="ParametroDetalle" />
+          <NavigationProperty Name="MovimientoDetalle" Relationship="Self.R_11" FromRole="Movimiento" ToRole="MovimientoDetalle" />
+          <NavigationProperty Name="OrdenTrabajo" Relationship="Self.R_13" FromRole="Movimiento" ToRole="OrdenTrabajo" />
+        </EntityType>
+        <EntityType Name="MovimientoDetalle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Cantidad" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="IdMovimiento" Type="Int32" />
+          <Property Name="IdArticulo" Type="Int32" />
+          <NavigationProperty Name="Articulo" Relationship="Self.R_12" FromRole="MovimientoDetalle" ToRole="Articulo" />
+          <NavigationProperty Name="Movimiento" Relationship="Self.R_11" FromRole="MovimientoDetalle" ToRole="Movimiento" />
+        </EntityType>
+        <EntityType Name="OrdenTrabajo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Precision="3" />
+          <Property Name="FechaRegistro" Type="DateTime" Precision="3" />
+          <Property Name="FechaModificacion" Type="DateTime" Precision="3" />
+          <Property Name="Activo" Type="Boolean" />
+          <Property Name="IdEstado" Type="Int32" />
+          <NavigationProperty Name="Movimiento" Relationship="Self.R_13" FromRole="OrdenTrabajo" ToRole="Movimiento" />
+          <NavigationProperty Name="OrdenTrabajoDetalle" Relationship="Self.R_3" FromRole="OrdenTrabajo" ToRole="OrdenTrabajoDetalle" />
+          <NavigationProperty Name="ParametroDetalle" Relationship="Self.R_8" FromRole="OrdenTrabajo" ToRole="ParametroDetalle" />
+        </EntityType>
+        <EntityType Name="OrdenTrabajoDetalle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="IdOrdenTrabajo" Type="Int32" Nullable="false" />
+          <Property Name="Cantidad" Type="Decimal" Precision="12" Scale="2" />
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IdArticulo" Type="Int32" />
+          <NavigationProperty Name="Articulo" Relationship="Self.R_6" FromRole="OrdenTrabajoDetalle" ToRole="Articulo" />
+          <NavigationProperty Name="OrdenTrabajo" Relationship="Self.R_3" FromRole="OrdenTrabajoDetalle" ToRole="OrdenTrabajo" />
+        </EntityType>
+        <EntityType Name="Parametro">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ParametroDetalle" Relationship="Self.R_7" FromRole="Parametro" ToRole="ParametroDetalle" />
+        </EntityType>
+        <EntityType Name="ParametroDetalle">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Descripcion" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="IdPadre" Type="Int32" />
+          <NavigationProperty Name="Articulo" Relationship="Self.R_16" FromRole="ParametroDetalle" ToRole="Articulo" />
+          <NavigationProperty Name="ArticuloFormulaProduccion" Relationship="Self.R_18" FromRole="ParametroDetalle" ToRole="ArticuloFormulaProduccion" />
+          <NavigationProperty Name="Movimiento" Relationship="Self.R_10" FromRole="ParametroDetalle" ToRole="Movimiento" />
+          <NavigationProperty Name="OrdenTrabajo" Relationship="Self.R_8" FromRole="ParametroDetalle" ToRole="OrdenTrabajo" />
+          <NavigationProperty Name="Parametro" Relationship="Self.R_7" FromRole="ParametroDetalle" ToRole="Parametro" />
+        </EntityType>
+        <Association Name="R_12">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="0..1" />
+          <End Role="MovimientoDetalle" Type="Self.MovimientoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovimientoDetalle">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_16">
+          <End Role="ParametroDetalle" Type="Self.ParametroDetalle" Multiplicity="0..1" />
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParametroDetalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Articulo">
+              <PropertyRef Name="IdFormulaProduccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_17">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="0..1" />
+          <End Role="ArticuloFormulaProduccion" Type="Self.ArticuloFormulaProduccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticuloFormulaProduccion">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_6">
+          <End Role="Articulo" Type="Self.Articulo" Multiplicity="0..1" />
+          <End Role="OrdenTrabajoDetalle" Type="Self.OrdenTrabajoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Articulo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdenTrabajoDetalle">
+              <PropertyRef Name="IdArticulo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_18">
+          <End Role="ParametroDetalle" Type="Self.ParametroDetalle" Multiplicity="0..1" />
+          <End Role="ArticuloFormulaProduccion" Type="Self.ArticuloFormulaProduccion" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParametroDetalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ArticuloFormulaProduccion">
+              <PropertyRef Name="IdFormulaProduccion" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_10">
+          <End Role="ParametroDetalle" Type="Self.ParametroDetalle" Multiplicity="0..1" />
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParametroDetalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Movimiento">
+              <PropertyRef Name="IdAlmacen" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_11">
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="0..1" />
+          <End Role="MovimientoDetalle" Type="Self.MovimientoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Movimiento">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MovimientoDetalle">
+              <PropertyRef Name="IdMovimiento" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_13">
+          <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="0..1" />
+          <End Role="Movimiento" Type="Self.Movimiento" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdenTrabajo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Movimiento">
+              <PropertyRef Name="IdOrdenTrabajo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_3">
+          <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="1" />
+          <End Role="OrdenTrabajoDetalle" Type="Self.OrdenTrabajoDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="OrdenTrabajo">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdenTrabajoDetalle">
+              <PropertyRef Name="IdOrdenTrabajo" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_8">
+          <End Role="ParametroDetalle" Type="Self.ParametroDetalle" Multiplicity="0..1" />
+          <End Role="OrdenTrabajo" Type="Self.OrdenTrabajo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ParametroDetalle">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="OrdenTrabajo">
+              <PropertyRef Name="IdEstado" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="R_7">
+          <End Role="Parametro" Type="Self.Parametro" Multiplicity="0..1" />
+          <End Role="ParametroDetalle" Type="Self.ParametroDetalle" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Parametro">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ParametroDetalle">
+              <PropertyRef Name="IdPadre" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DBProduccionEntities1" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Articulo" EntityType="Self.Articulo" />
+          <EntitySet Name="ArticuloFormulaProduccion" EntityType="Self.ArticuloFormulaProduccion" />
+          <EntitySet Name="Movimiento" EntityType="Self.Movimiento" />
+          <EntitySet Name="MovimientoDetalle" EntityType="Self.MovimientoDetalle" />
+          <EntitySet Name="OrdenTrabajo" EntityType="Self.OrdenTrabajo" />
+          <EntitySet Name="OrdenTrabajoDetalle" EntityType="Self.OrdenTrabajoDetalle" />
+          <EntitySet Name="Parametro" EntityType="Self.Parametro" />
+          <EntitySet Name="ParametroDetalle" EntityType="Self.ParametroDetalle" />
+          <AssociationSet Name="R_12" Association="Self.R_12">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="MovimientoDetalle" EntitySet="MovimientoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="R_16" Association="Self.R_16">
+            <End Role="ParametroDetalle" EntitySet="ParametroDetalle" />
+            <End Role="Articulo" EntitySet="Articulo" />
+          </AssociationSet>
+          <AssociationSet Name="R_17" Association="Self.R_17">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="ArticuloFormulaProduccion" EntitySet="ArticuloFormulaProduccion" />
+          </AssociationSet>
+          <AssociationSet Name="R_6" Association="Self.R_6">
+            <End Role="Articulo" EntitySet="Articulo" />
+            <End Role="OrdenTrabajoDetalle" EntitySet="OrdenTrabajoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="R_18" Association="Self.R_18">
+            <End Role="ParametroDetalle" EntitySet="ParametroDetalle" />
+            <End Role="ArticuloFormulaProduccion" EntitySet="ArticuloFormulaProduccion" />
+          </AssociationSet>
+          <AssociationSet Name="R_10" Association="Self.R_10">
+            <End Role="ParametroDetalle" EntitySet="ParametroDetalle" />
+            <End Role="Movimiento" EntitySet="Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="R_11" Association="Self.R_11">
+            <End Role="Movimiento" EntitySet="Movimiento" />
+            <End Role="MovimientoDetalle" EntitySet="MovimientoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="R_13" Association="Self.R_13">
+            <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+            <End Role="Movimiento" EntitySet="Movimiento" />
+          </AssociationSet>
+          <AssociationSet Name="R_3" Association="Self.R_3">
+            <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+            <End Role="OrdenTrabajoDetalle" EntitySet="OrdenTrabajoDetalle" />
+          </AssociationSet>
+          <AssociationSet Name="R_8" Association="Self.R_8">
+            <End Role="ParametroDetalle" EntitySet="ParametroDetalle" />
+            <End Role="OrdenTrabajo" EntitySet="OrdenTrabajo" />
+          </AssociationSet>
+          <AssociationSet Name="R_7" Association="Self.R_7">
+            <End Role="Parametro" EntitySet="Parametro" />
+            <End Role="ParametroDetalle" EntitySet="ParametroDetalle" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DBProduccionModel1StoreContainer" CdmEntityContainer="DBProduccionEntities1">
+          <EntitySetMapping Name="Articulo">
+            <EntityTypeMapping TypeName="DBProduccionModel1.Articulo">
+              <MappingFragment StoreEntitySet="Articulo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="TipoExistencia" ColumnName="TipoExistencia" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="StockActual" ColumnName="StockActual" />
+                <ScalarProperty Name="IdFormulaProduccion" ColumnName="IdFormulaProduccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ArticuloFormulaProduccion">
+            <EntityTypeMapping TypeName="DBProduccionModel1.ArticuloFormulaProduccion">
+              <MappingFragment StoreEntitySet="ArticuloFormulaProduccion">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+                <ScalarProperty Name="IdFormulaProduccion" ColumnName="IdFormulaProduccion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Movimiento">
+            <EntityTypeMapping TypeName="DBProduccionModel1.Movimiento">
+              <MappingFragment StoreEntitySet="Movimiento">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="TipoMovimiento" ColumnName="TipoMovimiento" />
+                <ScalarProperty Name="IdAlmacen" ColumnName="IdAlmacen" />
+                <ScalarProperty Name="IdOrdenTrabajo" ColumnName="IdOrdenTrabajo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MovimientoDetalle">
+            <EntityTypeMapping TypeName="DBProduccionModel1.MovimientoDetalle">
+              <MappingFragment StoreEntitySet="MovimientoDetalle">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="IdMovimiento" ColumnName="IdMovimiento" />
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdenTrabajo">
+            <EntityTypeMapping TypeName="DBProduccionModel1.OrdenTrabajo">
+              <MappingFragment StoreEntitySet="OrdenTrabajo">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="FechaRegistro" ColumnName="FechaRegistro" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="Activo" ColumnName="Activo" />
+                <ScalarProperty Name="IdEstado" ColumnName="IdEstado" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OrdenTrabajoDetalle">
+            <EntityTypeMapping TypeName="DBProduccionModel1.OrdenTrabajoDetalle">
+              <MappingFragment StoreEntitySet="OrdenTrabajoDetalle">
+                <ScalarProperty Name="IdOrdenTrabajo" ColumnName="IdOrdenTrabajo" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="IdArticulo" ColumnName="IdArticulo" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Parametro">
+            <EntityTypeMapping TypeName="DBProduccionModel1.Parametro">
+              <MappingFragment StoreEntitySet="Parametro">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ParametroDetalle">
+            <EntityTypeMapping TypeName="DBProduccionModel1.ParametroDetalle">
+              <MappingFragment StoreEntitySet="ParametroDetalle">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="IdPadre" ColumnName="IdPadre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

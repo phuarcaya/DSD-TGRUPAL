@@ -60,21 +60,36 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Servicios\Articulos.svc" />
+    <Content Include="Servicios\ParametroDetalles.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Dominio\Articulo.cs" />
+    <Compile Include="Dominio\ArticuloFormulaProduccion.cs" />
+    <Compile Include="Dominio\Movimiento.cs" />
+    <Compile Include="Dominio\MovimientoDetalle.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Dominio\OrdenTrabajo.cs" />
+    <Compile Include="Dominio\OrdenTrabajoDetalle.cs" />
+    <Compile Include="Dominio\Parametro.cs" />
+    <Compile Include="Dominio\ParametroDetalle.cs" />
     <Compile Include="Persistencia\ArticuloDao.cs" />
+    <Compile Include="Persistencia\ParametroDetalleDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios\Articulos.svc.cs">
       <DependentUpon>Articulos.svc</DependentUpon>
     </Compile>
     <Compile Include="Interfaces\IArticulos.cs" />
+    <Compile Include="Interfaces\IParametroDetalles.cs" />
+    <Compile Include="Servicios\ParametroDetalles.svc.cs">
+      <DependentUpon>ParametroDetalles.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Utilitarios\Utilitarios.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Errores\" />
-    <Folder Include="Utilitarios\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web.Debug.config">
@@ -83,6 +98,12 @@
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WS-ProduccionUtilitario\WS-ProduccionUtilitario.csproj">
+      <Project>{8c434bc6-4d67-42be-821c-dc194d0ddbc8}</Project>
+      <Name>WS-ProduccionUtilitario</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

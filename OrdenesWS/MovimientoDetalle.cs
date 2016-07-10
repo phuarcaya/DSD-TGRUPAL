@@ -12,14 +12,14 @@ namespace OrdenesWS
     using System;
     using System.Collections.Generic;
     
-    public partial class OrdenTrabajoDetalle
+    public partial class MovimientoDetalle
     {
-        public int IdOrdenTrabajo { get; set; }
-        public Nullable<decimal> Cantidad { get; set; }
         public int Id { get; set; }
+        public Nullable<decimal> Cantidad { get; set; }
+        public Nullable<int> IdMovimiento { get; set; }
         public Nullable<int> IdArticulo { get; set; }
     
         public virtual Articulo Articulo { get; set; }
-        public virtual OrdenTrabajo OrdenTrabajo { get; set; }
+        public virtual Movimiento Movimiento { get; set; }
     }
 }

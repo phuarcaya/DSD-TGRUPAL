@@ -12,25 +12,24 @@ namespace OrdenesWS
     using System;
     using System.Collections.Generic;
     
-    public partial class Articulo
+    public partial class ParametroDetalle
     {
-        public Articulo()
+        public ParametroDetalle()
         {
-            this.MovimientoDetalle = new HashSet<MovimientoDetalle>();
+            this.Articulo = new HashSet<Articulo>();
             this.ArticuloFormulaProduccion = new HashSet<ArticuloFormulaProduccion>();
-            this.OrdenTrabajoDetalle = new HashSet<OrdenTrabajoDetalle>();
+            this.Movimiento = new HashSet<Movimiento>();
+            this.OrdenTrabajo = new HashSet<OrdenTrabajo>();
         }
     
         public int Id { get; set; }
         public string Descripcion { get; set; }
-        public string TipoExistencia { get; set; }
-        public Nullable<bool> Activo { get; set; }
-        public Nullable<decimal> StockActual { get; set; }
-        public Nullable<int> IdFormulaProduccion { get; set; }
+        public Nullable<int> IdPadre { get; set; }
     
-        public virtual ICollection<MovimientoDetalle> MovimientoDetalle { get; set; }
-        public virtual ParametroDetalle ParametroDetalle { get; set; }
+        public virtual ICollection<Articulo> Articulo { get; set; }
         public virtual ICollection<ArticuloFormulaProduccion> ArticuloFormulaProduccion { get; set; }
-        public virtual ICollection<OrdenTrabajoDetalle> OrdenTrabajoDetalle { get; set; }
+        public virtual ICollection<Movimiento> Movimiento { get; set; }
+        public virtual ICollection<OrdenTrabajo> OrdenTrabajo { get; set; }
+        public virtual Parametro Parametro { get; set; }
     }
 }

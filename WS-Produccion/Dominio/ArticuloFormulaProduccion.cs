@@ -7,22 +7,16 @@ using System.Runtime.Serialization;
 namespace WS_Produccion
 {
     [DataContract]
-    public class Articulo
+    public class ArticuloFormulaProduccion
     {
         [DataMember]
         public int Id { get; set; }
 
         [DataMember]
-        public string Descripcion { get; set; }
+        public Nullable<decimal> Cantidad { get; set; }
 
         [DataMember]
-        public string TipoExistencia { get; set; }
-
-        [DataMember]
-        public Nullable<bool> Activo { get; set; }
-
-        [DataMember]
-        public Nullable<decimal> StockActual { get; set; }
+        public Nullable<int> IdArticulo { get; set; }
 
         [DataMember]
         public Nullable<int> IdFormulaProduccion { get; set; }
