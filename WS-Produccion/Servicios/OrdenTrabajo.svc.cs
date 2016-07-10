@@ -4,6 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WS_Produccion.Persistencia;
 
 namespace WS_Produccion.Servicios
 {
@@ -11,8 +12,9 @@ namespace WS_Produccion.Servicios
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione OrdenTrabajo.svc o OrdenTrabajo.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class OrdenTrabajo : IOrdenTrabajo
     {
-        public void DoWork()
-        {
-        }
+
+     
+
+
     }
 }

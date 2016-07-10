@@ -11,7 +11,21 @@ namespace WS_Produccion.Servicios
     [ServiceContract]
     public interface IOrdenTrabajo
     {
+
+
         [OperationContract]
-        void DoWork();
+        OrdenTrabajo CrearOrdenTrabajo(OrdenTrabajo ordenTrabajoaACrear);
+
+        [OperationContract]
+        OrdenTrabajo ObtenerOrdenTrabajo(int id);
+
+        [OperationContract]
+        OrdenTrabajo ModificarOrdenTrabajo(OrdenTrabajo ordenTrabajoAModificar);
+
+        [OperationContract]
+        void EliminarOrdenTrabajo(int id);
+
+
+
     }
 }
