@@ -35,8 +35,8 @@ namespace Prototipo1.View
             {
                 Pagina_Principal OT = new Pagina_Principal();
                 Login lo = new Login();
-                lo.Close();
-                lo.Hide();
+                //lo.Close();
+                //lo.Hide();
                 OT.Show();
             }
         }
