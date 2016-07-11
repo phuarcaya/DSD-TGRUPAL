@@ -68,6 +68,7 @@
             // 
             this.txtpassw.Location = new System.Drawing.Point(124, 96);
             this.txtpassw.Name = "txtpassw";
+            this.txtpassw.ShortcutsEnabled = false;
             this.txtpassw.Size = new System.Drawing.Size(148, 20);
             this.txtpassw.TabIndex = 2;
             this.txtpassw.UseSystemPasswordChar = true;
@@ -82,6 +83,7 @@
             this.button1.TabIndex = 3;
             this.button1.Text = "Cancelar";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // button2
             // 
