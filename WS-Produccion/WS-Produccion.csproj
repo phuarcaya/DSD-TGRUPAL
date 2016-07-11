@@ -20,6 +20,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -59,8 +60,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Servicios\Movimientos.svc" />
     <Content Include="Servicios\Articulos.svc" />
-    <Content Include="Servicios\ParametroDetalles.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +75,11 @@
     <Compile Include="Dominio\OrdenTrabajoDetalle.cs" />
     <Compile Include="Dominio\Parametro.cs" />
     <Compile Include="Dominio\ParametroDetalle.cs" />
+    <Compile Include="Interfaces\IMovimientos.cs" />
+    <Compile Include="Persistencia\MovimientoDAO.cs" />
+    <Compile Include="Servicios\Movimientos.svc.cs">
+      <DependentUpon>Movimientos.svc</DependentUpon>
+    </Compile>
     <Compile Include="Persistencia\ArticuloDao.cs" />
     <Compile Include="Persistencia\ParametroDetalleDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -82,9 +88,6 @@
     </Compile>
     <Compile Include="Interfaces\IArticulos.cs" />
     <Compile Include="Interfaces\IParametroDetalles.cs" />
-    <Compile Include="Servicios\ParametroDetalles.svc.cs">
-      <DependentUpon>ParametroDetalles.svc</DependentUpon>
-    </Compile>
     <Compile Include="Utilitarios\Utilitarios.cs" />
   </ItemGroup>
   <ItemGroup>
