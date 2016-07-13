@@ -88,6 +88,10 @@
     </Compile>
     <Compile Include="Interfaces\IArticulos.cs" />
     <Compile Include="Interfaces\IParametroDetalles.cs" />
+    <Compile Include="Interfaces\IOrdenTrabajo.cs" />
+    <Compile Include="Servicios\OrdenTrabajo.svc.cs">
+      <DependentUpon>OrdenTrabajo.svc</DependentUpon>
+    </Compile>
     <Compile Include="Servicios\ParametroDetalles.svc.cs">
       <DependentUpon>ParametroDetalles.svc</DependentUpon>
     </Compile>
