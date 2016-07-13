@@ -56,9 +56,10 @@
             this.txtUsuario.BackColor = System.Drawing.Color.Linen;
             this.txtUsuario.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtUsuario.ForeColor = System.Drawing.Color.SteelBlue;
-            this.txtUsuario.Location = new System.Drawing.Point(163, 66);
+            this.txtUsuario.Location = new System.Drawing.Point(217, 81);
+            this.txtUsuario.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(395, 29);
+            this.txtUsuario.Size = new System.Drawing.Size(372, 34);
             this.txtUsuario.TabIndex = 0;
             this.toolTip1.SetToolTip(this.txtUsuario, "Ingrese Nombre de usuario");
             this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
@@ -68,12 +69,12 @@
             this.txtPassword.BackColor = System.Drawing.Color.Linen;
             this.txtPassword.Font = new System.Drawing.Font("Georgia", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtPassword.ForeColor = System.Drawing.Color.SteelBlue;
-            this.txtPassword.Location = new System.Drawing.Point(163, 104);
+            this.txtPassword.Location = new System.Drawing.Point(217, 128);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.Size = new System.Drawing.Size(395, 29);
+            this.txtPassword.Size = new System.Drawing.Size(372, 34);
             this.txtPassword.TabIndex = 1;
-            this.txtPassword.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.toolTip1.SetToolTip(this.txtPassword, "Ingrese password");
             this.txtPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtPassword_KeyPress);
             // 
@@ -82,8 +83,9 @@
             this.panel1.Controls.Add(this.PanelTituloError);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(563, 45);
+            this.panel1.Size = new System.Drawing.Size(638, 55);
             this.panel1.TabIndex = 7;
             // 
             // PanelTituloError
@@ -93,8 +95,9 @@
             this.PanelTituloError.Controls.Add(this.lblTitulo);
             this.PanelTituloError.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PanelTituloError.Location = new System.Drawing.Point(0, 0);
+            this.PanelTituloError.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.PanelTituloError.Name = "PanelTituloError";
-            this.PanelTituloError.Size = new System.Drawing.Size(563, 45);
+            this.PanelTituloError.Size = new System.Drawing.Size(638, 55);
             this.PanelTituloError.TabIndex = 50;
             // 
             // lblTitulo
@@ -103,9 +106,10 @@
             this.lblTitulo.BackColor = System.Drawing.Color.SkyBlue;
             this.lblTitulo.Font = new System.Drawing.Font("Monotype Corsiva", 18F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitulo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(64)))), ((int)(((byte)(0)))));
-            this.lblTitulo.Location = new System.Drawing.Point(111, 7);
+            this.lblTitulo.Location = new System.Drawing.Point(148, 9);
+            this.lblTitulo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTitulo.Name = "lblTitulo";
-            this.lblTitulo.Size = new System.Drawing.Size(298, 28);
+            this.lblTitulo.Size = new System.Drawing.Size(368, 37);
             this.lblTitulo.TabIndex = 1;
             this.lblTitulo.Text = "Control de Acceso de Usuarios";
             // 
@@ -113,9 +117,10 @@
             // 
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox2.Image = global::Prototipo1.Properties.Resources.User1;
-            this.pictureBox2.Location = new System.Drawing.Point(127, 66);
+            this.pictureBox2.Location = new System.Drawing.Point(169, 81);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(34, 31);
+            this.pictureBox2.Size = new System.Drawing.Size(45, 38);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 48;
             this.pictureBox2.TabStop = false;
@@ -124,9 +129,10 @@
             // 
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.pictureBox3.Image = global::Prototipo1.Properties.Resources.Clave;
-            this.pictureBox3.Location = new System.Drawing.Point(127, 104);
+            this.pictureBox3.Location = new System.Drawing.Point(169, 128);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(34, 31);
+            this.pictureBox3.Size = new System.Drawing.Size(45, 38);
             this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox3.TabIndex = 49;
             this.pictureBox3.TabStop = false;
@@ -137,9 +143,10 @@
             this.btnIngresar.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnIngresar.BackgroundImage")));
             this.btnIngresar.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnIngresar.Image = global::Prototipo1.Properties.Resources.ok;
-            this.btnIngresar.Location = new System.Drawing.Point(321, 148);
+            this.btnIngresar.Location = new System.Drawing.Point(246, 182);
+            this.btnIngresar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(116, 37);
+            this.btnIngresar.Size = new System.Drawing.Size(155, 46);
             this.btnIngresar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnIngresar.TabIndex = 50;
             this.btnIngresar.TabStop = false;
@@ -152,9 +159,10 @@
             this.btnSalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalir.BackgroundImage")));
             this.btnSalir.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSalir.Image = global::Prototipo1.Properties.Resources.exit1;
-            this.btnSalir.Location = new System.Drawing.Point(442, 148);
+            this.btnSalir.Location = new System.Drawing.Point(407, 182);
+            this.btnSalir.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(116, 37);
+            this.btnSalir.Size = new System.Drawing.Size(155, 46);
             this.btnSalir.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.btnSalir.TabIndex = 50;
             this.btnSalir.TabStop = false;
@@ -165,9 +173,10 @@
             // 
             this.panel2.BackgroundImage = global::Prototipo1.Properties.Resources.footer;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(0, 189);
+            this.panel2.Location = new System.Drawing.Point(0, 233);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(563, 31);
+            this.panel2.Size = new System.Drawing.Size(638, 38);
             this.panel2.TabIndex = 51;
             // 
             // pictureBox1
@@ -176,9 +185,10 @@
             this.pictureBox1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.pictureBox1.Image = global::Prototipo1.Properties.Resources.Access;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 45);
+            this.pictureBox1.Location = new System.Drawing.Point(0, 55);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(122, 144);
+            this.pictureBox1.Size = new System.Drawing.Size(163, 178);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 52;
             this.pictureBox1.TabStop = false;
@@ -194,10 +204,10 @@
             // 
             // frmLogin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::Prototipo1.Properties.Resources.punto;
-            this.ClientSize = new System.Drawing.Size(563, 220);
+            this.ClientSize = new System.Drawing.Size(638, 271);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnIngresar);
@@ -208,6 +218,7 @@
             this.Controls.Add(this.txtUsuario);
             this.Controls.Add(this.panel2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "frmLogin";
