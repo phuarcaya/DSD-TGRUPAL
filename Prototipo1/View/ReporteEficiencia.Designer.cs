@@ -49,17 +49,22 @@
             // 
             // PanelTitulo
             // 
-            this.PanelTitulo.Size = new System.Drawing.Size(834, 42);
+            this.PanelTitulo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.PanelTitulo.Size = new System.Drawing.Size(1112, 52);
             // 
             // TabLista
             // 
-            this.TabLista.Location = new System.Drawing.Point(0, 101);
-            this.TabLista.Size = new System.Drawing.Size(834, 406);
+            this.TabLista.Location = new System.Drawing.Point(0, 124);
+            this.TabLista.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TabLista.Size = new System.Drawing.Size(1112, 500);
             // 
             // TabPage1
             // 
             this.TabPage1.Controls.Add(this.dgvListados);
-            this.TabPage1.Size = new System.Drawing.Size(826, 379);
+            this.TabPage1.Location = new System.Drawing.Point(4, 25);
+            this.TabPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TabPage1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TabPage1.Size = new System.Drawing.Size(1104, 471);
             this.TabPage1.Controls.SetChildIndex(this.dgvListados, 0);
             // 
             // PanelCabecera
@@ -68,17 +73,19 @@
             this.PanelCabecera.Controls.Add(this.dateTimePicker2);
             this.PanelCabecera.Controls.Add(this.dateTimePicker1);
             this.PanelCabecera.Controls.Add(this.label1);
-            this.PanelCabecera.Location = new System.Drawing.Point(0, 42);
-            this.PanelCabecera.Size = new System.Drawing.Size(834, 45);
+            this.PanelCabecera.Location = new System.Drawing.Point(0, 52);
+            this.PanelCabecera.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.PanelCabecera.Size = new System.Drawing.Size(1112, 55);
             // 
             // btnRefrescar
             // 
             this.btnRefrescar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnRefrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefrescar.ForeColor = System.Drawing.Color.Olive;
-            this.btnRefrescar.Location = new System.Drawing.Point(692, 6);
+            this.btnRefrescar.Location = new System.Drawing.Point(923, 7);
+            this.btnRefrescar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnRefrescar.Name = "btnRefrescar";
-            this.btnRefrescar.Size = new System.Drawing.Size(130, 32);
+            this.btnRefrescar.Size = new System.Drawing.Size(173, 39);
             this.btnRefrescar.TabIndex = 55;
             this.btnRefrescar.Text = "Consultar";
             this.btnRefrescar.UseVisualStyleBackColor = true;
@@ -86,25 +93,30 @@
             // dateTimePicker2
             // 
             this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(206, 15);
+            this.dateTimePicker2.Location = new System.Drawing.Point(275, 18);
+            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(121, 20);
+            this.dateTimePicker2.Size = new System.Drawing.Size(160, 22);
             this.dateTimePicker2.TabIndex = 53;
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(79, 15);
+            this.dateTimePicker1.Location = new System.Drawing.Point(105, 18);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dateTimePicker1.MaxDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.dateTimePicker1.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(121, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(160, 22);
             this.dateTimePicker1.TabIndex = 54;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(15, 21);
+            this.label1.Location = new System.Drawing.Point(20, 26);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.Size = new System.Drawing.Size(75, 17);
             this.label1.TabIndex = 52;
             this.label1.Text = "Fecha OT:";
             // 
@@ -139,11 +151,12 @@
             this.dgvListados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvListados.EnableHeadersVisualStyles = false;
             this.dgvListados.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvListados.Location = new System.Drawing.Point(3, 3);
+            this.dgvListados.Location = new System.Drawing.Point(5, 5);
+            this.dgvListados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvListados.Name = "dgvListados";
             this.dgvListados.RowHeadersVisible = false;
             this.dgvListados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListados.Size = new System.Drawing.Size(820, 348);
+            this.dgvListados.Size = new System.Drawing.Size(1094, 434);
             this.dgvListados.TabIndex = 38;
             // 
             // Column1
@@ -183,9 +196,10 @@
             // 
             // ReporteEficiencia
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 511);
+            this.ClientSize = new System.Drawing.Size(1112, 629);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "ReporteEficiencia";
             this.Text = "ReporteEficiencia";
             this.TabLista.ResumeLayout(false);
