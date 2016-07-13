@@ -33,7 +33,7 @@ namespace WS_Produccion
                     new FaultReason("La orden aún no ha sido aprobada"));
             }
 
-            ///verificar si es jefe de almacen
+            ///verificar si es jefe de almacen -- exception dos
             return movDAO.Crear(movCrear);
         }
 
