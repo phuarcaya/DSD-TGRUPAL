@@ -15,7 +15,7 @@ namespace WS_Produccion.Interfaces
         private ArticuloDao articuloDAO = new ArticuloDao();
         public Articulo Modificar(Articulo ArticuloAModificar)
         {
-            throw new NotImplementedException();
+            return articuloDAO.Modificar(ArticuloAModificar);
         }
 
         public Articulo Obtener(int id)
@@ -40,7 +40,7 @@ namespace WS_Produccion.Interfaces
                         codigo = "002",
                         descripcion = "No hay Stock del Articulo :" + articuloDAO.Obtener(id).Id.ToString(),
 
-                    }, new FaultReason("Error al intentar ingresar el codigo del Articulo"));
+                    }, new FaultReason("Error el Articulo no tiene Stock"));
             }
             return articuloDAO.Obtener(id);
         }

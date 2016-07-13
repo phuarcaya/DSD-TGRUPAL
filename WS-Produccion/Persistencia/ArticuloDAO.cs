@@ -14,7 +14,7 @@ namespace WS_Produccion.Persistencia
         {
 
             Articulo articuloModificado = null;
-            string sql = "UPDATE OrdenTrabajo SET anl_nombre=@nombre, anl_seniority=@seniority WHERE anl_id=@id";
+            string sql = "UPDATE Articulo SET Descripcion=@Descripcion, TipoExistencia=@TipoExistencia, StockActual=@StockActual,Activo=@Activo,IdFormulaProduccion=@IdFormulaProduccion  WHERE id =@Id";
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))
             {
                 conexion.Open();
@@ -37,7 +37,7 @@ namespace WS_Produccion.Persistencia
             return articuloModificado;
         }
 
-        public Articulo Obtener(int id)
+        public Articulo Obtener(Int32 id)
         {
             Articulo articuloEncontrado = null;
             string sql = "SELECT * FROM Articulo WHERE id=@id";
@@ -53,12 +53,12 @@ namespace WS_Produccion.Persistencia
                         {
                             articuloEncontrado = new Articulo()
                             {
-                                Id = (int)resultado["Id"],
-                                Descripcion = resultado["Descripcion"].ToString(),
-                                TipoExistencia = resultado["TipoExistencia"].ToString(),
+                                Id = (Int32)resultado["Id"],
+                                Descripcion = (string)resultado["Descripcion"],
+                                TipoExistencia = (string)resultado["TipoExistencia"],
                                 StockActual = (decimal)resultado["StockActual"],
                                 Activo = (bool)resultado["Activo"],
-                                IdFormulaProduccion = (int)resultado["IdFormulaProduccion"],
+                                IdFormulaProduccion = (Int32)resultado["IdFormulaProduccion"],
 
                             };
                         }

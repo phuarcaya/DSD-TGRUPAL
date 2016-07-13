@@ -10,7 +10,7 @@ namespace WS_Produccion
     public class Articulo
     {
         [DataMember]
-        public int Id { get; set; }
+        public Int32 Id { get; set; }
 
         [DataMember]
         public string Descripcion { get; set; }
