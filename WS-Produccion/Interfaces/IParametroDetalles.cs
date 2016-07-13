@@ -5,7 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace WS_Produccion.Servicios
+namespace WS_Produccion.Interfaces
 {
     [ServiceContract]
     public interface IParametroDetalles

@@ -6,7 +6,7 @@ using System.ServiceModel;
 using System.Text;
 using WS_Produccion.Persistencia;
 
-namespace WS_Produccion
+namespace WS_Produccion.Interfaces
 {
     public class Movimientos : IMovimientos
     {

@@ -33,7 +33,7 @@ namespace WS_Produccion.Persistencia
             
         }
 
-        public Movimiento Obtener(int dni)
+        public Movimiento Obtener(int id)
         {
             Movimiento movsEncontrado = null;
             string sql = "select * from movimiento where id = @id";
@@ -42,7 +42,7 @@ namespace WS_Produccion.Persistencia
                 cnx.Open();
                 using (SqlCommand cmm = new SqlCommand(sql, cnx))
                 {
-                    cmm.Parameters.Add(new SqlParameter("@dni", dni));
+                    cmm.Parameters.Add(new SqlParameter("@id", id));
                     using (SqlDataReader resultado = cmm.ExecuteReader())
                     {
                         if (resultado.Read())

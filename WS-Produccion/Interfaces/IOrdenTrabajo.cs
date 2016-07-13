@@ -5,13 +5,12 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace WS_Produccion.Servicios
+namespace WS_Produccion
 {
     // NOTA: puede usar el comando "Rename" del menú "Refactorizar" para cambiar el nombre de interfaz "IOrdenTrabajo" en el código y en el archivo de configuración a la vez.
     [ServiceContract]
     public interface IOrdenTrabajo
     {
-
 
         [OperationContract]
         OrdenTrabajo CrearOrdenTrabajo(OrdenTrabajo ordenTrabajoaACrear);

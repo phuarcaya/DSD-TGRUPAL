@@ -1,1 +1,1 @@
-﻿<%@ ServiceHost Language="C#" Debug="true" Service="WS_Produccion.Servicios.OrdenTrabajo" CodeBehind="OrdenTrabajo.svc.cs" %>
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="WS_Produccion.Interfaces.OrdenTrabajo" CodeBehind="OrdenTrabajo.svc.cs" %>
