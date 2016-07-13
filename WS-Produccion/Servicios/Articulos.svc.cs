@@ -4,15 +4,45 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
+using WS_Produccion.Excepciones;
+using WS_Produccion.Persistencia;
+using WS_Produccion.Servicios;
 
 namespace WS_Produccion.Interfaces
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "Articulos" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select Articulos.svc or Articulos.svc.cs at the Solution Explorer and start debugging.
     public class Articulos : IArticulos
     {
-        public void DoWork()
+        private ArticuloDao articuloDAO = new ArticuloDao();
+        public Articulo Modificar(Articulo ArticuloAModificar)
         {
+            throw new NotImplementedException();
+        }
+
+        public Articulo Obtener(int id)
+        {
+            
+            if(articuloDAO.Obtener(id)== null)
+            {
+                throw new FaultException<SinStockExceptions>(
+                    new SinStockExceptions()
+                    {
+                        codigo = "001",
+                        descripcion = "El articulo no Existe"
+
+                    }, new FaultReason("Error al intentar ingresar el codigo del Articulo"));
+                
+            }
+            if (articuloDAO.Obtener(id).StockActual <= 0)
+            {
+                throw new FaultException<SinStockExceptions>(
+                    new SinStockExceptions()
+                    {
+                        codigo = "002",
+                        descripcion = "No hay Stock del Articulo :" + articuloDAO.Obtener(id).Id.ToString(),
+
+                    }, new FaultReason("Error al intentar ingresar el codigo del Articulo"));
+            }
+            return articuloDAO.Obtener(id);
         }
     }
 }
