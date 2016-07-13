@@ -10,16 +10,11 @@ using System.Windows.Forms;
 
 namespace Prototipo1.View
 {
-    public partial class ReporteEficiencia : Form
+    public partial class ReporteEficiencia : frmReporte
     {
         public ReporteEficiencia()
         {
             InitializeComponent();
-        }
-
-        private void groupBox1_Enter(object sender, EventArgs e)
-        {
-
         }
     }
 }

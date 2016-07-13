@@ -49,17 +49,36 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Resources\IMovimientos.cs" />
     <Compile Include="View\Aprobar_Orden_Trabajo.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="View\Aprobar_Orden_Trabajo.Designer.cs">
       <DependentUpon>Aprobar_Orden_Trabajo.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\IngresoProducto.cs">
+    <Compile Include="View\frmLogin.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\IngresoProducto.Designer.cs">
-      <DependentUpon>IngresoProducto.cs</DependentUpon>
+    <Compile Include="View\frmLogin.designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmMantenimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmMantenimiento.designer.cs">
+      <DependentUpon>frmMantenimiento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmReporte.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmReporte.designer.cs">
+      <DependentUpon>frmReporte.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\Movimiento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\Movimiento.Designer.cs">
+      <DependentUpon>Movimiento.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
@@ -85,16 +104,10 @@
     <Compile Include="View\ReporteEficiencia.Designer.cs">
       <DependentUpon>ReporteEficiencia.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\SalidaAlmacen.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="View\SalidaAlmacen.Designer.cs">
-      <DependentUpon>SalidaAlmacen.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -104,8 +117,17 @@
     <EmbeddedResource Include="View\Aprobar_Orden_Trabajo.resx">
       <DependentUpon>Aprobar_Orden_Trabajo.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\IngresoProducto.resx">
-      <DependentUpon>IngresoProducto.cs</DependentUpon>
+    <EmbeddedResource Include="View\frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmMantenimiento.resx">
+      <DependentUpon>frmMantenimiento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmReporte.resx">
+      <DependentUpon>frmReporte.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\Movimiento.resx">
+      <DependentUpon>Movimiento.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -118,9 +140,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\ReporteEficiencia.resx">
       <DependentUpon>ReporteEficiencia.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="View\SalidaAlmacen.resx">
-      <DependentUpon>SalidaAlmacen.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -139,6 +158,75 @@
     <Folder Include="Entity\" />
     <Folder Include="Model\" />
     <Folder Include="View\Controller\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\WS-ProduccionUtilitario\WS-ProduccionUtilitario.csproj">
+      <Project>{8c434bc6-4d67-42be-821c-dc194d0ddbc8}</Project>
+      <Name>WS-ProduccionUtilitario</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\anterior.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\primero.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\siguiente.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ultimo.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Refresh.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\List.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\exit.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\ok.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Clave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\footer.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\header.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\punto.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Seguridad.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Keychain Access.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\User.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menu2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Menu3.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\header1.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\BookGeneral.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\documentationRus.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Tramitar.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

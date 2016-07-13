@@ -34,43 +34,95 @@ namespace Prototipo1.View
 
         private void generarOTToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Orden_Trabajo OT = new Orden_Trabajo();
-            OT.MdiParent = this;
-            OT.Show();
+            Orden_Trabajo form = new Orden_Trabajo();
+            form.TituloFormulario = "Orden de Trabajo";
+            AbrirFormulario(form);
         }
 
         private void aprobarOTToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Aprobar_Orden_Trabajo OT = new Aprobar_Orden_Trabajo();
-            OT.MdiParent = this;
-            OT.Show();
+            Aprobar_Orden_Trabajo form = new Aprobar_Orden_Trabajo();
+            form.TituloFormulario = "Aprobación Orden de Trabajo";
+            AbrirFormulario(form);
         }
 
         private void reporteEficienciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ReporteEficiencia OT = new ReporteEficiencia();
-            OT.MdiParent = this;
-            OT.Show();
+            ReporteEficiencia form = new ReporteEficiencia();
+            form.TituloFormulario = "Eficiencia Orden de Trabajo";
+            AbrirFormulario(form);
         }
 
         private void ingresarProductosTerminadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            IngresoProducto OT = new IngresoProducto();
-            OT.MdiParent = this;
-            OT.Show();
+            Movimiento form = new Movimiento();
+            form.TituloFormulario = "Ingreso de Producto Terminado";
+            form.TipoMovimiento = Movimiento.eTipoMovimiento.IngresoProductoTerminado;
+            AbrirFormulario(form);
         }
 
         private void salidaDeMAteriaPrimaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            SalidaAlmacen OT = new SalidaAlmacen();
-            OT.MdiParent = this;
-            OT.Show();
+            Movimiento form = new Movimiento();
+            form.TituloFormulario = "Salida de Materia Prima";
+            form.TipoMovimiento = Movimiento.eTipoMovimiento.SalidaMateriales;
+            AbrirFormulario(form);
         }
 
-        public static implicit operator Pagina_Principal(SalidaAlmacen v)
+        private void Pagina_Principal_Load(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
+            frmLogin Result = new frmLogin();
+            if (Result.ShowDialog() == System.Windows.Forms.DialogResult.Cancel)
+            {
+                Application.Exit();
+            }
+            Result = null;
         }
+
+        private void btnCerrar_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Está seguro de cerrar la aplicación ???", Funciones.Insfor_NombreEmpresa, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+        }
+
+        private void AbrirFormulario(Form Formulario)
+        {
+            Formulario.MdiParent = this;
+            Formulario.StartPosition = FormStartPosition.CenterScreen;
+            Formulario.WindowState = FormWindowState.Maximized;
+            Formulario.Width = 850;
+            Formulario.Height = 550;
+            Formulario.Show();
+            Formulario = null;
+        }
+
+        private void btnClientes_Click(object sender, EventArgs e)
+        {
+            generarOTToolStripMenuItem_Click(sender, e);
+        }
+
+        private void btnCronograma_Click(object sender, EventArgs e)
+        {
+            salidaDeMAteriaPrimaToolStripMenuItem_Click(sender, e);
+        }
+
+        private void btnTramites_Click(object sender, EventArgs e)
+        {
+            aprobarOTToolStripMenuItem_Click(sender, e);
+        }
+
+        private void btnRus_Click(object sender, EventArgs e)
+        {
+            ingresarProductosTerminadosToolStripMenuItem_Click(sender, e);
+        }
+
+        private void btnEspacial_Click(object sender, EventArgs e)
+        {
+            reporteEficienciaToolStripMenuItem_Click(sender, e);
+        }
+
     }
     
 }

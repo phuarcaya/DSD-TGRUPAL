@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,39 +8,45 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WS_ProduccionUtilitario;
 
 namespace Prototipo1.View
 {
-    public partial class Orden_Trabajo : Form
+    public partial class Orden_Trabajo : frmMantenimiento, IMantenimiento
     {
         public Orden_Trabajo()
         {
             InitializeComponent();
         }
 
-        private void label7_Click(object sender, EventArgs e)
+        public void SISCO_Mantenimiento_Nuevo()
         {
-
+            throw new NotImplementedException();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        public void SISCO_Mantenimiento_Grabar()
         {
-            Dispose();
+            throw new NotImplementedException();
         }
 
-        private void txtNumero_TextChanged(object sender, EventArgs e)
+        public void SISCO_Mantenimiento_Modificar()
         {
-
+            throw new NotImplementedException();
         }
 
-        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        public void SISCO_Mantenimiento_Cancelar()
         {
-
+            throw new NotImplementedException();
         }
 
-        private void label4_Click(object sender, EventArgs e)
+        public void SISCO_Mantenimiento_Eliminar()
         {
+            throw new NotImplementedException();
+        }
 
+        public void SISCO_Mantenimiento_Listado()
+        {
+            throw new NotImplementedException();
         }
     }
 }
