@@ -61,7 +61,6 @@ namespace WS_Produccion.Persistencia
         public MovimientoDetalle Modificar(MovimientoDetalle MovsDModificar)
         {
             MovimientoDetalle movsModificado = null;
-            //            string sql = "update MovimientoDetalle set tx_nombre=@nombre, tx_estado= @estado where nu_dni = @dni";
             string sql = @"UPDATE MovimientoDetalle SET IdArticulo = @IdArticulo, IdMovimiento=@IdMovimiento, Cantidad = @Cantidad WHERE id = @id";
 
             using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
@@ -93,7 +92,6 @@ namespace WS_Produccion.Persistencia
                     cmm.ExecuteNonQuery();
                 }
             }
-
         }
 
         public List<MovimientoDetalle> Listar()

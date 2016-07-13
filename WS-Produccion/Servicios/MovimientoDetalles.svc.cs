@@ -8,8 +8,6 @@ using WS_Produccion.Persistencia;
 
 namespace WS_Produccion.Interfaces
 {
-    // NOTE: You can use the "Rename" command on the "Refactor" menu to change the class name "MovimientoDetalles" in code, svc and config file together.
-    // NOTE: In order to launch WCF Test Client for testing this service, please select MovimientoDetalles.svc or MovimientoDetalles.svc.cs at the Solution Explorer and start debugging.
     public class MovimientoDetalles : IMovimientoDetalles
     {
         private MovimientoDetalleDAO movDDAO = new MovimientoDetalleDAO();
