@@ -92,7 +92,7 @@ namespace WS_Produccion.Persistencia
 
         }
 
-        public void Eliminar(string id)
+        public void Eliminar(int id)
         {
             string sql = "DELETE FROM  OrdenTrabajo WHERE anl_id=@id";
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))

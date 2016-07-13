@@ -60,9 +60,10 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Servicios\MovimientoDetalles.svc" />
     <Content Include="Servicios\Movimientos.svc" />
     <Content Include="Servicios\Articulos.svc" />
-    <Content Include="Servicios\OrdenTrabajo.svc" />
+    <Content Include="Servicios\OrdenTrabajos.svc" />
     <Content Include="Servicios\ParametroDetalles.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
@@ -77,8 +78,12 @@
     <Compile Include="Dominio\OrdenTrabajoDetalle.cs" />
     <Compile Include="Dominio\Parametro.cs" />
     <Compile Include="Dominio\ParametroDetalle.cs" />
+    <Compile Include="Excepciones\OrdenAprobadaValidacion.cs" />
     <Compile Include="Excepciones\RepetidosExceptions.cs" />
+    <Compile Include="Interfaces\IMovimientos.cs" />
     <Compile Include="Persistencia\ArticuloDao.cs" />
+    <Compile Include="Persistencia\MovimientoDAO.cs" />
+    <Compile Include="Persistencia\MovimientoDetalleDAO.cs" />
     <Compile Include="Persistencia\OrdenesDao.cs" />
     <Compile Include="Persistencia\ParametroDetalleDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -87,6 +92,17 @@
     </Compile>
     <Compile Include="Interfaces\IArticulos.cs" />
     <Compile Include="Interfaces\IParametroDetalles.cs" />
+    <Compile Include="Interfaces\IMovimientoDetalles.cs" />
+    <Compile Include="Interfaces\IOrdenTrabajos.cs" />
+    <Compile Include="Servicios\MovimientoDetalles.svc.cs">
+      <DependentUpon>MovimientoDetalles.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\Movimientos.svc.cs">
+      <DependentUpon>Movimientos.svc</DependentUpon>
+    </Compile>
+    <Compile Include="Servicios\OrdenTrabajos.svc.cs">
+      <DependentUpon>OrdenTrabajos.svc</DependentUpon>
+    </Compile>
     <Compile Include="Servicios\ParametroDetalles.svc.cs">
       <DependentUpon>ParametroDetalles.svc</DependentUpon>
     </Compile>

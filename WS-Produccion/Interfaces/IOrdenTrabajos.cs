@@ -8,22 +8,22 @@ using System.Text;
 namespace WS_Produccion
 {
     [ServiceContract]
-    public interface IMovimientos
+    public interface IOrdenTrabajos
     {
         //[FaultContract(typeof(exceptions))]
         [OperationContract]
-        Movimiento crearMov(Movimiento movCrear);
+        OrdenTrabajo crearOrd(OrdenTrabajo ordCrear);
 
         [OperationContract]
-        Movimiento obtenerMov(int id);
+        OrdenTrabajo obtenerOrd(int id);
 
         [OperationContract]
-        Movimiento modificarMov(Movimiento MovModificar);
+        OrdenTrabajo modificarOrd(OrdenTrabajo ordModificar);
 
         [OperationContract]
-        void eliminarMov(int id);
+        void eliminarOrd(int id);
 
         [OperationContract]
-        List<Movimiento> listarMov();
+        List<OrdenTrabajo> listarOrd();
     }
 }
