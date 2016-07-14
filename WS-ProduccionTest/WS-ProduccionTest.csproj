@@ -48,7 +48,9 @@
     </When>
     <Otherwise>
       <ItemGroup>
-        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
+        <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework">
+          <Private>False</Private>
+        </Reference>
       </ItemGroup>
     </Otherwise>
   </Choose>
@@ -58,8 +60,14 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Service References\ServiceArticulo\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WCFServiceTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
@@ -79,9 +87,26 @@
     <None Include="Service References\MovWS\WS_ProduccionTest.MovWS.Movimiento.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\ServiceArticulo\Articulos.wsdl" />
+    <None Include="Service References\ServiceArticulo\Articulos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceArticulo\Articulos1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceArticulo\Articulos2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceArticulo\Articulos3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\ServiceArticulo\WS_ProduccionTest.ServiceArticulo.Articulo.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\MovWS\" />
+    <WCFMetadataStorage Include="Service References\ServiceArticulo\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\MovWS\Movimientos.disco" />
@@ -94,6 +119,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\MovWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceArticulo\Articulos.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceArticulo\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceArticulo\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\ServiceArticulo\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
