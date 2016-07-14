@@ -9,7 +9,7 @@ namespace WS_Produccion.Persistencia
     public class OrdenesDao
     {
 
-        private string cadenaConexion = "Data Source=(local);Initial Catalog=BD_Proyectos;Integrated Security=SSPI";
+        private string cadenaConexion = "Data Source=(local);Initial Catalog=DBproduccion;Integrated Security=SSPI";
         public OrdenTrabajo Crear(OrdenTrabajo ordenTrabajoaAcrear)
         {
             OrdenTrabajo ordenTrabajoCreado = null;

@@ -102,6 +102,9 @@
     <Compile Include="Servicios\MovimientoDetalles.svc.cs">
       <DependentUpon>MovimientoDetalles.svc</DependentUpon>
     </Compile>
+    <Compile Include="Servicios\Movimientos.svc.cs">
+      <DependentUpon>Movimientos.svc</DependentUpon>
+    </Compile>
     <Compile Include="Servicios\OrdenTrabajos.svc.cs">
       <DependentUpon>OrdenTrabajos.svc</DependentUpon>
     </Compile>

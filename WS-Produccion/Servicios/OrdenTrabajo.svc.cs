@@ -13,6 +13,7 @@ namespace WS_Produccion.Servicios
     // NOTA: para iniciar el Cliente de prueba WCF para probar este servicio, seleccione OrdenTrabajo.svc o OrdenTrabajo.svc.cs en el Explorador de soluciones e inicie la depuración.
     public class OrdenTrabajo : IOrdenTrabajo
     {
+        //comentario
         private OrdenesDao ordenesDAO = new OrdenesDao();
 
         public OrdenTrabajo CrearOrdenTrabajo(OrdenTrabajo OrdenTraabajoACrear)
