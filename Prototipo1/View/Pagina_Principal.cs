@@ -49,7 +49,7 @@ namespace Prototipo1.View
         private void reporteEficienciaToolStripMenuItem_Click(object sender, EventArgs e)
         {
             ReporteEficiencia form = new ReporteEficiencia();
-            form.TituloFormulario = "Eficiencia Orden de Trabajo";
+            form.TituloFormulario = "Reporte de Eficiencia";
             AbrirFormulario(form);
         }
 

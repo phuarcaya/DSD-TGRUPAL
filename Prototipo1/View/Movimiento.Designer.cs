@@ -47,14 +47,14 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label15 = new System.Windows.Forms.Label();
             this.dgvMovimientos = new System.Windows.Forms.DataGridView();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.DEL = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.TabPageRegistro.SuspendLayout();
             this.TabPageListado.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -65,12 +65,14 @@
             // 
             // PanelTitulo
             // 
-            this.PanelTitulo.Size = new System.Drawing.Size(834, 41);
+            this.PanelTitulo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.PanelTitulo.Size = new System.Drawing.Size(1112, 50);
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(0, 487);
-            this.panel1.Size = new System.Drawing.Size(834, 24);
+            this.panel1.Location = new System.Drawing.Point(0, 599);
+            this.panel1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.panel1.Size = new System.Drawing.Size(1112, 30);
             // 
             // TabPageRegistro
             // 
@@ -83,26 +85,36 @@
             this.TabPageRegistro.Controls.Add(this.label1);
             this.TabPageRegistro.Controls.Add(this.label15);
             this.TabPageRegistro.Controls.Add(this.dgvMovimientos);
-            this.TabPageRegistro.Size = new System.Drawing.Size(785, 386);
+            this.TabPageRegistro.Location = new System.Drawing.Point(4, 25);
+            this.TabPageRegistro.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TabPageRegistro.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TabPageRegistro.Size = new System.Drawing.Size(1049, 478);
             // 
             // TabPageListado
             // 
             this.TabPageListado.Controls.Add(this.dgvListados);
-            this.TabPageListado.Size = new System.Drawing.Size(785, 386);
+            this.TabPageListado.Location = new System.Drawing.Point(4, 25);
+            this.TabPageListado.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TabPageListado.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TabPageListado.Size = new System.Drawing.Size(1049, 478);
             this.TabPageListado.Controls.SetChildIndex(this.groupBox1, 0);
             this.TabPageListado.Controls.SetChildIndex(this.dgvListados, 0);
             // 
             // groupBox1
             // 
-            this.groupBox1.Size = new System.Drawing.Size(882, 51);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.groupBox1.Size = new System.Drawing.Size(1012, 63);
             // 
             // btnRefrescar
             // 
-            this.btnRefrescar.Location = new System.Drawing.Point(691, 13);
+            this.btnRefrescar.Location = new System.Drawing.Point(921, 16);
+            this.btnRefrescar.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             // 
             // TabControlMantenimiento
             // 
-            this.TabControlMantenimiento.Size = new System.Drawing.Size(793, 412);
+            this.TabControlMantenimiento.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.TabControlMantenimiento.Size = new System.Drawing.Size(1057, 507);
             // 
             // dgvListados
             // 
@@ -135,11 +147,12 @@
             this.dgvListados.DefaultCellStyle = dataGridViewCellStyle7;
             this.dgvListados.EnableHeadersVisualStyles = false;
             this.dgvListados.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvListados.Location = new System.Drawing.Point(2, 58);
+            this.dgvListados.Location = new System.Drawing.Point(3, 71);
+            this.dgvListados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvListados.Name = "dgvListados";
             this.dgvListados.RowHeadersVisible = false;
             this.dgvListados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListados.Size = new System.Drawing.Size(779, 323);
+            this.dgvListados.Size = new System.Drawing.Size(875, 306);
             this.dgvListados.TabIndex = 36;
             // 
             // Column1
@@ -169,51 +182,57 @@
             // 
             this.cboMes.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMes.Location = new System.Drawing.Point(427, 11);
+            this.cboMes.Location = new System.Drawing.Point(569, 14);
+            this.cboMes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.cboMes.Name = "cboMes";
-            this.cboMes.Size = new System.Drawing.Size(340, 21);
+            this.cboMes.Size = new System.Drawing.Size(452, 24);
             this.cboMes.TabIndex = 50;
             // 
             // label2
             // 
             this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(378, 14);
+            this.label2.Location = new System.Drawing.Point(504, 17);
+            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(51, 13);
+            this.label2.Size = new System.Drawing.Size(66, 17);
             this.label2.TabIndex = 51;
             this.label2.Text = "Almacen:";
             // 
             // dateTimePicker1
             // 
             this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(58, 42);
+            this.dateTimePicker1.Location = new System.Drawing.Point(77, 52);
+            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(150, 20);
+            this.dateTimePicker1.Size = new System.Drawing.Size(199, 22);
             this.dateTimePicker1.TabIndex = 49;
             // 
             // txtNomreRazonSocialSerah
             // 
-            this.txtNomreRazonSocialSerah.Location = new System.Drawing.Point(58, 14);
+            this.txtNomreRazonSocialSerah.Location = new System.Drawing.Point(77, 17);
+            this.txtNomreRazonSocialSerah.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtNomreRazonSocialSerah.Name = "txtNomreRazonSocialSerah";
-            this.txtNomreRazonSocialSerah.Size = new System.Drawing.Size(150, 20);
+            this.txtNomreRazonSocialSerah.Size = new System.Drawing.Size(199, 22);
             this.txtNomreRazonSocialSerah.TabIndex = 48;
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(5, 42);
+            this.label1.Location = new System.Drawing.Point(7, 52);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(47, 13);
+            this.label1.Size = new System.Drawing.Size(62, 17);
             this.label1.TabIndex = 46;
             this.label1.Text = "Número:";
             // 
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(5, 14);
+            this.label15.Location = new System.Drawing.Point(7, 17);
+            this.label15.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(47, 13);
+            this.label15.Size = new System.Drawing.Size(62, 17);
             this.label15.TabIndex = 47;
             this.label15.Text = "Número:";
             // 
@@ -250,7 +269,8 @@
             this.dgvMovimientos.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvMovimientos.EnableHeadersVisualStyles = false;
             this.dgvMovimientos.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvMovimientos.Location = new System.Drawing.Point(5, 68);
+            this.dgvMovimientos.Location = new System.Drawing.Point(7, 84);
+            this.dgvMovimientos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvMovimientos.Name = "dgvMovimientos";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
@@ -263,26 +283,8 @@
             this.dgvMovimientos.RowHeadersWidth = 40;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.LightBlue;
             this.dgvMovimientos.RowsDefaultCellStyle = dataGridViewCellStyle5;
-            this.dgvMovimientos.Size = new System.Drawing.Size(774, 308);
+            this.dgvMovimientos.Size = new System.Drawing.Size(1032, 379);
             this.dgvMovimientos.TabIndex = 45;
-            // 
-            // label3
-            // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(351, 45);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(78, 13);
-            this.label3.TabIndex = 47;
-            this.label3.Text = "Orden Trabajo:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(427, 42);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(174, 20);
-            this.textBox1.TabIndex = 48;
             // 
             // Column11
             // 
@@ -332,11 +334,32 @@
             this.DEL.VisitedLinkColor = System.Drawing.Color.SteelBlue;
             this.DEL.Width = 70;
             // 
+            // label3
+            // 
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(468, 55);
+            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(105, 17);
+            this.label3.TabIndex = 47;
+            this.label3.Text = "Orden Trabajo:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(569, 52);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(231, 22);
+            this.textBox1.TabIndex = 48;
+            // 
             // Movimiento
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 511);
+            this.ClientSize = new System.Drawing.Size(1112, 629);
+            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.Name = "Movimiento";
             this.Text = "";
             this.Load += new System.EventHandler(this.IngresoProducto_Load);
