@@ -6,6 +6,8 @@ using System.Runtime.Serialization;
 
 namespace WS_Produccion
 {
+
+//Prueba
     [DataContract]
     public class Articulo
     {
