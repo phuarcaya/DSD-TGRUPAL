@@ -8,7 +8,7 @@ namespace WS_Produccion.Persistencia
 {
     public class ArticuloDao
     {
-        private string cadenaConexion = "Data Source=(local);Initial Catalog=BD_Proyectos;Integrated Security=SSPI";
+        private string cadenaConexion = "Data Source=DESKTOP-8BVLSMS\\SQLEXPRESS;Initial Catalog=DBProduccion;Integrated Security=SSPI";
 
         public Articulo Modificar(Articulo articuloAmodificar)
         {
