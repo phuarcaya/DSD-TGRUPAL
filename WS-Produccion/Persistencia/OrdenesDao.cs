@@ -94,7 +94,7 @@ namespace WS_Produccion.Persistencia
 
         public void Eliminar(int id)
         {
-            string sql = "DELETE FROM  OrdenTrabajo WHERE anl_id=@id";
+            string sql = "DELETE FROM OrdenTrabajo WHERE anl_id=@id";
             using (SqlConnection conexion = new SqlConnection(cadenaConexion))
             {
                 conexion.Open();
@@ -106,6 +106,37 @@ namespace WS_Produccion.Persistencia
 
                 }
             }
+        }
+
+        public List<OrdenTrabajo> Listar()
+        {
+            List<OrdenTrabajo> ordEncontrados = new List<OrdenTrabajo>();
+            OrdenTrabajo ordEncontrado = null;
+            string sql = "select * from OrdenTrabajoDetalle";
+            using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
+            {
+                cnx.Open();
+                using (SqlCommand cmm = new SqlCommand(sql, cnx))
+                {
+                    using (SqlDataReader resultado = cmm.ExecuteReader())
+                    {
+                        while (resultado.Read())
+                        {
+                            ordEncontrado = new OrdenTrabajo()
+                            {
+                                Id = (int)resultado["Id"],
+                                Fecha = (DateTime)resultado["Fecha"],
+                                FechaModificacion = (DateTime)resultado["FechaModificacion"],
+                                Activo = (Boolean)resultado["Activo"],
+                                IdEstado = (int)resultado["IdEstado"]
+                            };
+                            ordEncontrados.Add(ordEncontrado);
+
+                        }
+                    }
+                }
+            }
+            return ordEncontrados;
         }
 
     }

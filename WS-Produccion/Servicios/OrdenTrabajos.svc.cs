@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
 using WS_Produccion.Persistencia;
 
 namespace WS_Produccion.Servicios
 {
-    public class OrdenTrabajos : IOrdenTrabajos
+    public class OrdenTrabajos : IOrdenTrabajos, IOrdenTrabajoDetalle
     {
         private OrdenesDao ordDAO = new OrdenesDao();
 
@@ -24,7 +20,7 @@ namespace WS_Produccion.Servicios
 
         public List<OrdenTrabajo> listarOrd()
         {
-            throw new NotImplementedException();
+            return ordDAO.Listar();
         }
 
         public OrdenTrabajo modificarOrd(OrdenTrabajo ordModificar)
@@ -37,9 +33,32 @@ namespace WS_Produccion.Servicios
             return ordDAO.Obtener(id);
         }
 
-        public static implicit operator OrdenTrabajos(OrdenTrabajo v)
+        //-----------------------------------Detalle------------------
+        private ordenesDetalleDAO ordDetDAO = new ordenesDetalleDAO();
+        
+        List<OrdenTrabajoDetalle> IOrdenTrabajoDetalle.listarOrdDet()
         {
-            throw new NotImplementedException();
+            return ordDetDAO.Listar();
+        }
+
+        OrdenTrabajoDetalle IOrdenTrabajoDetalle.crearOrdDet(OrdenTrabajoDetalle ordDetCrear)
+        {
+            return ordDetDAO.Crear(ordDetCrear);
+        }
+
+        OrdenTrabajoDetalle IOrdenTrabajoDetalle.obtenerOrdDet(int id)
+        {
+            return ordDetDAO.Obtener(id);
+        }
+
+        OrdenTrabajoDetalle IOrdenTrabajoDetalle.modificarOrdDet(OrdenTrabajoDetalle ordDetModificar)
+        {
+            return ordDetDAO.Modificar(ordDetModificar);
+        }
+
+        void IOrdenTrabajoDetalle.eliminarOrdDet(int id)
+        {
+            ordDetDAO.Eliminar(id);
         }
     }
 

@@ -105,6 +105,7 @@ namespace WS_Produccion.Persistencia
             }
 
         }
+
         public List<Movimiento> Listar()
         {
             List<Movimiento> movsEncontrados = new List<Movimiento>();

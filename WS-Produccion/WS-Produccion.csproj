@@ -89,8 +89,8 @@
     <Compile Include="Persistencia\IOrdenTrabajoDao.cs" />
     <Compile Include="Persistencia\MovimientoDAO.cs" />
     <Compile Include="Persistencia\MovimientoDetalleDAO.cs" />
-    <Compile Include="Persistencia\OrdenDao.cs" />
     <Compile Include="Persistencia\OrdenesDao.cs" />
+    <Compile Include="Persistencia\ordenesDetalleDAO.cs" />
     <Compile Include="Persistencia\ParametroDetalleDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Servicios\Articulos.svc.cs">
