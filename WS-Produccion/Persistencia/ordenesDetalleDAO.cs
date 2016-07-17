@@ -8,24 +8,23 @@ namespace WS_Produccion.Persistencia
 {
     public class ordenesDetalleDAO
     {
-        private string cadenaConexion = "Data Source=(local);Initial Catalog=DBproduccion;Integrated Security=SSPI";
         public OrdenTrabajoDetalle Crear(OrdenTrabajoDetalle ordenTraDetAcrear)
         {
             OrdenTrabajoDetalle ordenTraDetCreado = null;
-            string sql = "INSERT INTO OrdenTrabajoDetalle VALUES (@id, @fecha, @fecharegistro, @fechamodificacion, @Activo, @idestado)";
-            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            string sql = "INSERT INTO OrdenTrabajoDetalle VALUES (@IdOrdenTrabajo, @IdArticulo, @Cantidad)";
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("@id", ordenTraDetAcrear.Id));
+                    //comando.Parameters.Add(new SqlParameter("@id", ordenTraDetAcrear.Id));
                     comando.Parameters.Add(new SqlParameter("@IdOrdenTrabajo", ordenTraDetAcrear.IdOrdenTrabajo));
                     comando.Parameters.Add(new SqlParameter("@IdArticulo", ordenTraDetAcrear.IdArticulo));
                     comando.Parameters.Add(new SqlParameter("@Cantidad", ordenTraDetAcrear.Cantidad));
                     comando.ExecuteNonQuery();
                 }
             }
-            ordenTraDetCreado = Obtener(ordenTraDetCreado.Id);
+            ordenTraDetCreado = Obtener(ordenTraDetAcrear.Id);
             return ordenTraDetCreado;
         }
 
@@ -33,7 +32,7 @@ namespace WS_Produccion.Persistencia
         {
             OrdenTrabajoDetalle OrdenTrabajoEncontrado = null;
             string sql = "SELECT * FROM OrdenTrabajoDetalle WHERE id=@id";
-            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -62,7 +61,7 @@ namespace WS_Produccion.Persistencia
 
             OrdenTrabajoDetalle ordenTrabajoModificado = null;
             string sql = "UPDATE OrdenTrabajoDetalle SET IdOrdenTrabajo=@IdOrdenTrabajo, Cantidad=@Cantidad, IdArticulo=@IdArticulo WHERE id=@id";
-            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -81,7 +80,7 @@ namespace WS_Produccion.Persistencia
         public void Eliminar(int id)
         {
             string sql = "DELETE FROM OrdenTrabajoDetalle WHERE id=@id";
-            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))

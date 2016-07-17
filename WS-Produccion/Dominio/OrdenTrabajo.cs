@@ -10,18 +10,18 @@ namespace WS_Produccion
         public int Id { get; set; }
 
         [DataMember]
-        public Nullable<System.DateTime> Fecha { get; set; }
+        public DateTime Fecha { get; set; }
 
         [DataMember]
-        public Nullable<System.DateTime> FechaRegistro { get; set; }
+        public DateTime FechaRegistro { get; set; }
 
         [DataMember]
-        public Nullable<System.DateTime> FechaModificacion { get; set; }
+        public DateTime FechaModificacion { get; set; }
 
         [DataMember]
-        public Nullable<bool> Activo { get; set; }
+        public bool Activo { get; set; }
 
         [DataMember]
-        public Nullable<int> IdEstado { get; set; }
+        public int IdEstado { get; set; }
     }
 }

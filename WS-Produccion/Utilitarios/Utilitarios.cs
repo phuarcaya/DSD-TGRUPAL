@@ -11,7 +11,9 @@ namespace WS_Produccion
         {
             get
             {
-                return "Data Source=localhost;Initial Catalog=DBProduccion;Integrated Security=True";
+                //private string cadenaConexion = "Data Source=(local);Initial Catalog=DBproduccion;Integrated Security=SSPI";
+                //return "Data Source=(local);Initial Catalog=DBProduccion;Integrated Security=True";
+                return "Data Source=NADIE-PC\\SQLEXPRESS;Initial Catalog=DBProduccion;Integrated Security=True"; //funciona
             }
         }
     }

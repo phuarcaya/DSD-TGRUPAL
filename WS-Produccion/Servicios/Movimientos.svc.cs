@@ -12,8 +12,6 @@ namespace WS_Produccion
 {
     public class Movimientos : IMovimientos
     {
-
-
         private MovimientoDAO movDAO = new MovimientoDAO();
 
         public Movimiento crearMov(Movimiento movCrear)

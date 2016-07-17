@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ServiceModel;
+using WS_Produccion.Excepciones;
 using WS_Produccion.Persistencia;
 
 namespace WS_Produccion.Servicios
@@ -10,6 +12,15 @@ namespace WS_Produccion.Servicios
 
         public OrdenTrabajo crearOrd(OrdenTrabajo ordCrear)
         {
+            if (ordCrear.Fecha > DateTime.Now || ordCrear.FechaModificacion > DateTime.Now || ordCrear.FechaRegistro >DateTime.Now)
+            {
+                throw new FaultException<validacionFecha>(new validacionFecha()
+                {
+                    codigo = "1000",
+                    descripcion = "La fecha debe ser menor a la fecha de hoy."
+                },
+                new FaultReason("Fecha es mayor a la Fecha de Hoy"));
+            }
             return ordDAO.Crear(ordCrear);
         }
 
@@ -25,6 +36,15 @@ namespace WS_Produccion.Servicios
 
         public OrdenTrabajo modificarOrd(OrdenTrabajo ordModificar)
         {
+            if (ordModificar.Fecha > DateTime.Now || ordModificar.FechaModificacion > DateTime.Now || ordModificar.FechaRegistro > DateTime.Now)
+            {
+                throw new FaultException<validacionFecha>(new validacionFecha()
+                {
+                    codigo = "1000",
+                    descripcion = "La fecha debe ser menor a la fecha de hoy."
+                },
+                new FaultReason("Fecha es mayor a la Fecha de Hoy"));
+            }
             return ordDAO.Modificar(ordModificar);
         }
 
@@ -35,28 +55,28 @@ namespace WS_Produccion.Servicios
 
         //-----------------------------------Detalle------------------
         private ordenesDetalleDAO ordDetDAO = new ordenesDetalleDAO();
-        
-        List<OrdenTrabajoDetalle> IOrdenTrabajoDetalle.listarOrdDet()
+
+        public List<OrdenTrabajoDetalle> listarOrdDet()
         {
             return ordDetDAO.Listar();
         }
 
-        OrdenTrabajoDetalle IOrdenTrabajoDetalle.crearOrdDet(OrdenTrabajoDetalle ordDetCrear)
+        public OrdenTrabajoDetalle crearOrdDet(OrdenTrabajoDetalle ordDetCrear)
         {
             return ordDetDAO.Crear(ordDetCrear);
         }
 
-        OrdenTrabajoDetalle IOrdenTrabajoDetalle.obtenerOrdDet(int id)
+        public OrdenTrabajoDetalle obtenerOrdDet(int id)
         {
             return ordDetDAO.Obtener(id);
         }
 
-        OrdenTrabajoDetalle IOrdenTrabajoDetalle.modificarOrdDet(OrdenTrabajoDetalle ordDetModificar)
+        public OrdenTrabajoDetalle modificarOrdDet(OrdenTrabajoDetalle ordDetModificar)
         {
             return ordDetDAO.Modificar(ordDetModificar);
         }
 
-        void IOrdenTrabajoDetalle.eliminarOrdDet(int id)
+        public void eliminarOrdDet(int id)
         {
             ordDetDAO.Eliminar(id);
         }

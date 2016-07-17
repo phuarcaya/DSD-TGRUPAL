@@ -81,12 +81,11 @@
     <Compile Include="Excepciones\OrdenAprobadaValidacion.cs" />
     <Compile Include="Excepciones\RepetidosExceptions.cs" />
     <Compile Include="Excepciones\SinStockExceptions.cs" />
+    <Compile Include="Excepciones\validacionFecha.cs" />
     <Compile Include="Interfaces\IMovimientoDetalles.cs" />
     <Compile Include="Interfaces\IMovimientos.cs" />
-    <Compile Include="Interfaces\IOrdenes.cs" />
     <Compile Include="Interfaces\IOrdenTrabajos.cs" />
     <Compile Include="Persistencia\ArticuloDao.cs" />
-    <Compile Include="Persistencia\IOrdenTrabajoDao.cs" />
     <Compile Include="Persistencia\MovimientoDAO.cs" />
     <Compile Include="Persistencia\MovimientoDetalleDAO.cs" />
     <Compile Include="Persistencia\OrdenesDao.cs" />
@@ -98,7 +97,6 @@
     </Compile>
     <Compile Include="Interfaces\IArticulos.cs" />
     <Compile Include="Interfaces\IParametroDetalles.cs" />
-    <Compile Include="Interfaces\IOrdenTrabajo.cs" />
     <Compile Include="Servicios\MovimientoDetalles.svc.cs">
       <DependentUpon>MovimientoDetalles.svc</DependentUpon>
     </Compile>

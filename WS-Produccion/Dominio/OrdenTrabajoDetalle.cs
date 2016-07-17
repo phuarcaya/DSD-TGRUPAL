@@ -10,12 +10,12 @@ namespace WS_Produccion
         public int IdOrdenTrabajo { get; set; }
 
         [DataMember]
-        public Nullable<decimal> Cantidad { get; set; }
+        public decimal Cantidad { get; set; }
 
         [DataMember]
         public int Id { get; set; }
 
         [DataMember]
-        public Nullable<int> IdArticulo { get; set; }
+        public int IdArticulo { get; set; }
     }
 }

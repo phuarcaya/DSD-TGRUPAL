@@ -1,25 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.Web;
 
 namespace WS_Produccion.Persistencia
 {
     public class OrdenesDao
     {
-
-        private string cadenaConexion = "Data Source=(local);Initial Catalog=DBproduccion;Integrated Security=SSPI";
         public OrdenTrabajo Crear(OrdenTrabajo ordenTrabajoaAcrear)
         {
             OrdenTrabajo ordenTrabajoCreado = null;
-            string sql = "INSERT INTO OrdenTrabajo VALUES (@id, @fecha, @fecharegistro, @fechamodificacion, @Activo, @idestado)";
-            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            string sql = "INSERT INTO OrdenTrabajo VALUES (@fecha, @fecharegistro, @fechamodificacion, @Activo, @idestado)";
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
                 {
-                    comando.Parameters.Add(new SqlParameter("@id", ordenTrabajoaAcrear.Id));
+                    //comando.Parameters.Add(new SqlParameter("@id", ordenTrabajoaAcrear.Id));
                     comando.Parameters.Add(new SqlParameter("@fecha", ordenTrabajoaAcrear.Fecha));
                     comando.Parameters.Add(new SqlParameter("@fecharegistro", ordenTrabajoaAcrear.FechaRegistro));
                     comando.Parameters.Add(new SqlParameter("@fechamodificacion", ordenTrabajoaAcrear.FechaModificacion));
@@ -36,7 +32,7 @@ namespace WS_Produccion.Persistencia
         {
             OrdenTrabajo OrdenTrabajoEncontrado = null;
             string sql = "SELECT * FROM OrdenTrabajo WHERE id=@id";
-            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -57,9 +53,7 @@ namespace WS_Produccion.Persistencia
                             };
                         }
                     }
-
                 }
-
             }
 
             return OrdenTrabajoEncontrado;
@@ -69,7 +63,7 @@ namespace WS_Produccion.Persistencia
 
             OrdenTrabajo ordenTrabajoModificado = null;
             string sql = "UPDATE OrdenTrabajo SET anl_nombre=@nombre, anl_seniority=@seniority WHERE anl_id=@id";
-            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -80,30 +74,23 @@ namespace WS_Produccion.Persistencia
                     comando.Parameters.Add(new SqlParameter("@fechamodificacion", ordenTrabajoaAmodificar.FechaModificacion));
                     comando.Parameters.Add(new SqlParameter("@Activo", ordenTrabajoaAmodificar.Activo));
                     comando.Parameters.Add(new SqlParameter("@idestado", ordenTrabajoaAmodificar.IdEstado));
-
-
                     comando.ExecuteNonQuery();
-
                 }
-
             }
             ordenTrabajoModificado = Obtener(ordenTrabajoaAmodificar.Id);
             return ordenTrabajoModificado;
-
         }
 
         public void Eliminar(int id)
         {
             string sql = "DELETE FROM OrdenTrabajo WHERE anl_id=@id";
-            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
                 {
                     comando.Parameters.Add(new SqlParameter("@id", id));
                     comando.ExecuteNonQuery();
-
-
                 }
             }
         }
@@ -112,7 +99,7 @@ namespace WS_Produccion.Persistencia
         {
             List<OrdenTrabajo> ordEncontrados = new List<OrdenTrabajo>();
             OrdenTrabajo ordEncontrado = null;
-            string sql = "select * from OrdenTrabajoDetalle";
+            string sql = "select * from OrdenTrabajo";
             using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 cnx.Open();
@@ -131,7 +118,6 @@ namespace WS_Produccion.Persistencia
                                 IdEstado = (int)resultado["IdEstado"]
                             };
                             ordEncontrados.Add(ordEncontrado);
-
                         }
                     }
                 }
