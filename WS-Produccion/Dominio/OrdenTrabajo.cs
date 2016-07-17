@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
 using System.Runtime.Serialization;
 
 namespace WS_Produccion
@@ -9,7 +6,6 @@ namespace WS_Produccion
     [DataContract]
     public class OrdenTrabajo
     {
-
         [DataMember]
         public int Id { get; set; }
 

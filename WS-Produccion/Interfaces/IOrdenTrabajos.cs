@@ -26,4 +26,23 @@ namespace WS_Produccion
         [OperationContract]
         List<OrdenTrabajo> listarOrd();
     }
+
+    [ServiceContract]
+    public interface IOrdenTrabajoDetalle
+    {
+        [OperationContract]
+        OrdenTrabajoDetalle crearOrdDet(OrdenTrabajoDetalle ordDetCrear);
+
+        [OperationContract]
+        OrdenTrabajoDetalle obtenerOrdDet(int id);
+
+        [OperationContract]
+        OrdenTrabajoDetalle modificarOrdDet(OrdenTrabajoDetalle ordDetModificar);
+
+        [OperationContract]
+        void eliminarOrdDet(int id);
+
+        [OperationContract]
+        List<OrdenTrabajoDetalle> listarOrd();
+    }
 }
