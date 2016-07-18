@@ -9,21 +9,22 @@ namespace WS_ProduccionTest
         [TestMethod]
         public void CreacionCorrecta()
         {
+            DateTime fecha = DateTime.Now;
             OrdWS.OrdenTrabajosClient proxy = new OrdWS.OrdenTrabajosClient();
-            OrdWS.OrdenTrabajo ordCreado = proxy.crearOrd(new OrdWS.OrdenTrabajo()
+            OrdWS.OrdenTrabajo ordCreada = proxy.crearOrd(new OrdWS.OrdenTrabajo()
             {
-                FechaRegistro = DateTime.Now,
-                FechaModificacion= DateTime.Now,
-                Fecha=DateTime.Now,
+                FechaRegistro = fecha,
+                FechaModificacion= fecha,
+                Fecha= fecha,
                 Activo=true,
                 IdEstado=1
             });
 
-            Assert.AreEqual(DateTime.Now, ordCreado.FechaRegistro);
-            Assert.AreEqual(DateTime.Now, ordCreado.FechaModificacion);
-            Assert.AreEqual(DateTime.Now, ordCreado.Fecha);
-            Assert.AreEqual(true, ordCreado.Activo);
-            Assert.AreEqual(1, ordCreado.IdEstado);
+            Assert.AreEqual(fecha, ordCreada.FechaRegistro);
+            Assert.AreEqual(fecha, ordCreada.FechaModificacion);
+            Assert.AreEqual(fecha, ordCreada.Fecha);
+            Assert.AreEqual(true, ordCreada.Activo);
+            Assert.AreEqual(1, ordCreada.IdEstado);
         }
     }
 }

@@ -9,22 +9,30 @@ namespace WS_Produccion.Persistencia
         public OrdenTrabajo Crear(OrdenTrabajo ordenTrabajoaAcrear)
         {
             OrdenTrabajo ordenTrabajoCreado = null;
-            string sql = "INSERT INTO OrdenTrabajo VALUES (@fecha, @fecharegistro, @fechamodificacion, @Activo, @idestado)";
+            //            string sql = "INSERT INTO OrdenTrabajo VALUES (@fecha, @fecharegistro, @fechamodificacion, @Activo, @idestado)";
+            string sql = "INSERT INTO OrdenTrabajo VALUES (@fecha, @fecharegistro, @fechamodificacion, @Activo, @idestado);";// +
+//            string query2 = "select @id from ordentrabajo where id = SCOPE_IDENTITY();";
+            string qry2 = "select @@Identity;";
+            decimal id;
+
             using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
-                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                using (SqlCommand cmd = new SqlCommand(sql, conexion))
                 {
-                    //comando.Parameters.Add(new SqlParameter("@id", ordenTrabajoaAcrear.Id));
-                    comando.Parameters.Add(new SqlParameter("@fecha", ordenTrabajoaAcrear.Fecha));
-                    comando.Parameters.Add(new SqlParameter("@fecharegistro", ordenTrabajoaAcrear.FechaRegistro));
-                    comando.Parameters.Add(new SqlParameter("@fechamodificacion", ordenTrabajoaAcrear.FechaModificacion));
-                    comando.Parameters.Add(new SqlParameter("@Activo", ordenTrabajoaAcrear.Activo));
-                    comando.Parameters.Add(new SqlParameter("@idestado", ordenTrabajoaAcrear.IdEstado));
-                    comando.ExecuteNonQuery();
+//                    cmd.Parameters.Add(new SqlParameter("@id", ordenTrabajoaAcrear.Id));
+                    cmd.Parameters.Add(new SqlParameter("@fecha", ordenTrabajoaAcrear.Fecha));
+                    cmd.Parameters.Add(new SqlParameter("@fecharegistro", ordenTrabajoaAcrear.FechaRegistro));
+                    cmd.Parameters.Add(new SqlParameter("@fechamodificacion", ordenTrabajoaAcrear.FechaModificacion));
+                    cmd.Parameters.Add(new SqlParameter("@Activo", ordenTrabajoaAcrear.Activo));
+                    cmd.Parameters.Add(new SqlParameter("@idestado", ordenTrabajoaAcrear.IdEstado));
+                    cmd.ExecuteNonQuery();
+                    cmd.CommandText = qry2;
+                    id = (decimal)cmd.ExecuteScalar();
                 }
             }
-            ordenTrabajoCreado = Obtener(ordenTrabajoaAcrear.Id);
+//            ordenTrabajoCreado = Obtener(ordenTrabajoaAcrear.Id);
+            ordenTrabajoCreado = Obtener((int)id);
             return ordenTrabajoCreado;
         }
 
