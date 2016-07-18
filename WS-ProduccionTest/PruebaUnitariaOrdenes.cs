@@ -10,6 +10,8 @@ namespace WS_ProduccionTest
         public void CreacionCorrecta()
         {
             DateTime fecha = DateTime.Now;
+            fecha = fecha.AddTicks(-(fecha.Ticks % 10000000));
+
             OrdWS.OrdenTrabajosClient proxy = new OrdWS.OrdenTrabajosClient();
             OrdWS.OrdenTrabajo ordCreada = proxy.crearOrd(new OrdWS.OrdenTrabajo()
             {
