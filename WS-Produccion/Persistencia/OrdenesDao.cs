@@ -70,7 +70,7 @@ namespace WS_Produccion.Persistencia
         {
 
             OrdenTrabajo ordenTrabajoModificado = null;
-            string sql = "UPDATE OrdenTrabajo SET anl_nombre=@nombre, anl_seniority=@seniority WHERE anl_id=@id";
+            string sql = "UPDATE OrdenTrabajo SET fecha=@fecha, fecharegistro=@fecharegistro, fechamodificacion=@fechamodificacion, Activo=@Activo, idestado=@idestado WHERE id=@id";
             using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
@@ -122,6 +122,7 @@ namespace WS_Produccion.Persistencia
                                 Id = (int)resultado["Id"],
                                 Fecha = (DateTime)resultado["Fecha"],
                                 FechaModificacion = (DateTime)resultado["FechaModificacion"],
+                                FechaRegistro = (DateTime)resultado["FechaRegistro"],
                                 Activo = (Boolean)resultado["Activo"],
                                 IdEstado = (int)resultado["IdEstado"]
                             };

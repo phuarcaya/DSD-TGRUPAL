@@ -73,7 +73,7 @@ namespace WS_Produccion.Persistencia
                     comando.ExecuteNonQuery();
                 }
             }
-            ordenTrabajoModificado = Obtener(ordenTrabajoModificado.Id);
+            ordenTrabajoModificado = Obtener(ordenTraDetmodificar.Id);
             return ordenTrabajoModificado;
         }
 
