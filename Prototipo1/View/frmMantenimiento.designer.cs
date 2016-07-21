@@ -124,7 +124,7 @@
             // bindingNavigatorCountItem
             // 
             this.bindingNavigatorCountItem.Name = "bindingNavigatorCountItem";
-            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(37, 22);
+            this.bindingNavigatorCountItem.Size = new System.Drawing.Size(38, 22);
             this.bindingNavigatorCountItem.Text = "de {0}";
             this.bindingNavigatorCountItem.ToolTipText = "Total number of items";
             // 
@@ -296,7 +296,7 @@
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(35, 47);
+            this.btnCerrar.Size = new System.Drawing.Size(37, 47);
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90;
             this.btnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -321,7 +321,7 @@
             this.TabPageListado.Location = new System.Drawing.Point(4, 22);
             this.TabPageListado.Name = "TabPageListado";
             this.TabPageListado.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageListado.Size = new System.Drawing.Size(679, 392);
+            this.TabPageListado.Size = new System.Drawing.Size(679, 369);
             this.TabPageListado.TabIndex = 0;
             this.TabPageListado.Text = "Listado";
             this.TabPageListado.UseVisualStyleBackColor = true;

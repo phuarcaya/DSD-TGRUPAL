@@ -36,9 +36,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvListados = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dgvMovimientos = new System.Windows.Forms.DataGridView();
             this.Column11 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column13 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -61,12 +58,12 @@
             // 
             // PanelTitulo
             // 
-            this.PanelTitulo.Size = new System.Drawing.Size(834, 41);
+            this.PanelTitulo.Size = new System.Drawing.Size(662, 41);
             // 
             // panel1
             // 
-            this.panel1.Location = new System.Drawing.Point(0, 487);
-            this.panel1.Size = new System.Drawing.Size(834, 24);
+            this.panel1.Location = new System.Drawing.Point(0, 401);
+            this.panel1.Size = new System.Drawing.Size(662, 24);
             // 
             // TabPageRegistro
             // 
@@ -77,27 +74,27 @@
             this.TabPageRegistro.Controls.Add(this.label1);
             this.TabPageRegistro.Controls.Add(this.label15);
             this.TabPageRegistro.Controls.Add(this.dgvMovimientos);
-            this.TabPageRegistro.Size = new System.Drawing.Size(785, 386);
+            this.TabPageRegistro.Size = new System.Drawing.Size(613, 300);
             // 
             // TabPageListado
             // 
             this.TabPageListado.Controls.Add(this.dgvListados);
-            this.TabPageListado.Size = new System.Drawing.Size(785, 386);
+            this.TabPageListado.Size = new System.Drawing.Size(613, 300);
             this.TabPageListado.Controls.SetChildIndex(this.groupBox1, 0);
             this.TabPageListado.Controls.SetChildIndex(this.dgvListados, 0);
             // 
             // groupBox1
             // 
-            this.groupBox1.Size = new System.Drawing.Size(988, 51);
+            this.groupBox1.Size = new System.Drawing.Size(967, 51);
             // 
             // btnRefrescar
             // 
-            this.btnRefrescar.Location = new System.Drawing.Point(676, 13);
+            this.btnRefrescar.Location = new System.Drawing.Point(504, 13);
             this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
             // 
             // TabControlMantenimiento
             // 
-            this.TabControlMantenimiento.Size = new System.Drawing.Size(793, 412);
+            this.TabControlMantenimiento.Size = new System.Drawing.Size(621, 326);
             // 
             // toolTip1
             // 
@@ -119,10 +116,6 @@
             dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             this.dgvListados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvListados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvListados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.Column2,
-            this.Column3});
             dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle7.BackColor = System.Drawing.Color.Snow;
             dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -137,27 +130,9 @@
             this.dgvListados.Name = "dgvListados";
             this.dgvListados.RowHeadersVisible = false;
             this.dgvListados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListados.Size = new System.Drawing.Size(982, 354);
+            this.dgvListados.Size = new System.Drawing.Size(961, 174);
             this.dgvListados.TabIndex = 35;
             this.dgvListados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListados_CellContentClick);
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Número";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 120;
-            // 
-            // Column2
-            // 
-            this.Column2.HeaderText = "Fecha Generación";
-            this.Column2.Name = "Column2";
-            this.Column2.Width = 200;
-            // 
-            // Column3
-            // 
-            this.Column3.HeaderText = "Estado";
-            this.Column3.Name = "Column3";
-            this.Column3.Width = 400;
             // 
             // dgvMovimientos
             // 
@@ -305,7 +280,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(834, 511);
+            this.ClientSize = new System.Drawing.Size(662, 425);
             this.Name = "Orden_Trabajo";
             this.Text = "ORDEN DE TRABAJO";
             this.TabPageRegistro.ResumeLayout(false);
@@ -335,9 +310,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewLinkColumn DEL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
-
     }
 }
