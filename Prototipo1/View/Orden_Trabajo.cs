@@ -8,10 +8,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WS_ProduccionUtilitario;
+
 
 namespace Prototipo1.View
 {
-    public partial class Orden_Trabajo : frmMantenimiento//, IMantenimiento
+    public partial class Orden_Trabajo : frmMantenimiento, IMantenimiento
     {
         public Orden_Trabajo()
         {
@@ -45,7 +47,6 @@ namespace Prototipo1.View
 
         public void SISCO_Mantenimiento_Listado()
         {
-            throw new NotImplementedException();
             WSord.OrdenTrabajosClient proxy = new WSord.OrdenTrabajosClient();
             dgvListados.DataSource = proxy.listarOrd();
             //dgvListados.DataBind();
