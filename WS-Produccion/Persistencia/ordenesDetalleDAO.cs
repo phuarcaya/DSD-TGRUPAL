@@ -91,16 +91,22 @@ namespace WS_Produccion.Persistencia
             }
         }
 
-        public List<OrdenTrabajoDetalle> Listar()
+        public List<OrdenTrabajoDetalle> Listar(int idOrdenTrabajo)
         {
             List<OrdenTrabajoDetalle> ordDetEncontrados = new List<OrdenTrabajoDetalle>();
             OrdenTrabajoDetalle ordDetEncontrado = null;
-            string sql = "select * from OrdenTrabajoDetalle";
+            string sql = @"SELECT 
+	                            otd.Id,otd.IdOrdenTrabajo,otd.Cantidad,otd.IdArticulo, art.Descripcion AS Articulo
+                            FROM OrdenTrabajoDetalle otd
+                            INNER JOIN Articulo art
+	                            ON art.Id = otd.IdArticulo
+                            WHERE otd.IdOrdenTrabajo = @idOrdenTrabajo";
             using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 cnx.Open();
                 using (SqlCommand cmm = new SqlCommand(sql, cnx))
                 {
+                    cmm.Parameters.Add(new SqlParameter("@idOrdenTrabajo", idOrdenTrabajo));
                     using (SqlDataReader resultado = cmm.ExecuteReader())
                     {
                         while (resultado.Read())
@@ -110,7 +116,8 @@ namespace WS_Produccion.Persistencia
                                 Id = (int)resultado["Id"],
                                 IdOrdenTrabajo = (int)resultado["IdOrdenTrabajo"],
                                 IdArticulo = (int)resultado["IdArticulo"],
-                                Cantidad = (Decimal)resultado["Cantidad"]
+                                Cantidad = (Decimal)resultado["Cantidad"],
+                                Articulo = (string)resultado["Articulo"]
                             };
                             ordDetEncontrados.Add(ordDetEncontrado);
 

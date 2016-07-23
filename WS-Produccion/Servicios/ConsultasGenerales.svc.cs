@@ -7,7 +7,7 @@ using System.Text;
 
 namespace WS_Produccion.Interfaces
 {
-    public class ParametroDetalles : IParametroDetalles
+    public class ConsultasGenerales : IParametroDetalles
     {
         public List<ParametroDetalle> ListarParametroDetalle(int idPadre)
         {

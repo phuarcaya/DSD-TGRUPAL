@@ -44,5 +44,10 @@ namespace WS_Produccion.Interfaces
             }
             return articuloDAO.Obtener(id);
         }
+
+        public List<Articulo> ListarArticulos(string tipoExistencia)
+        {
+            return articuloDAO.Listar(tipoExistencia);
+        }
     }
 }

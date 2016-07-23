@@ -39,6 +39,6 @@ namespace WS_Produccion
         void eliminarOrdDet(int id);
 
         [OperationContract]
-        List<OrdenTrabajoDetalle> listarOrdDet();
+        List<OrdenTrabajoDetalle> listarOrdDet(int idOrdenTrabajo);
     }
 }

@@ -39,7 +39,7 @@ namespace WS_Produccion.Persistencia
         public OrdenTrabajo Obtener(int id)
         {
             OrdenTrabajo OrdenTrabajoEncontrado = null;
-            string sql = "SELECT * FROM OrdenTrabajo WHERE id=@id";
+            string sql = @"SELECT * FROM dbo.OrdenTrabajo WHERE Id = @id";
             using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
@@ -57,7 +57,7 @@ namespace WS_Produccion.Persistencia
                                 FechaRegistro = (DateTime)resultado["FechaRegistro"],
                                 FechaModificacion = (DateTime)resultado["FechaModificacion"],
                                 Activo = (bool)resultado["Activo"],
-                                IdEstado = (int)resultado["IdEstado"],
+                                IdEstado = (int)resultado["IdEstado"]
                             };
                         }
                     }
@@ -107,7 +107,10 @@ namespace WS_Produccion.Persistencia
         {
             List<OrdenTrabajo> ordEncontrados = new List<OrdenTrabajo>();
             OrdenTrabajo ordEncontrado = null;
-            string sql = "select * from OrdenTrabajo";
+            string sql = @"SELECT ot.Id, ot.Fecha, ot.FechaRegistro, ot.FechaModificacion, ot.Activo, ot.IdEstado, est.Descripcion AS Estado
+                            FROM dbo.OrdenTrabajo ot
+                            INNER JOIN ParametroDetalle est
+	                            ON est.Id = ot.IdEstado";
             using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 cnx.Open();
@@ -124,7 +127,8 @@ namespace WS_Produccion.Persistencia
                                 FechaModificacion = (DateTime)resultado["FechaModificacion"],
                                 FechaRegistro = (DateTime)resultado["FechaRegistro"],
                                 Activo = (Boolean)resultado["Activo"],
-                                IdEstado = (int)resultado["IdEstado"]
+                                IdEstado = (int)resultado["IdEstado"],
+                                Estado = (string)resultado["Estado"]
                             };
                             ordEncontrados.Add(ordEncontrado);
                         }

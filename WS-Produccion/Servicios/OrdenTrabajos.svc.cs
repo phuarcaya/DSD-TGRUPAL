@@ -12,7 +12,7 @@ namespace WS_Produccion.Servicios
 
         public OrdenTrabajo crearOrd(OrdenTrabajo ordCrear)
         {
-            if (ordCrear.Fecha > DateTime.Now || ordCrear.FechaModificacion > DateTime.Now || ordCrear.FechaRegistro >DateTime.Now)
+            if (ordCrear.Fecha > DateTime.Now || ordCrear.FechaModificacion > DateTime.Now || ordCrear.FechaRegistro > DateTime.Now)
             {
                 throw new FaultException<validacionFecha>(new validacionFecha()
                 {
@@ -22,16 +22,6 @@ namespace WS_Produccion.Servicios
                 new FaultReason("Fecha es mayor a la Fecha de Hoy"));
             }
             return ordDAO.Crear(ordCrear);
-        }
-
-        public void eliminarOrd(int id)
-        {
-            ordDAO.Eliminar(id);
-        }
-
-        public List<OrdenTrabajo> listarOrd()
-        {
-            return ordDAO.Listar();
         }
 
         public OrdenTrabajo modificarOrd(OrdenTrabajo ordModificar)
@@ -50,15 +40,27 @@ namespace WS_Produccion.Servicios
 
         public OrdenTrabajo obtenerOrd(int id)
         {
-            return ordDAO.Obtener(id);
+            var ordenTrabajo = ordDAO.Obtener(id);
+            ordenTrabajo.ListaDetalleOrdenTrabajo = new ordenesDetalleDAO().Listar(id);
+            return ordenTrabajo;
         }
 
-        //-----------------------------------Detalle------------------
+        public void eliminarOrd(int id)
+        {
+            ordDAO.Eliminar(id);
+        }
+
+        public List<OrdenTrabajo> listarOrd()
+        {
+            return ordDAO.Listar();
+        }
+
+        #region Detalle orden de trabajo
         private ordenesDetalleDAO ordDetDAO = new ordenesDetalleDAO();
 
-        public List<OrdenTrabajoDetalle> listarOrdDet()
+        public List<OrdenTrabajoDetalle> listarOrdDet(int idOrdenTrabajo)
         {
-            return ordDetDAO.Listar();
+            return ordDetDAO.Listar(idOrdenTrabajo);
         }
 
         public OrdenTrabajoDetalle crearOrdDet(OrdenTrabajoDetalle ordDetCrear)
@@ -80,6 +82,7 @@ namespace WS_Produccion.Servicios
         {
             ordDetDAO.Eliminar(id);
         }
+        #endregion
     }
 
 }

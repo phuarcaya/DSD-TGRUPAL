@@ -9,7 +9,7 @@ using WS_Produccion.Excepciones;
 namespace WS_Produccion.Servicios
 {
 
-        [ServiceContract]
+    [ServiceContract]
     public interface IArticulos
     {
         [FaultContract(typeof(SinStockExceptions))]
@@ -19,5 +19,8 @@ namespace WS_Produccion.Servicios
 
         [OperationContract]
         Articulo Obtener(int id);
+
+        [OperationContract]
+        List<Articulo> ListarArticulos(string tipoExistencia);
     }
 }

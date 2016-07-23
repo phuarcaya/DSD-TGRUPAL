@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="5123a1f6-28f5-44b9-ab7a-c5bf1bd1e852" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:30813/Servicios/ConsultasGenerales.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="ConsultasGenerales.xsd" MetadataType="Schema" ID="ceb75d8a-ce38-46aa-89eb-0bfec5ebaecd" SourceId="1" SourceUrl="http://localhost:30813/Servicios/ConsultasGenerales.svc?xsd=xsd0" />
+    <MetadataFile FileName="ConsultasGenerales1.xsd" MetadataType="Schema" ID="7bfa627b-4c3f-4782-a6df-57979778733d" SourceId="1" SourceUrl="http://localhost:30813/Servicios/ConsultasGenerales.svc?xsd=xsd2" />
+    <MetadataFile FileName="ConsultasGenerales.wsdl" MetadataType="Wsdl" ID="a4627dcc-8e63-430e-b89f-9d3f5966f48b" SourceId="1" SourceUrl="http://localhost:30813/Servicios/ConsultasGenerales.svc?wsdl" />
+    <MetadataFile FileName="ConsultasGenerales2.xsd" MetadataType="Schema" ID="62aae7b4-ad72-4962-9c75-3b2f4750bd31" SourceId="1" SourceUrl="http://localhost:30813/Servicios/ConsultasGenerales.svc?xsd=xsd1" />
+    <MetadataFile FileName="ConsultasGenerales.disco" MetadataType="Disco" ID="717f1617-3987-427d-b82f-fdeec4aeeb55" SourceId="1" SourceUrl="http://localhost:30813/Servicios/ConsultasGenerales.svc?disco" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

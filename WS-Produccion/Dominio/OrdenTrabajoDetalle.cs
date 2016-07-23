@@ -17,5 +17,10 @@ namespace WS_Produccion
 
         [DataMember]
         public int IdArticulo { get; set; }
+
+        #region Campos externas
+        [DataMember]
+        public string Articulo { get; set; }
+        #endregion
     }
 }

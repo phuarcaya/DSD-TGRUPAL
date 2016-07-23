@@ -8,17 +8,19 @@
       <xs:element minOccurs="0" name="FechaRegistro" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IdEstado" type="xs:int" />
+      <xs:element minOccurs="0" name="ListaDetalleOrdenTrabajo" nillable="true" type="tns:ArrayOfOrdenTrabajoDetalle" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="OrdenTrabajo" nillable="true" type="tns:OrdenTrabajo" />
-  <xs:complexType name="ArrayOfOrdenTrabajo">
+  <xs:complexType name="ArrayOfOrdenTrabajoDetalle">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrdenTrabajo" nillable="true" type="tns:OrdenTrabajo" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrdenTrabajoDetalle" nillable="true" type="tns:OrdenTrabajoDetalle" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfOrdenTrabajo" nillable="true" type="tns:ArrayOfOrdenTrabajo" />
+  <xs:element name="ArrayOfOrdenTrabajoDetalle" nillable="true" type="tns:ArrayOfOrdenTrabajoDetalle" />
   <xs:complexType name="OrdenTrabajoDetalle">
     <xs:sequence>
+      <xs:element minOccurs="0" name="Articulo" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IdArticulo" type="xs:int" />
@@ -26,10 +28,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="OrdenTrabajoDetalle" nillable="true" type="tns:OrdenTrabajoDetalle" />
-  <xs:complexType name="ArrayOfOrdenTrabajoDetalle">
+  <xs:complexType name="ArrayOfOrdenTrabajo">
     <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrdenTrabajoDetalle" nillable="true" type="tns:OrdenTrabajoDetalle" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrdenTrabajo" nillable="true" type="tns:OrdenTrabajo" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="ArrayOfOrdenTrabajoDetalle" nillable="true" type="tns:ArrayOfOrdenTrabajoDetalle" />
+  <xs:element name="ArrayOfOrdenTrabajo" nillable="true" type="tns:ArrayOfOrdenTrabajo" />
 </xs:schema>

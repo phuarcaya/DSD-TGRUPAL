@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="edde1d92-dc0f-4569-bf82-64afb8f8ca2f" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e3caa18c-4724-4579-a4b7-b80f54cc66bc" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -22,11 +22,11 @@
     <MetadataSource Address="http://localhost:30813/Servicios/OrdenTrabajos.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="OrdenTrabajos.xsd" MetadataType="Schema" ID="0e0ef937-7c16-4598-bf16-a8706647a212" SourceId="1" SourceUrl="http://localhost:30813/Servicios/OrdenTrabajos.svc?xsd=xsd0" />
-    <MetadataFile FileName="OrdenTrabajos1.xsd" MetadataType="Schema" ID="48048dca-5db0-46a4-ad58-14ff8f7bf0ae" SourceId="1" SourceUrl="http://localhost:30813/Servicios/OrdenTrabajos.svc?xsd=xsd1" />
-    <MetadataFile FileName="OrdenTrabajos.disco" MetadataType="Disco" ID="a90e4621-4c9d-4164-a331-b280463dad93" SourceId="1" SourceUrl="http://localhost:30813/Servicios/OrdenTrabajos.svc?disco" />
-    <MetadataFile FileName="OrdenTrabajos.wsdl" MetadataType="Wsdl" ID="16702e2b-fc24-4308-bbac-c32b94bcf5bf" SourceId="1" SourceUrl="http://localhost:30813/Servicios/OrdenTrabajos.svc?wsdl" />
-    <MetadataFile FileName="OrdenTrabajos2.xsd" MetadataType="Schema" ID="28e2068f-d055-423b-a50f-f2378518f113" SourceId="1" SourceUrl="http://localhost:30813/Servicios/OrdenTrabajos.svc?xsd=xsd2" />
+    <MetadataFile FileName="OrdenTrabajos.xsd" MetadataType="Schema" ID="07e1766a-a5f9-4157-85f4-5ab76529f3b1" SourceId="1" SourceUrl="http://localhost:30813/Servicios/OrdenTrabajos.svc?xsd=xsd0" />
+    <MetadataFile FileName="OrdenTrabajos1.xsd" MetadataType="Schema" ID="156fc15d-eb01-42ae-9eac-8e56f4a4f864" SourceId="1" SourceUrl="http://localhost:30813/Servicios/OrdenTrabajos.svc?xsd=xsd1" />
+    <MetadataFile FileName="OrdenTrabajos.disco" MetadataType="Disco" ID="bc193130-29e1-4909-83cc-9c50bf1ce2aa" SourceId="1" SourceUrl="http://localhost:30813/Servicios/OrdenTrabajos.svc?disco" />
+    <MetadataFile FileName="OrdenTrabajos.wsdl" MetadataType="Wsdl" ID="16c89f4d-a9db-4596-968b-842515d2df56" SourceId="1" SourceUrl="http://localhost:30813/Servicios/OrdenTrabajos.svc?wsdl" />
+    <MetadataFile FileName="OrdenTrabajos2.xsd" MetadataType="Schema" ID="435b28c9-bb35-4477-ba67-faba198aae43" SourceId="1" SourceUrl="http://localhost:30813/Servicios/OrdenTrabajos.svc?xsd=xsd2" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

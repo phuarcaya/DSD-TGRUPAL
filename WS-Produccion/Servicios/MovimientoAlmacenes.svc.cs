@@ -6,14 +6,12 @@ using System.ServiceModel;
 using System.Text;
 using WS_Produccion.Excepciones;
 using WS_Produccion.Persistencia;
-using WS_Produccion.Servicios;
 
-namespace WS_Produccion
+namespace WS_Produccion.Servicios
 {
-    public class Movimientos : IMovimientos
+    public class MovimientoAlmacenes : IMovimientoAlmacenes
     {
         private MovimientoDAO movDAO = new MovimientoDAO();
-
         public Movimiento crearMov(Movimiento movCrear)
         {
             ///verificar orden de trabajo aprobada=z crear movimiento
@@ -37,6 +35,16 @@ namespace WS_Produccion
             return movDAO.Crear(movCrear);
         }
 
+        public Movimiento obtenerMov(int id)
+        {
+            return movDAO.Obtener(id);
+        }
+
+        public Movimiento modificarMov(Movimiento MovModificar)
+        {
+            return movDAO.Modificar(MovModificar);
+        }
+
         public void eliminarMov(int id)
         {
             movDAO.Eliminar(id);
@@ -45,16 +53,6 @@ namespace WS_Produccion
         public List<Movimiento> listarMov()
         {
             return movDAO.Listar();
-        }
-
-        public Movimiento modificarMov(Movimiento MovModificar)
-        {
-            return movDAO.Modificar(MovModificar);
-        }
-
-        public Movimiento obtenerMov(int id)
-        {
-            return movDAO.Obtener(id);
         }
     }
 }

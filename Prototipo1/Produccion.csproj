@@ -51,8 +51,27 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <None Include="Properties\DataSources\WS_Produccion.Articulo.datasource" />
+    <None Include="Properties\DataSources\WS_Produccion.OrdenTrabajo.datasource" />
+    <None Include="Properties\DataSources\WS_Produccion.OrdenTrabajoDetalle.datasource" />
+    <None Include="Properties\DataSources\WS_Produccion.ParametroDetalle.datasource" />
     <None Include="Resources\IMovimientos.cs" />
-    <Compile Include="Service References\WSord\Reference.cs">
+    <Compile Include="Service References\WSArticulos\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WSConsultasGenerales\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WSMovimientoAlmacenes\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WSOrdenesTrabajos\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -62,6 +81,18 @@
     </Compile>
     <Compile Include="View\Aprobar_Orden_Trabajo.Designer.cs">
       <DependentUpon>Aprobar_Orden_Trabajo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\BuscarArticulos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BuscarArticulos.Designer.cs">
+      <DependentUpon>BuscarArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\frmBuscador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\frmBuscador.designer.cs">
+      <DependentUpon>frmBuscador.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmLogin.cs">
       <SubType>Form</SubType>
@@ -124,6 +155,12 @@
     <EmbeddedResource Include="View\Aprobar_Orden_Trabajo.resx">
       <DependentUpon>Aprobar_Orden_Trabajo.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="View\BuscarArticulos.resx">
+      <DependentUpon>BuscarArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\frmBuscador.resx">
+      <DependentUpon>frmBuscador.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="View\frmLogin.resx">
       <DependentUpon>frmLogin.cs</DependentUpon>
     </EmbeddedResource>
@@ -157,21 +194,51 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <None Include="Service References\WSord\OrdenTrabajos.wsdl" />
-    <None Include="Service References\WSord\OrdenTrabajos.xsd">
+    <None Include="Service References\WSArticulos\Articulos.wsdl" />
+    <None Include="Service References\WSArticulos\Articulos.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WSord\OrdenTrabajos1.xsd">
+    <None Include="Service References\WSArticulos\Articulos1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WSord\OrdenTrabajos2.xsd">
+    <None Include="Service References\WSArticulos\Articulos2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WSord\Prototipo1.WSord.OrdenTrabajo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\WSArticulos\Articulos3.xsd">
+      <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WSord\Prototipo1.WSord.OrdenTrabajoDetalle.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
+    <None Include="Service References\WSConsultasGenerales\ConsultasGenerales.wsdl" />
+    <None Include="Service References\WSConsultasGenerales\ConsultasGenerales.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSConsultasGenerales\ConsultasGenerales1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSConsultasGenerales\ConsultasGenerales2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSMovimientoAlmacenes\Articulos.wsdl" />
+    <None Include="Service References\WSMovimientoAlmacenes\Articulos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSMovimientoAlmacenes\Articulos1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSMovimientoAlmacenes\Articulos2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSMovimientoAlmacenes\Articulos3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSOrdenesTrabajos\OrdenTrabajos.wsdl" />
+    <None Include="Service References\WSOrdenesTrabajos\OrdenTrabajos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSOrdenesTrabajos\OrdenTrabajos1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSOrdenesTrabajos\OrdenTrabajos2.xsd">
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup>
@@ -259,19 +326,67 @@
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\WSord\" />
+    <WCFMetadataStorage Include="Service References\WSArticulos\" />
+    <WCFMetadataStorage Include="Service References\WSConsultasGenerales\" />
+    <WCFMetadataStorage Include="Service References\WSMovimientoAlmacenes\" />
+    <WCFMetadataStorage Include="Service References\WSOrdenesTrabajos\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WSord\OrdenTrabajos.disco" />
+    <None Include="Service References\WSArticulos\Articulos.disco" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WSord\configuration91.svcinfo" />
+    <None Include="Service References\WSArticulos\configuration91.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WSord\configuration.svcinfo" />
+    <None Include="Service References\WSArticulos\configuration.svcinfo" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WSord\Reference.svcmap">
+    <None Include="Service References\WSArticulos\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSOrdenesTrabajos\OrdenTrabajos.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSOrdenesTrabajos\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSOrdenesTrabajos\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSOrdenesTrabajos\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSMovimientoAlmacenes\Articulos.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSMovimientoAlmacenes\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSMovimientoAlmacenes\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSMovimientoAlmacenes\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSConsultasGenerales\ConsultasGenerales.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSConsultasGenerales\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSConsultasGenerales\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSConsultasGenerales\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

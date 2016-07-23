@@ -5,10 +5,10 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.Text;
 
-namespace WS_Produccion
+namespace WS_Produccion.Servicios
 {
     [ServiceContract]
-    public interface IMovimientos
+    public interface IMovimientoAlmacenes
     {
         //[FaultContract(typeof(exceptions))]
         [OperationContract]

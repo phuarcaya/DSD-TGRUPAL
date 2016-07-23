@@ -63,7 +63,6 @@ namespace WS_Produccion.Persistencia
                             };
                         }
                     }
-
                 }
 
             }
@@ -71,7 +70,41 @@ namespace WS_Produccion.Persistencia
             return articuloEncontrado;
         }
 
+        public List<Articulo> Listar(string tipoExistencia)
+        {
+            List<Articulo> articuloEncontrado = new List<Articulo>();
+            string sql = "SELECT * FROM Articulo WHERE TipoExistencia = @tipoExistencia";
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
+            {
+                conexion.Open();
+                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                {
+                    comando.Parameters.Add(new SqlParameter("@tipoExistencia", tipoExistencia));
+                    using (SqlDataReader resultado = comando.ExecuteReader())
+                    {
+                        while (resultado.Read())
+                        {
+                            var articulo = new Articulo()
+                            {
+                                Id = (Int32)resultado["Id"],
+                                Descripcion = (string)resultado["Descripcion"],
+                                TipoExistencia = (string)resultado["TipoExistencia"],
+                                StockActual = (decimal)resultado["StockActual"],
+                                Activo = (bool)resultado["Activo"],
+                                IdFormulaProduccion = (Int32)resultado["IdFormulaProduccion"],
+                            };
 
+                            articuloEncontrado.Add(articulo);
+                        }
+                    }
+
+                }
+
+            }
+
+
+            return articuloEncontrado;
+        }
 
     }
 }

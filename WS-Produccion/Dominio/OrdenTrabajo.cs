@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace WS_Produccion
 {
@@ -23,5 +25,13 @@ namespace WS_Produccion
 
         [DataMember]
         public int IdEstado { get; set; }
+
+        [DataMember]
+        public List<OrdenTrabajoDetalle> ListaDetalleOrdenTrabajo { get; set; }
+
+        #region externas
+        [DataMember]
+        public string Estado { get; set; }
+        #endregion
     }
 }
