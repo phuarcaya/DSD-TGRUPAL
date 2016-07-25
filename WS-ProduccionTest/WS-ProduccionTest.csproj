@@ -38,6 +38,7 @@
     <Reference Include="System" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <Choose>
@@ -55,6 +56,8 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Movimiento.cs" />
+    <Compile Include="movUnitTest.cs" />
     <Compile Include="Service References\MovWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

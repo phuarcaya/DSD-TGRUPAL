@@ -60,6 +60,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Servicios\movimientoRest.svc" />
     <Content Include="Servicios\Articulos.svc" />
     <Content Include="Servicios\MovimientoAlmacenes.svc" />
     <Content Include="Servicios\OrdenTrabajos.svc" />
@@ -81,8 +82,12 @@
     <Compile Include="Excepciones\RepetidosExceptions.cs" />
     <Compile Include="Excepciones\SinStockExceptions.cs" />
     <Compile Include="Excepciones\validacionFecha.cs" />
+    <Compile Include="Interfaces\ImovimientoRest.cs" />
     <Compile Include="Interfaces\IMovimientoDetalles.cs" />
     <Compile Include="Interfaces\IOrdenTrabajos.cs" />
+    <Compile Include="Servicios\movimientoRest.svc.cs">
+      <DependentUpon>movimientoRest.svc</DependentUpon>
+    </Compile>
     <Compile Include="Persistencia\ArticuloDao.cs" />
     <Compile Include="Persistencia\MovimientoDAO.cs" />
     <Compile Include="Persistencia\MovimientoDetalleDAO.cs" />
