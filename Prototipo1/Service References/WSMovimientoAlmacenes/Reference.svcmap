@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="cd710c71-4cb0-40a3-bf3e-780fca3405dd" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="70301006-d9f6-4fcc-a958-9f11f6b2e551" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
   <ClientOptions>
     <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
     <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
@@ -19,15 +19,14 @@
     <ServiceContractMappings />
   </ClientOptions>
   <MetadataSources>
-    <MetadataSource Address="http://localhost:30813/Servicios/Articulos.svc" Protocol="http" SourceId="1" />
+    <MetadataSource Address="http://localhost:30813/Servicios/MovimientoAlmacenes.svc" Protocol="http" SourceId="1" />
   </MetadataSources>
   <Metadata>
-    <MetadataFile FileName="Articulos.xsd" MetadataType="Schema" ID="82cd3144-1376-4b7b-a009-f392a47d58f6" SourceId="1" SourceUrl="http://localhost:30813/Servicios/Articulos.svc?xsd=xsd0" />
-    <MetadataFile FileName="Articulos.wsdl" MetadataType="Wsdl" ID="121b69d7-cb56-44e5-94f1-0e6e798d6b56" SourceId="1" SourceUrl="http://localhost:30813/Servicios/Articulos.svc?wsdl" />
-    <MetadataFile FileName="Articulos.disco" MetadataType="Disco" ID="12bfa5f4-8ea5-4c57-ba5a-f5cd4e09f054" SourceId="1" SourceUrl="http://localhost:30813/Servicios/Articulos.svc?disco" />
-    <MetadataFile FileName="Articulos1.xsd" MetadataType="Schema" ID="324ec4c3-19db-448c-8951-bf75d0f30e7b" SourceId="1" SourceUrl="http://localhost:30813/Servicios/Articulos.svc?xsd=xsd2" />
-    <MetadataFile FileName="Articulos2.xsd" MetadataType="Schema" ID="967b8bc3-c810-44dd-b063-79e23ab44f27" SourceId="1" SourceUrl="http://localhost:30813/Servicios/Articulos.svc?xsd=xsd1" />
-    <MetadataFile FileName="Articulos3.xsd" MetadataType="Schema" ID="36723996-2ec5-4e1f-bf77-e6a0af6587a4" SourceId="1" SourceUrl="http://localhost:30813/Servicios/Articulos.svc?xsd=xsd3" />
+    <MetadataFile FileName="MovimientoAlmacenes.wsdl" MetadataType="Wsdl" ID="81841aea-0ecb-42ad-8d0b-395cf10060fd" SourceId="1" SourceUrl="http://localhost:30813/Servicios/MovimientoAlmacenes.svc?wsdl" />
+    <MetadataFile FileName="MovimientoAlmacenes.disco" MetadataType="Disco" ID="21b1e3c1-db7d-468a-b5b9-2210bf0aec81" SourceId="1" SourceUrl="http://localhost:30813/Servicios/MovimientoAlmacenes.svc?disco" />
+    <MetadataFile FileName="MovimientoAlmacenes.xsd" MetadataType="Schema" ID="7146be59-3ce3-4a1a-a57c-830862394032" SourceId="1" SourceUrl="http://localhost:30813/Servicios/MovimientoAlmacenes.svc?xsd=xsd2" />
+    <MetadataFile FileName="MovimientoAlmacenes1.xsd" MetadataType="Schema" ID="84a2c69d-326c-45d3-bfd2-eddbbc71b01a" SourceId="1" SourceUrl="http://localhost:30813/Servicios/MovimientoAlmacenes.svc?xsd=xsd1" />
+    <MetadataFile FileName="MovimientoAlmacenes2.xsd" MetadataType="Schema" ID="04727f6e-7884-4adc-b094-91bbb3a335ca" SourceId="1" SourceUrl="http://localhost:30813/Servicios/MovimientoAlmacenes.svc?xsd=xsd0" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

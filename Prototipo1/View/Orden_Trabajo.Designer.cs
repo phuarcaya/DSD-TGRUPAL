@@ -36,7 +36,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvListados = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column3 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
@@ -86,7 +86,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Size = new System.Drawing.Size(756, 51);
+            this.groupBox1.Size = new System.Drawing.Size(776, 51);
             // 
             // btnRefrescar
             // 
@@ -117,7 +117,7 @@
             this.dgvListados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgvListados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
+            this.ID,
             this.Column2,
             this.Column3,
             this.Column5});
@@ -133,24 +133,27 @@
             this.dgvListados.GridColor = System.Drawing.SystemColors.ControlLight;
             this.dgvListados.Location = new System.Drawing.Point(3, 60);
             this.dgvListados.Name = "dgvListados";
+            this.dgvListados.ReadOnly = true;
             this.dgvListados.RowHeadersVisible = false;
             this.dgvListados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListados.Size = new System.Drawing.Size(756, 327);
+            this.dgvListados.Size = new System.Drawing.Size(770, 323);
             this.dgvListados.TabIndex = 35;
             this.dgvListados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListados_CellContentClick);
             this.dgvListados.SelectionChanged += new System.EventHandler(this.dgvListados_SelectionChanged);
             // 
-            // Column1
+            // ID
             // 
-            this.Column1.DataPropertyName = "Id";
-            this.Column1.HeaderText = "N°";
-            this.Column1.Name = "Column1";
+            this.ID.DataPropertyName = "Id";
+            this.ID.HeaderText = "N°";
+            this.ID.Name = "ID";
+            this.ID.ReadOnly = true;
             // 
             // Column2
             // 
             this.Column2.DataPropertyName = "Fecha";
             this.Column2.HeaderText = "Fecha Generación";
             this.Column2.Name = "Column2";
+            this.Column2.ReadOnly = true;
             this.Column2.Width = 150;
             // 
             // Column3
@@ -158,6 +161,7 @@
             this.Column3.DataPropertyName = "Estado";
             this.Column3.HeaderText = "Estado";
             this.Column3.Name = "Column3";
+            this.Column3.ReadOnly = true;
             this.Column3.Width = 250;
             // 
             // Column5
@@ -165,6 +169,7 @@
             this.Column5.DataPropertyName = "Activo";
             this.Column5.HeaderText = "Activo";
             this.Column5.Name = "Column5";
+            this.Column5.ReadOnly = true;
             this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
             this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
@@ -363,7 +368,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewLinkColumn DEL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column3;
         private System.Windows.Forms.DataGridViewCheckBoxColumn Column5;

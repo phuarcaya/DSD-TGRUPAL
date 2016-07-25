@@ -12,19 +12,19 @@ namespace WS_Produccion
         public int Id { get; set; }
 
         [DataMember]
-        public DateTime Fecha { get; set; }
+        public DateTime? Fecha { get; set; }
 
         [DataMember]
-        public DateTime FechaRegistro { get; set; }
+        public DateTime? FechaRegistro { get; set; }
 
         [DataMember]
-        public DateTime FechaModificacion { get; set; }
+        public DateTime? FechaModificacion { get; set; }
 
         [DataMember]
         public bool Activo { get; set; }
 
         [DataMember]
-        public int IdEstado { get; set; }
+        public int? IdEstado { get; set; }
 
         [DataMember]
         public List<OrdenTrabajoDetalle> ListaDetalleOrdenTrabajo { get; set; }

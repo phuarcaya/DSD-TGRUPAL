@@ -34,10 +34,14 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\WS-ProduccionUtilitario\SCRIPT DB\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,6 +56,7 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Properties\DataSources\WS_Produccion.Articulo.datasource" />
+    <None Include="Properties\DataSources\WS_Produccion.Movimiento.datasource" />
     <None Include="Properties\DataSources\WS_Produccion.OrdenTrabajo.datasource" />
     <None Include="Properties\DataSources\WS_Produccion.OrdenTrabajoDetalle.datasource" />
     <None Include="Properties\DataSources\WS_Produccion.ParametroDetalle.datasource" />
@@ -112,11 +117,11 @@
     <Compile Include="View\frmReporte.designer.cs">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </Compile>
-    <Compile Include="View\Movimiento.cs">
+    <Compile Include="View\MovimientoAlmacen.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="View\Movimiento.Designer.cs">
-      <DependentUpon>Movimiento.cs</DependentUpon>
+    <Compile Include="View\MovimientoAlmacen.Designer.cs">
+      <DependentUpon>MovimientoAlmacen.cs</DependentUpon>
     </Compile>
     <Compile Include="View\Login.cs">
       <SubType>Form</SubType>
@@ -170,8 +175,8 @@
     <EmbeddedResource Include="View\frmReporte.resx">
       <DependentUpon>frmReporte.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="View\Movimiento.resx">
-      <DependentUpon>Movimiento.cs</DependentUpon>
+    <EmbeddedResource Include="View\MovimientoAlmacen.resx">
+      <DependentUpon>MovimientoAlmacen.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\Login.resx">
       <DependentUpon>Login.cs</DependentUpon>
@@ -217,17 +222,14 @@
     <None Include="Service References\WSConsultasGenerales\ConsultasGenerales2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WSMovimientoAlmacenes\Articulos.wsdl" />
-    <None Include="Service References\WSMovimientoAlmacenes\Articulos.xsd">
+    <None Include="Service References\WSMovimientoAlmacenes\MovimientoAlmacenes.wsdl" />
+    <None Include="Service References\WSMovimientoAlmacenes\MovimientoAlmacenes.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WSMovimientoAlmacenes\Articulos1.xsd">
+    <None Include="Service References\WSMovimientoAlmacenes\MovimientoAlmacenes1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\WSMovimientoAlmacenes\Articulos2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\WSMovimientoAlmacenes\Articulos3.xsd">
+    <None Include="Service References\WSMovimientoAlmacenes\MovimientoAlmacenes2.xsd">
       <SubType>Designer</SubType>
     </None>
     <None Include="Service References\WSOrdenesTrabajos\OrdenTrabajos.wsdl" />
@@ -362,21 +364,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Service References\WSMovimientoAlmacenes\Articulos.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WSMovimientoAlmacenes\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WSMovimientoAlmacenes\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\WSMovimientoAlmacenes\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Service References\WSConsultasGenerales\ConsultasGenerales.disco" />
   </ItemGroup>
   <ItemGroup>
@@ -387,6 +374,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\WSConsultasGenerales\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSMovimientoAlmacenes\MovimientoAlmacenes.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSMovimientoAlmacenes\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSMovimientoAlmacenes\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSMovimientoAlmacenes\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

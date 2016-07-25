@@ -29,5 +29,13 @@ namespace WS_Produccion
 
         [DataMember]
         public Nullable<int> IdOrdenTrabajo { get; set; }
+
+        #region Extendibles
+        [DataMember]
+        public string Almacen { get; set; }
+
+        [DataMember]
+        public List<MovimientoDetalle> ListaMovimientoDetalles { get; set; }
+        #endregion
     }
 }

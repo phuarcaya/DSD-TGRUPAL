@@ -8,14 +8,13 @@ namespace WS_Produccion.Persistencia
 {
     public class MovimientoDetalleDAO
     {
-        public MovimientoDetalle Crear(MovimientoDetalle MovsDCrear)
+        public void Crear(MovimientoDetalle MovsDCrear)
         {
-            MovimientoDetalle MovsDCreado = null;
-            string sql = "insert into MovimientoDetalle values (@IdArticulo, @IdMovimiento, @Cantidad)";
+            string sql = @"INSERT INTO dbo.MovimientoDetalle (Cantidad, IdMovimiento, IdArticulo)
+                            VALUES (@cantidad, @idmovimiento, @idarticulo)";
 
             using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
             {
-
                 cnx.Open();
                 using (SqlCommand cmm = new SqlCommand(sql, cnx))
                 {
@@ -25,8 +24,6 @@ namespace WS_Produccion.Persistencia
                     cmm.ExecuteNonQuery();
                 }
             }
-            MovsDCreado = Obtener(MovsDCrear.Id);
-            return MovsDCreado;
         }
 
         public MovimientoDetalle Obtener(int id)
@@ -49,7 +46,6 @@ namespace WS_Produccion.Persistencia
                                 IdArticulo = (int)resultado["IdArticulo"],
                                 IdMovimiento = (int)resultado["IdMovimiento"],
                                 Cantidad = (Decimal)resultado["Cantidad"]
-                                
                             };
                         }
                     }
@@ -58,10 +54,9 @@ namespace WS_Produccion.Persistencia
             return movsEncontrado;
 
         }
-        public MovimientoDetalle Modificar(MovimientoDetalle MovsDModificar)
+        public void Modificar(MovimientoDetalle MovsDModificar)
         {
-            MovimientoDetalle movsModificado = null;
-            string sql = @"UPDATE MovimientoDetalle SET IdArticulo = @IdArticulo, IdMovimiento=@IdMovimiento, Cantidad = @Cantidad WHERE id = @id";
+            string sql = @"UPDATE MovimientoDetalle SET IdArticulo = @IdArticulo, Cantidad = @Cantidad WHERE id = @id";
 
             using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
             {
@@ -70,14 +65,10 @@ namespace WS_Produccion.Persistencia
                 {
                     cmm.Parameters.Add(new SqlParameter("@id", MovsDModificar.Id));
                     cmm.Parameters.Add(new SqlParameter("@IdArticulo", MovsDModificar.IdArticulo));
-                    cmm.Parameters.Add(new SqlParameter("@IdMovimiento", MovsDModificar.IdMovimiento));
                     cmm.Parameters.Add(new SqlParameter("@Cantidad", MovsDModificar.Cantidad));
                     cmm.ExecuteNonQuery();
                 }
             }
-
-            movsModificado = Obtener(MovsDModificar.Id);
-            return movsModificado;
         }
 
         public void Eliminar(int id)
@@ -94,16 +85,35 @@ namespace WS_Produccion.Persistencia
             }
         }
 
-        public List<MovimientoDetalle> Listar()
+        public void EliminarMovimiento(int idMovimiento)
         {
-            List<MovimientoDetalle> movsEncontrados = new List<MovimientoDetalle>();
-            MovimientoDetalle movsEncontrado = null;
-            string sql = "select * from MovimientoDetalle";
+            string sql = "delete from MovimientoDetalle where IdMovimiento = @IdMovimiento";
             using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 cnx.Open();
                 using (SqlCommand cmm = new SqlCommand(sql, cnx))
                 {
+                    cmm.Parameters.Add(new SqlParameter("@IdMovimiento", idMovimiento));
+                    cmm.ExecuteNonQuery();
+                }
+            }
+        }
+
+        public List<MovimientoDetalle> Listar(int idMovimiento)
+        {
+            List<MovimientoDetalle> movsEncontrados = new List<MovimientoDetalle>();
+            MovimientoDetalle movsEncontrado = null;
+            string sql = @"SELECT movd.Id, movd.Cantidad, movd.IdMovimiento, movd.IdArticulo, art.Descripcion AS Articulo, art.StockActual
+                            FROM MovimientoDetalle movd
+                            INNER JOIN Articulo art
+	                            ON art.Id = movd.IdArticulo
+                            WHERE movd.IdMovimiento = @IdMovimiento";
+            using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
+            {
+                cnx.Open();
+                using (SqlCommand cmm = new SqlCommand(sql, cnx))
+                {
+                    cmm.Parameters.Add(new SqlParameter("@IdMovimiento", idMovimiento));
                     using (SqlDataReader resultado = cmm.ExecuteReader())
                     {
                         while (resultado.Read())
@@ -113,7 +123,9 @@ namespace WS_Produccion.Persistencia
                                 Id = (int)resultado["Id"],
                                 IdArticulo = (int)resultado["IdArticulo"],
                                 IdMovimiento = (int)resultado["IdMovimiento"],
-                                Cantidad = (Decimal)resultado["Cantidad"]
+                                Cantidad = (Decimal)resultado["Cantidad"],
+                                Articulo = (string)resultado["Articulo"],
+                                StockActual = resultado.IsDBNull(resultado.GetOrdinal("StockActual")) ? (decimal?)null : resultado.GetDecimal(resultado.GetOrdinal("StockActual"))
                             };
                             movsEncontrados.Add(movsEncontrado);
                         }

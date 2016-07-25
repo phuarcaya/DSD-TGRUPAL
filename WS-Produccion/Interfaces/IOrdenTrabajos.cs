@@ -27,13 +27,13 @@ namespace WS_Produccion
     public interface IOrdenTrabajoDetalle
     {
         [OperationContract]
-        OrdenTrabajoDetalle crearOrdDet(OrdenTrabajoDetalle ordDetCrear);
+        void crearOrdDet(OrdenTrabajoDetalle ordDetCrear);
 
         [OperationContract]
         OrdenTrabajoDetalle obtenerOrdDet(int id);
 
         [OperationContract]
-        OrdenTrabajoDetalle modificarOrdDet(OrdenTrabajoDetalle ordDetModificar);
+        void modificarOrdDet(OrdenTrabajoDetalle ordDetModificar);
 
         [OperationContract]
         void eliminarOrdDet(int id);

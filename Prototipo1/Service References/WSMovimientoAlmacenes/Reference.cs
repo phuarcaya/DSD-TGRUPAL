@@ -12,64 +12,105 @@ namespace Prototipo1.WSMovimientoAlmacenes {
     
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WSMovimientoAlmacenes.IArticulos")]
-    public interface IArticulos {
+    [System.ServiceModel.ServiceContractAttribute(ConfigurationName="WSMovimientoAlmacenes.IMovimientoAlmacenes")]
+    public interface IMovimientoAlmacenes {
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IArticulos/Modificar", ReplyAction="http://tempuri.org/IArticulos/ModificarResponse")]
-        [System.ServiceModel.FaultContractAttribute(typeof(WS_Produccion.Excepciones.SinStockExceptions), Action="http://tempuri.org/IArticulos/ModificarSinStockExceptionsFault", Name="SinStockExceptions", Namespace="http://schemas.datacontract.org/2004/07/WS_Produccion.Excepciones")]
-        WS_Produccion.Articulo Modificar(WS_Produccion.Articulo ArticuloAModificar);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMovimientoAlmacenes/crearMov", ReplyAction="http://tempuri.org/IMovimientoAlmacenes/crearMovResponse")]
+        WS_Produccion.Movimiento crearMov(WS_Produccion.Movimiento movCrear);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IArticulos/Modificar", ReplyAction="http://tempuri.org/IArticulos/ModificarResponse")]
-        System.Threading.Tasks.Task<WS_Produccion.Articulo> ModificarAsync(WS_Produccion.Articulo ArticuloAModificar);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMovimientoAlmacenes/crearMov", ReplyAction="http://tempuri.org/IMovimientoAlmacenes/crearMovResponse")]
+        System.Threading.Tasks.Task<WS_Produccion.Movimiento> crearMovAsync(WS_Produccion.Movimiento movCrear);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IArticulos/Obtener", ReplyAction="http://tempuri.org/IArticulos/ObtenerResponse")]
-        WS_Produccion.Articulo Obtener(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMovimientoAlmacenes/obtenerMov", ReplyAction="http://tempuri.org/IMovimientoAlmacenes/obtenerMovResponse")]
+        WS_Produccion.Movimiento obtenerMov(int id);
         
-        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IArticulos/Obtener", ReplyAction="http://tempuri.org/IArticulos/ObtenerResponse")]
-        System.Threading.Tasks.Task<WS_Produccion.Articulo> ObtenerAsync(int id);
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMovimientoAlmacenes/obtenerMov", ReplyAction="http://tempuri.org/IMovimientoAlmacenes/obtenerMovResponse")]
+        System.Threading.Tasks.Task<WS_Produccion.Movimiento> obtenerMovAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMovimientoAlmacenes/modificarMov", ReplyAction="http://tempuri.org/IMovimientoAlmacenes/modificarMovResponse")]
+        WS_Produccion.Movimiento modificarMov(WS_Produccion.Movimiento MovModificar);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMovimientoAlmacenes/modificarMov", ReplyAction="http://tempuri.org/IMovimientoAlmacenes/modificarMovResponse")]
+        System.Threading.Tasks.Task<WS_Produccion.Movimiento> modificarMovAsync(WS_Produccion.Movimiento MovModificar);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMovimientoAlmacenes/eliminarMov", ReplyAction="http://tempuri.org/IMovimientoAlmacenes/eliminarMovResponse")]
+        void eliminarMov(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMovimientoAlmacenes/eliminarMov", ReplyAction="http://tempuri.org/IMovimientoAlmacenes/eliminarMovResponse")]
+        System.Threading.Tasks.Task eliminarMovAsync(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMovimientoAlmacenes/listarMov", ReplyAction="http://tempuri.org/IMovimientoAlmacenes/listarMovResponse")]
+        WS_Produccion.Movimiento[] listarMov();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IMovimientoAlmacenes/listarMov", ReplyAction="http://tempuri.org/IMovimientoAlmacenes/listarMovResponse")]
+        System.Threading.Tasks.Task<WS_Produccion.Movimiento[]> listarMovAsync();
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public interface IArticulosChannel : Prototipo1.WSMovimientoAlmacenes.IArticulos, System.ServiceModel.IClientChannel {
+    public interface IMovimientoAlmacenesChannel : Prototipo1.WSMovimientoAlmacenes.IMovimientoAlmacenes, System.ServiceModel.IClientChannel {
     }
     
     [System.Diagnostics.DebuggerStepThroughAttribute()]
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
-    public partial class ArticulosClient : System.ServiceModel.ClientBase<Prototipo1.WSMovimientoAlmacenes.IArticulos>, Prototipo1.WSMovimientoAlmacenes.IArticulos {
+    public partial class MovimientoAlmacenesClient : System.ServiceModel.ClientBase<Prototipo1.WSMovimientoAlmacenes.IMovimientoAlmacenes>, Prototipo1.WSMovimientoAlmacenes.IMovimientoAlmacenes {
         
-        public ArticulosClient() {
+        public MovimientoAlmacenesClient() {
         }
         
-        public ArticulosClient(string endpointConfigurationName) : 
+        public MovimientoAlmacenesClient(string endpointConfigurationName) : 
                 base(endpointConfigurationName) {
         }
         
-        public ArticulosClient(string endpointConfigurationName, string remoteAddress) : 
+        public MovimientoAlmacenesClient(string endpointConfigurationName, string remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ArticulosClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public MovimientoAlmacenesClient(string endpointConfigurationName, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(endpointConfigurationName, remoteAddress) {
         }
         
-        public ArticulosClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
+        public MovimientoAlmacenesClient(System.ServiceModel.Channels.Binding binding, System.ServiceModel.EndpointAddress remoteAddress) : 
                 base(binding, remoteAddress) {
         }
         
-        public WS_Produccion.Articulo Modificar(WS_Produccion.Articulo ArticuloAModificar) {
-            return base.Channel.Modificar(ArticuloAModificar);
+        public WS_Produccion.Movimiento crearMov(WS_Produccion.Movimiento movCrear) {
+            return base.Channel.crearMov(movCrear);
         }
         
-        public System.Threading.Tasks.Task<WS_Produccion.Articulo> ModificarAsync(WS_Produccion.Articulo ArticuloAModificar) {
-            return base.Channel.ModificarAsync(ArticuloAModificar);
+        public System.Threading.Tasks.Task<WS_Produccion.Movimiento> crearMovAsync(WS_Produccion.Movimiento movCrear) {
+            return base.Channel.crearMovAsync(movCrear);
         }
         
-        public WS_Produccion.Articulo Obtener(int id) {
-            return base.Channel.Obtener(id);
+        public WS_Produccion.Movimiento obtenerMov(int id) {
+            return base.Channel.obtenerMov(id);
         }
         
-        public System.Threading.Tasks.Task<WS_Produccion.Articulo> ObtenerAsync(int id) {
-            return base.Channel.ObtenerAsync(id);
+        public System.Threading.Tasks.Task<WS_Produccion.Movimiento> obtenerMovAsync(int id) {
+            return base.Channel.obtenerMovAsync(id);
+        }
+        
+        public WS_Produccion.Movimiento modificarMov(WS_Produccion.Movimiento MovModificar) {
+            return base.Channel.modificarMov(MovModificar);
+        }
+        
+        public System.Threading.Tasks.Task<WS_Produccion.Movimiento> modificarMovAsync(WS_Produccion.Movimiento MovModificar) {
+            return base.Channel.modificarMovAsync(MovModificar);
+        }
+        
+        public void eliminarMov(int id) {
+            base.Channel.eliminarMov(id);
+        }
+        
+        public System.Threading.Tasks.Task eliminarMovAsync(int id) {
+            return base.Channel.eliminarMovAsync(id);
+        }
+        
+        public WS_Produccion.Movimiento[] listarMov() {
+            return base.Channel.listarMov();
+        }
+        
+        public System.Threading.Tasks.Task<WS_Produccion.Movimiento[]> listarMovAsync() {
+            return base.Channel.listarMovAsync();
         }
     }
 }

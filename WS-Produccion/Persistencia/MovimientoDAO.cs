@@ -11,26 +11,37 @@ namespace WS_Produccion.Persistencia
         public Movimiento Crear(Movimiento MovsCrear)
         {
             Movimiento MovsCreado = null;
-            string sql = "insert into movimiento values (@Fecha, @FechaRegistro, @FechaModificacion, @TipoMovimiento, @IdAlmacen, @IdOrdenTrabajo)";
+            string sql = @"INSERT INTO dbo.Movimiento (Fecha, FechaRegistro, TipoMovimiento, IdAlmacen, IdOrdenTrabajo)
+                        VALUES (@fecha, @fecharegistro, @tipomovimiento, @idalmacen, @idordentrabajo)";
+            string qry2 = "select @@Identity;";
+            decimal id;
 
             using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
             {
-
                 cnx.Open();
-                    using (SqlCommand cmm = new SqlCommand(sql, cnx))
+                using (SqlCommand cmm = new SqlCommand(sql, cnx))
+                {
+                    cmm.Parameters.Add(new SqlParameter("@fecha", MovsCrear.Fecha));
+                    cmm.Parameters.Add(new SqlParameter("@fecharegistro", MovsCrear.FechaRegistro));
+                    cmm.Parameters.Add(new SqlParameter("@tipomovimiento", MovsCrear.TipoMovimiento));
+                    cmm.Parameters.Add(new SqlParameter("@idalmacen", MovsCrear.IdAlmacen));
+                    cmm.Parameters.Add(new SqlParameter("@idordentrabajo", MovsCrear.IdOrdenTrabajo));
+                    cmm.ExecuteNonQuery();
+                    cmm.CommandText = qry2;
+                    id = (decimal)cmm.ExecuteScalar();
+
+                    //Guardar Detalle
+                    MovsCrear.ListaMovimientoDetalles.ForEach(x =>
                     {
-                        cmm.Parameters.Add(new SqlParameter("@Fecha", MovsCrear.Fecha));
-                        cmm.Parameters.Add(new SqlParameter("@FechaRegistro", MovsCrear.FechaRegistro));
-                        cmm.Parameters.Add(new SqlParameter("@FechaModificacion", MovsCrear.FechaModificacion));
-                        cmm.Parameters.Add(new SqlParameter("@TipoMovimiento", MovsCrear.TipoMovimiento));
-                        cmm.Parameters.Add(new SqlParameter("@IdAlmacen", MovsCrear.IdAlmacen));
-                        cmm.Parameters.Add(new SqlParameter("@IdOrdenTrabajo", MovsCrear.IdOrdenTrabajo));
-                        cmm.ExecuteNonQuery();
-                    }
+                        x.IdMovimiento = (int)id;
+                        new MovimientoDetalleDAO().Crear(x);
+                    });
+
+                }
             }
+
             MovsCreado = Obtener(MovsCrear.Id);
-                return MovsCreado;
-            
+            return MovsCreado;
         }
 
         public Movimiento Obtener(int id)
@@ -50,9 +61,9 @@ namespace WS_Produccion.Persistencia
                             movsEncontrado = new Movimiento()
                             {
                                 Id = (int)resultado["Id"],
-                                Fecha = (DateTime)resultado["fecha"],
-                                FechaModificacion = (DateTime)resultado["FechaModificacion"],
-                                FechaRegistro = (DateTime)resultado["FechaRegistro"],
+                                Fecha = resultado.IsDBNull(resultado.GetOrdinal("Fecha")) ? (DateTime?)null : resultado.GetDateTime(resultado.GetOrdinal("Fecha")),
+                                FechaModificacion = resultado.IsDBNull(resultado.GetOrdinal("FechaModificacion")) ? (DateTime?)null : resultado.GetDateTime(resultado.GetOrdinal("FechaModificacion")),
+                                FechaRegistro = resultado.IsDBNull(resultado.GetOrdinal("FechaRegistro")) ? (DateTime?)null : resultado.GetDateTime(resultado.GetOrdinal("FechaRegistro")),
                                 TipoMovimiento = (string)resultado["TipoMovimiento"],
                                 IdAlmacen = (int)resultado["IdAlmacen"],
                                 IdOrdenTrabajo = (int)resultado["IdOrdenTrabajo"]
@@ -61,15 +72,16 @@ namespace WS_Produccion.Persistencia
                     }
                 }
             }
-            return movsEncontrado;
 
+            movsEncontrado.ListaMovimientoDetalles = new MovimientoDetalleDAO().Listar(id);
+            return movsEncontrado;
         }
+
         public Movimiento Modificar(Movimiento MovsModificar)
         {
             Movimiento movsModificado = null;
-//            string sql = "update movimiento set tx_nombre=@nombre, tx_estado= @estado where nu_dni = @dni";
-            string sql = @"UPDATE Movimiento   SET Fecha = @Fecha, FechaRegistro=@FechaRegistro, FechaModificacion = @FechaModificacion,
-            TipoMovimiento = @TipoMovimiento, IdAlmacen = @IdAlmacen, IdOrdenTrabajo = @IdOrdenTrabajo WHERE id = @id";
+            //            string sql = "update movimiento set tx_nombre=@nombre, tx_estado= @estado where nu_dni = @dni";
+            string sql = @"UPDATE Movimiento SET Fecha = @Fecha, FechaModificacion = @FechaModificacion, IdAlmacen = @IdAlmacen, IdOrdenTrabajo = @IdOrdenTrabajo WHERE id = @id";
 
             using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
             {
@@ -78,15 +90,21 @@ namespace WS_Produccion.Persistencia
                 {
                     cmm.Parameters.Add(new SqlParameter("@id", MovsModificar.Id));
                     cmm.Parameters.Add(new SqlParameter("@Fecha", MovsModificar.Fecha));
-                    cmm.Parameters.Add(new SqlParameter("@FechaRegistro", MovsModificar.FechaRegistro));
                     cmm.Parameters.Add(new SqlParameter("@FechaModificacion", MovsModificar.FechaModificacion));
-                    cmm.Parameters.Add(new SqlParameter("@TipoMovimiento", MovsModificar.TipoMovimiento));
                     cmm.Parameters.Add(new SqlParameter("@IdAlmacen", MovsModificar.IdAlmacen));
                     cmm.Parameters.Add(new SqlParameter("@IdOrdenTrabajo", MovsModificar.IdOrdenTrabajo));
                     cmm.ExecuteNonQuery();
+
+                    //Guardar Detalle
+                    new MovimientoDetalleDAO().EliminarMovimiento(MovsModificar.Id);
+                    MovsModificar.ListaMovimientoDetalles.ForEach(x =>
+                    {
+                        x.IdMovimiento = MovsModificar.Id;
+                        new MovimientoDetalleDAO().Crear(x);
+                    });
                 }
             }
-            
+
             movsModificado = Obtener(MovsModificar.Id);
             return movsModificado;
         }
@@ -106,16 +124,22 @@ namespace WS_Produccion.Persistencia
 
         }
 
-        public List<Movimiento> Listar()
+        public List<Movimiento> Listar(string TipoMovimiento)
         {
             List<Movimiento> movsEncontrados = new List<Movimiento>();
             Movimiento movsEncontrado = null;
-            string sql = "select * from movimiento";
+            string sql = @"SELECT 
+	                        mov.Id, mov.Fecha, mov.FechaRegistro, mov.FechaModificacion, mov.TipoMovimiento, mov.IdAlmacen, mov.IdOrdenTrabajo, alm.Descripcion AS Almacen
+                        FROM Movimiento mov
+                        INNER JOIN ParametroDetalle alm
+	                        ON alm.Id = mov.IdAlmacen
+                        WHERE mov.TipoMovimiento = @TipoMovimiento";
             using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 cnx.Open();
                 using (SqlCommand cmm = new SqlCommand(sql, cnx))
                 {
+                    cmm.Parameters.Add(new SqlParameter("@TipoMovimiento", TipoMovimiento));
                     using (SqlDataReader resultado = cmm.ExecuteReader())
                     {
                         while (resultado.Read())
@@ -123,12 +147,13 @@ namespace WS_Produccion.Persistencia
                             movsEncontrado = new Movimiento()
                             {
                                 Id = (int)resultado["Id"],
-                                Fecha = (DateTime)resultado["fecha"],
-                                FechaModificacion = (DateTime)resultado["FechaModificacion"],
-                                FechaRegistro = (DateTime)resultado["FechaRegistro"],
+                                Fecha = resultado.IsDBNull(resultado.GetOrdinal("Fecha")) ? (DateTime?)null : resultado.GetDateTime(resultado.GetOrdinal("Fecha")),
+                                FechaModificacion = resultado.IsDBNull(resultado.GetOrdinal("FechaModificacion")) ? (DateTime?)null : resultado.GetDateTime(resultado.GetOrdinal("FechaModificacion")),
+                                FechaRegistro = resultado.IsDBNull(resultado.GetOrdinal("FechaRegistro")) ? (DateTime?)null : resultado.GetDateTime(resultado.GetOrdinal("FechaRegistro")),
                                 TipoMovimiento = (string)resultado["TipoMovimiento"],
                                 IdAlmacen = (int)resultado["IdAlmacen"],
-                                IdOrdenTrabajo = (int)resultado["IdOrdenTrabajo"]
+                                IdOrdenTrabajo = (int)resultado["IdOrdenTrabajo"],
+                                Almacen = (string)resultado["Almacen"],
                             };
                             movsEncontrados.Add(movsEncontrado);
 

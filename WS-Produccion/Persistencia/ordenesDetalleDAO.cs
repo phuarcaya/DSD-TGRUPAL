@@ -8,24 +8,22 @@ namespace WS_Produccion.Persistencia
 {
     public class ordenesDetalleDAO
     {
-        public OrdenTrabajoDetalle Crear(OrdenTrabajoDetalle ordenTraDetAcrear)
+        public void Crear(OrdenTrabajoDetalle ordenTraDetAcrear)
         {
-            OrdenTrabajoDetalle ordenTraDetCreado = null;
-            string sql = "INSERT INTO OrdenTrabajoDetalle VALUES (@IdOrdenTrabajo, @IdArticulo, @Cantidad)";
+            string sql = @"INSERT INTO dbo.OrdenTrabajoDetalle (IdOrdenTrabajo, Cantidad, IdArticulo)
+                        VALUES (@idordentrabajo, @cantidad, @idarticulo)";
             using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
                 {
                     //comando.Parameters.Add(new SqlParameter("@id", ordenTraDetAcrear.Id));
-                    comando.Parameters.Add(new SqlParameter("@IdOrdenTrabajo", ordenTraDetAcrear.IdOrdenTrabajo));
-                    comando.Parameters.Add(new SqlParameter("@IdArticulo", ordenTraDetAcrear.IdArticulo));
-                    comando.Parameters.Add(new SqlParameter("@Cantidad", ordenTraDetAcrear.Cantidad));
+                    comando.Parameters.Add(new SqlParameter("@idordentrabajo", ordenTraDetAcrear.IdOrdenTrabajo));
+                    comando.Parameters.Add(new SqlParameter("@idarticulo", ordenTraDetAcrear.IdArticulo));
+                    comando.Parameters.Add(new SqlParameter("@cantidad", ordenTraDetAcrear.Cantidad));
                     comando.ExecuteNonQuery();
                 }
             }
-            ordenTraDetCreado = Obtener(ordenTraDetAcrear.Id);
-            return ordenTraDetCreado;
         }
 
         public OrdenTrabajoDetalle Obtener(int id)
@@ -56,10 +54,8 @@ namespace WS_Produccion.Persistencia
 
             return OrdenTrabajoEncontrado;
         }
-        public OrdenTrabajoDetalle Modificar(OrdenTrabajoDetalle ordenTraDetmodificar)
+        public void Modificar(OrdenTrabajoDetalle ordenTraDetmodificar)
         {
-
-            OrdenTrabajoDetalle ordenTrabajoModificado = null;
             string sql = "UPDATE OrdenTrabajoDetalle SET IdOrdenTrabajo=@IdOrdenTrabajo, Cantidad=@Cantidad, IdArticulo=@IdArticulo WHERE id=@id";
             using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
@@ -73,8 +69,6 @@ namespace WS_Produccion.Persistencia
                     comando.ExecuteNonQuery();
                 }
             }
-            ordenTrabajoModificado = Obtener(ordenTraDetmodificar.Id);
-            return ordenTrabajoModificado;
         }
 
         public void Eliminar(int id)
@@ -91,6 +85,19 @@ namespace WS_Produccion.Persistencia
             }
         }
 
+        public void EliminarIdOrdenTrabajo(int idOrdenTrabajo)
+        {
+            string sql = "DELETE FROM OrdenTrabajoDetalle WHERE IdOrdenTrabajo=@IdOrdenTrabajo";
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
+            {
+                conexion.Open();
+                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                {
+                    comando.Parameters.Add(new SqlParameter("@IdOrdenTrabajo", idOrdenTrabajo));
+                    comando.ExecuteNonQuery();
+                }
+            }
+        }
         public List<OrdenTrabajoDetalle> Listar(int idOrdenTrabajo)
         {
             List<OrdenTrabajoDetalle> ordDetEncontrados = new List<OrdenTrabajoDetalle>();

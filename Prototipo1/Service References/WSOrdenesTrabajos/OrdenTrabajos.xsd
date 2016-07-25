@@ -76,9 +76,7 @@
   </xs:element>
   <xs:element name="crearOrdDetResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="crearOrdDetResult" nillable="true" type="q8:OrdenTrabajoDetalle" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="obtenerOrdDet">
@@ -91,22 +89,20 @@
   <xs:element name="obtenerOrdDetResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="obtenerOrdDetResult" nillable="true" type="q9:OrdenTrabajoDetalle" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="obtenerOrdDetResult" nillable="true" type="q8:OrdenTrabajoDetalle" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="modificarOrdDet">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="ordDetModificar" nillable="true" type="q10:OrdenTrabajoDetalle" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="ordDetModificar" nillable="true" type="q9:OrdenTrabajoDetalle" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="modificarOrdDetResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="modificarOrdDetResult" nillable="true" type="q11:OrdenTrabajoDetalle" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="eliminarOrdDet">
@@ -131,7 +127,7 @@
   <xs:element name="listarOrdDetResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="listarOrdDetResult" nillable="true" type="q12:ArrayOfOrdenTrabajoDetalle" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="listarOrdDetResult" nillable="true" type="q10:ArrayOfOrdenTrabajoDetalle" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
