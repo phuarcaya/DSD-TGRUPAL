@@ -40,9 +40,7 @@ namespace WS_Produccion.Servicios
 
         public OrdenTrabajo obtenerOrd(int id)
         {
-            var ordenTrabajo = ordDAO.Obtener(id);
-            ordenTrabajo.ListaDetalleOrdenTrabajo = new ordenesDetalleDAO().Listar(id);
-            return ordenTrabajo;
+            return ordDAO.Obtener(id);
         }
 
         public void eliminarOrd(int id)
@@ -63,9 +61,9 @@ namespace WS_Produccion.Servicios
             return ordDetDAO.Listar(idOrdenTrabajo);
         }
 
-        public OrdenTrabajoDetalle crearOrdDet(OrdenTrabajoDetalle ordDetCrear)
+        public void crearOrdDet(OrdenTrabajoDetalle ordDetCrear)
         {
-            return ordDetDAO.Crear(ordDetCrear);
+            ordDetDAO.Crear(ordDetCrear);
         }
 
         public OrdenTrabajoDetalle obtenerOrdDet(int id)
@@ -73,9 +71,9 @@ namespace WS_Produccion.Servicios
             return ordDetDAO.Obtener(id);
         }
 
-        public OrdenTrabajoDetalle modificarOrdDet(OrdenTrabajoDetalle ordDetModificar)
+        public void modificarOrdDet(OrdenTrabajoDetalle ordDetModificar)
         {
-            return ordDetDAO.Modificar(ordDetModificar);
+            ordDetDAO.Modificar(ordDetModificar);
         }
 
         public void eliminarOrdDet(int id)

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="e252e706-4e25-46d4-8926-34abcef4c15c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:30813/Servicios/Articulos.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="Articulos.xsd" MetadataType="Schema" ID="2927b980-2031-45f4-9025-2bd3a416a175" SourceId="1" SourceUrl="http://localhost:30813/Servicios/Articulos.svc?xsd=xsd0" />
+    <MetadataFile FileName="Articulos.wsdl" MetadataType="Wsdl" ID="0f9aa074-b5c0-4fa9-8aec-87e5d795791c" SourceId="1" SourceUrl="http://localhost:30813/Servicios/Articulos.svc?wsdl" />
+    <MetadataFile FileName="Articulos.disco" MetadataType="Disco" ID="68bbaf1d-5138-4f29-992e-f3ff95937cf5" SourceId="1" SourceUrl="http://localhost:30813/Servicios/Articulos.svc?disco" />
+    <MetadataFile FileName="Articulos1.xsd" MetadataType="Schema" ID="93981047-e7f0-49ca-8d82-0dbee38c2560" SourceId="1" SourceUrl="http://localhost:30813/Servicios/Articulos.svc?xsd=xsd2" />
+    <MetadataFile FileName="Articulos2.xsd" MetadataType="Schema" ID="d589d443-cf4a-4a1d-a449-2bf24dee1c74" SourceId="1" SourceUrl="http://localhost:30813/Servicios/Articulos.svc?xsd=xsd1" />
+    <MetadataFile FileName="Articulos3.xsd" MetadataType="Schema" ID="7fab6ba5-eda7-4d68-a9fe-81f66c55e5f9" SourceId="1" SourceUrl="http://localhost:30813/Servicios/Articulos.svc?xsd=xsd3" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

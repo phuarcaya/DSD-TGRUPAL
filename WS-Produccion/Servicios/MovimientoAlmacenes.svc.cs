@@ -35,9 +35,9 @@ namespace WS_Produccion.Servicios
             return movDAO.Crear(movCrear);
         }
 
-        public Movimiento obtenerMov(int id)
+        public Movimiento obtenerMov(string id)
         {
-            return movDAO.Obtener(id);
+            return movDAO.Obtener(int.Parse(id));
         }
 
         public Movimiento modificarMov(Movimiento MovModificar)
@@ -45,14 +45,14 @@ namespace WS_Produccion.Servicios
             return movDAO.Modificar(MovModificar);
         }
 
-        public void eliminarMov(int id)
+        public void eliminarMov(string id)
         {
-            movDAO.Eliminar(id);
+            movDAO.Eliminar(int.Parse(id));
         }
 
-        public List<Movimiento> listarMov()
+        public List<Movimiento> listarMov(string TipoMovimiento)
         {
-            return movDAO.Listar();
+            return movDAO.Listar(TipoMovimiento);
         }
     }
 }

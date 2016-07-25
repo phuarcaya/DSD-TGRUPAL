@@ -20,5 +20,13 @@ namespace WS_Produccion
 
         [DataMember]
         public Nullable<int> IdArticulo { get; set; }
+
+        #region Extendibles
+         [DataMember]
+        public string Articulo { get; set; }
+
+         [DataMember]
+         public Nullable<decimal> StockActual { get; set; }
+        #endregion
     }
 }

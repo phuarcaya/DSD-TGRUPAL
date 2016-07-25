@@ -55,17 +55,17 @@ namespace Prototipo1.View
 
         private void ingresarProductosTerminadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Movimiento form = new Movimiento();
+            MovimientoAlmacen form = new MovimientoAlmacen();
             form.TituloFormulario = "Ingreso de Producto Terminado";
-            form.TipoMovimiento = Movimiento.eTipoMovimiento.IngresoProductoTerminado;
+            form.TipoMovimiento = MovimientoAlmacen.eTipoMovimiento.IngresoProductoTerminado;
             AbrirFormulario(form);
         }
 
         private void salidaDeMAteriaPrimaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Movimiento form = new Movimiento();
+            MovimientoAlmacen form = new MovimientoAlmacen();
             form.TituloFormulario = "Salida de Materia Prima";
-            form.TipoMovimiento = Movimiento.eTipoMovimiento.SalidaMateriales;
+            form.TipoMovimiento = MovimientoAlmacen.eTipoMovimiento.SalidaMateriales;
             AbrirFormulario(form);
         }
 

@@ -62,9 +62,9 @@
   <ItemGroup>
     <Content Include="Servicios\movimientoRest.svc" />
     <Content Include="Servicios\Articulos.svc" />
+    <Content Include="Servicios\ConsultasGenerales.svc" />
     <Content Include="Servicios\MovimientoAlmacenes.svc" />
     <Content Include="Servicios\OrdenTrabajos.svc" />
-    <Content Include="Servicios\ConsultasGenerales.svc" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -101,14 +101,15 @@
     <Compile Include="Interfaces\IArticulos.cs" />
     <Compile Include="Interfaces\IParametroDetalles.cs" />
     <Compile Include="Interfaces\IMovimientoAlmacenes.cs" />
+    <Compile Include="Servicios\ConsultasGenerales.svc.cs">
+      <DependentUpon>ConsultasGenerales.svc</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="Servicios\MovimientoAlmacenes.svc.cs">
       <DependentUpon>MovimientoAlmacenes.svc</DependentUpon>
     </Compile>
     <Compile Include="Servicios\OrdenTrabajos.svc.cs">
       <DependentUpon>OrdenTrabajos.svc</DependentUpon>
-    </Compile>
-    <Compile Include="Servicios\ConsultasGenerales.svc.cs">
-      <DependentUpon>ConsultasGenerales.svc</DependentUpon>
     </Compile>
     <Compile Include="Utilitarios\Utilitarios.cs" />
   </ItemGroup>

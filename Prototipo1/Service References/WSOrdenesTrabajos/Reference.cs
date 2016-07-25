@@ -119,10 +119,10 @@ namespace Prototipo1.WSOrdenesTrabajos {
     public interface IOrdenTrabajoDetalle {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/crearOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/crearOrdDetResponse")]
-        WS_Produccion.OrdenTrabajoDetalle crearOrdDet(WS_Produccion.OrdenTrabajoDetalle ordDetCrear);
+        void crearOrdDet(WS_Produccion.OrdenTrabajoDetalle ordDetCrear);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/crearOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/crearOrdDetResponse")]
-        System.Threading.Tasks.Task<WS_Produccion.OrdenTrabajoDetalle> crearOrdDetAsync(WS_Produccion.OrdenTrabajoDetalle ordDetCrear);
+        System.Threading.Tasks.Task crearOrdDetAsync(WS_Produccion.OrdenTrabajoDetalle ordDetCrear);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/obtenerOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/obtenerOrdDetResponse")]
         WS_Produccion.OrdenTrabajoDetalle obtenerOrdDet(int id);
@@ -131,10 +131,10 @@ namespace Prototipo1.WSOrdenesTrabajos {
         System.Threading.Tasks.Task<WS_Produccion.OrdenTrabajoDetalle> obtenerOrdDetAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/modificarOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/modificarOrdDetResponse")]
-        WS_Produccion.OrdenTrabajoDetalle modificarOrdDet(WS_Produccion.OrdenTrabajoDetalle ordDetModificar);
+        void modificarOrdDet(WS_Produccion.OrdenTrabajoDetalle ordDetModificar);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/modificarOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/modificarOrdDetResponse")]
-        System.Threading.Tasks.Task<WS_Produccion.OrdenTrabajoDetalle> modificarOrdDetAsync(WS_Produccion.OrdenTrabajoDetalle ordDetModificar);
+        System.Threading.Tasks.Task modificarOrdDetAsync(WS_Produccion.OrdenTrabajoDetalle ordDetModificar);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/eliminarOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/eliminarOrdDetResponse")]
         void eliminarOrdDet(int id);
@@ -176,11 +176,11 @@ namespace Prototipo1.WSOrdenesTrabajos {
                 base(binding, remoteAddress) {
         }
         
-        public WS_Produccion.OrdenTrabajoDetalle crearOrdDet(WS_Produccion.OrdenTrabajoDetalle ordDetCrear) {
-            return base.Channel.crearOrdDet(ordDetCrear);
+        public void crearOrdDet(WS_Produccion.OrdenTrabajoDetalle ordDetCrear) {
+            base.Channel.crearOrdDet(ordDetCrear);
         }
         
-        public System.Threading.Tasks.Task<WS_Produccion.OrdenTrabajoDetalle> crearOrdDetAsync(WS_Produccion.OrdenTrabajoDetalle ordDetCrear) {
+        public System.Threading.Tasks.Task crearOrdDetAsync(WS_Produccion.OrdenTrabajoDetalle ordDetCrear) {
             return base.Channel.crearOrdDetAsync(ordDetCrear);
         }
         
@@ -192,11 +192,11 @@ namespace Prototipo1.WSOrdenesTrabajos {
             return base.Channel.obtenerOrdDetAsync(id);
         }
         
-        public WS_Produccion.OrdenTrabajoDetalle modificarOrdDet(WS_Produccion.OrdenTrabajoDetalle ordDetModificar) {
-            return base.Channel.modificarOrdDet(ordDetModificar);
+        public void modificarOrdDet(WS_Produccion.OrdenTrabajoDetalle ordDetModificar) {
+            base.Channel.modificarOrdDet(ordDetModificar);
         }
         
-        public System.Threading.Tasks.Task<WS_Produccion.OrdenTrabajoDetalle> modificarOrdDetAsync(WS_Produccion.OrdenTrabajoDetalle ordDetModificar) {
+        public System.Threading.Tasks.Task modificarOrdDetAsync(WS_Produccion.OrdenTrabajoDetalle ordDetModificar) {
             return base.Channel.modificarOrdDetAsync(ordDetModificar);
         }
         

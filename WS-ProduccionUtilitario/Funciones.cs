@@ -11,6 +11,8 @@ namespace Prototipo1.View
 {
     public static class Funciones
     {
+        public const string GetRutaServicioMovimientoAlmacenes = "http://localhost:30813/Servicios/MovimientoAlmacenes.svc/";
+
         public static string Insfor_NombreEmpresa = "Grupo Urano";
         public static string Insfor_Titulo = "Registro: ";
 
