@@ -223,7 +223,7 @@ namespace Prototipo1.View
         private void ListarDatos()
         {
             BindingSource BindingSource = new System.Windows.Forms.BindingSource();
-            BindingSource.DataSource = Proxy.listarOrd();
+            BindingSource.DataSource = Proxy.listarOrd(String.Empty);
             BindingNavigatorListado.BindingSource = BindingSource;
 
             dgvListados.AutoGenerateColumns = false;

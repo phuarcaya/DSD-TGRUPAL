@@ -8,14 +8,12 @@ namespace WS_Produccion.Persistencia
 {
     public class ArticuloDao
     {
-        private string cadenaConexion = "Data Source=DESKTOP-8BVLSMS\\SQLEXPRESS;Initial Catalog=DBProduccion;Integrated Security=SSPI";
 
         public Articulo Modificar(Articulo articuloAmodificar)
         {
-
             Articulo articuloModificado = null;
             string sql = "UPDATE Articulo SET Descripcion=@Descripcion, TipoExistencia=@TipoExistencia, StockActual=@StockActual,Activo=@Activo,IdFormulaProduccion=@IdFormulaProduccion  WHERE id =@Id";
-            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -26,7 +24,6 @@ namespace WS_Produccion.Persistencia
                     comando.Parameters.Add(new SqlParameter("@StockActual", articuloAmodificar.StockActual));
                     comando.Parameters.Add(new SqlParameter("@Activo", articuloAmodificar.Activo));
                     comando.Parameters.Add(new SqlParameter("@IdFormulaProduccion", articuloAmodificar.IdFormulaProduccion));
-
 
                     comando.ExecuteNonQuery();
 
@@ -41,7 +38,7 @@ namespace WS_Produccion.Persistencia
         {
             Articulo articuloEncontrado = null;
             string sql = "SELECT * FROM Articulo WHERE id=@id";
-            using (SqlConnection conexion = new SqlConnection(cadenaConexion))
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
@@ -97,11 +94,8 @@ namespace WS_Produccion.Persistencia
                             articuloEncontrado.Add(articulo);
                         }
                     }
-
                 }
-
             }
-
 
             return articuloEncontrado;
         }

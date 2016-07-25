@@ -37,6 +37,24 @@
   <wsdl:message name="IOrdenTrabajos_listarOrd_OutputMessage">
     <wsdl:part name="parameters" element="tns:listarOrdResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrdenTrabajos_ListarLineaProduccion_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarLineaProduccion" />
+  </wsdl:message>
+  <wsdl:message name="IOrdenTrabajos_ListarLineaProduccion_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarLineaProduccionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrdenTrabajos_ListarMaterialesOrdenTrabajo_InputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMaterialesOrdenTrabajo" />
+  </wsdl:message>
+  <wsdl:message name="IOrdenTrabajos_ListarMaterialesOrdenTrabajo_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ListarMaterialesOrdenTrabajoResponse" />
+  </wsdl:message>
+  <wsdl:message name="IOrdenTrabajos_ModificarEstado_InputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEstado" />
+  </wsdl:message>
+  <wsdl:message name="IOrdenTrabajos_ModificarEstado_OutputMessage">
+    <wsdl:part name="parameters" element="tns:ModificarEstadoResponse" />
+  </wsdl:message>
   <wsdl:message name="IOrdenTrabajoDetalle_crearOrdDet_InputMessage">
     <wsdl:part name="parameters" element="tns:crearOrdDet" />
   </wsdl:message>
@@ -87,6 +105,18 @@
     <wsdl:operation name="listarOrd">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrdenTrabajos/listarOrd" message="tns:IOrdenTrabajos_listarOrd_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrdenTrabajos/listarOrdResponse" message="tns:IOrdenTrabajos_listarOrd_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarLineaProduccion">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrdenTrabajos/ListarLineaProduccion" message="tns:IOrdenTrabajos_ListarLineaProduccion_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrdenTrabajos/ListarLineaProduccionResponse" message="tns:IOrdenTrabajos_ListarLineaProduccion_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ListarMaterialesOrdenTrabajo">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrdenTrabajos/ListarMaterialesOrdenTrabajo" message="tns:IOrdenTrabajos_ListarMaterialesOrdenTrabajo_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrdenTrabajos/ListarMaterialesOrdenTrabajoResponse" message="tns:IOrdenTrabajos_ListarMaterialesOrdenTrabajo_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstado">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrdenTrabajos/ModificarEstado" message="tns:IOrdenTrabajos_ModificarEstado_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrdenTrabajos/ModificarEstadoResponse" message="tns:IOrdenTrabajos_ModificarEstado_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IOrdenTrabajoDetalle">
@@ -151,6 +181,33 @@
     </wsdl:operation>
     <wsdl:operation name="listarOrd">
       <soap:operation soapAction="http://tempuri.org/IOrdenTrabajos/listarOrd" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarLineaProduccion">
+      <soap:operation soapAction="http://tempuri.org/IOrdenTrabajos/ListarLineaProduccion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListarMaterialesOrdenTrabajo">
+      <soap:operation soapAction="http://tempuri.org/IOrdenTrabajos/ListarMaterialesOrdenTrabajo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ModificarEstado">
+      <soap:operation soapAction="http://tempuri.org/IOrdenTrabajos/ModificarEstado" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

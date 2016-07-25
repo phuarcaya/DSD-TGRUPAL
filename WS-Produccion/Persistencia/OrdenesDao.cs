@@ -118,19 +118,21 @@ namespace WS_Produccion.Persistencia
             }
         }
 
-        public List<OrdenTrabajo> Listar()
+        public List<OrdenTrabajo> Listar(string idsEstado)
         {
             List<OrdenTrabajo> ordEncontrados = new List<OrdenTrabajo>();
             OrdenTrabajo ordEncontrado = null;
             string sql = @"SELECT ot.Id, ot.Fecha, ot.FechaRegistro, ot.FechaModificacion, ot.Activo, ot.IdEstado, est.Descripcion AS Estado
                             FROM dbo.OrdenTrabajo ot
                             INNER JOIN ParametroDetalle est
-	                            ON est.Id = ot.IdEstado";
+	                            ON est.Id = ot.IdEstado
+                        WHERE ((@IdEstado IS NULL) OR (ot.IdEstado IN(@IdEstado)))";
             using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 cnx.Open();
                 using (SqlCommand cmm = new SqlCommand(sql, cnx))
                 {
+                    cmm.Parameters.Add(new SqlParameter("@IdEstado", idsEstado));
                     using (SqlDataReader resultado = cmm.ExecuteReader())
                     {
                         if (resultado.HasRows)
@@ -154,6 +156,100 @@ namespace WS_Produccion.Persistencia
                 }
             }
             return ordEncontrados;
+        }
+
+        public List<MovimientoDetalle> ListarLineaProduccion(int idOrdenTrabajo)
+        {
+            List<MovimientoDetalle> ordEncontrados = new List<MovimientoDetalle>();
+            MovimientoDetalle ordEncontrado = null;
+            string sql = @"SELECT 
+	                        otd.IdArticulo, otd.Cantidad, art.Descripcion AS Articulo, art.StockActual
+                        FROM OrdenTrabajoDetalle otd
+                        INNER JOIN Articulo art
+	                        ON art.Id = otd.IdArticulo
+                        WHERE otd.IdOrdenTrabajo = @IdOrdenTrabajo";
+            using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
+            {
+                cnx.Open();
+                using (SqlCommand cmm = new SqlCommand(sql, cnx))
+                {
+                    cmm.Parameters.Add(new SqlParameter("@IdOrdenTrabajo", idOrdenTrabajo));
+                    using (SqlDataReader resultado = cmm.ExecuteReader())
+                    {
+                        if (resultado.HasRows)
+                        {
+                            while (resultado.Read())
+                            {
+                                ordEncontrado = new MovimientoDetalle()
+                                {
+                                    IdArticulo = (int?)resultado["IdArticulo"],
+                                    Cantidad = (decimal?)resultado["Cantidad"],
+                                    Articulo = (string)resultado["Articulo"],
+                                    StockActual = (decimal?)resultado["StockActual"],
+                                };
+                                ordEncontrados.Add(ordEncontrado);
+                            }
+                        }
+                    }
+                }
+            }
+            return ordEncontrados;
+        }
+
+        public List<MovimientoDetalle> ListarMaterialesOrdenTrabajo(int idOrdenTrabajo)
+        {
+            List<MovimientoDetalle> ordEncontrados = new List<MovimientoDetalle>();
+            MovimientoDetalle ordEncontrado = null;
+            string sql = @"SELECT 
+	                            lprod.IdArticulo, lprod.Cantidad, art.Descripcion AS Articulo, art.StockActual
+                            FROM ArticuloFormulaProduccion lprod
+                            INNER JOIN Articulo art
+	                            ON art.Id = lprod.IdArticulo
+                            INNER JOIN OrdenTrabajoDetalle otd
+	                            ON otd.IdArticulo = art.Id
+                            WHERE otd.IdOrdenTrabajo = @IdOrdenTrabajo";
+            using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
+            {
+                cnx.Open();
+                using (SqlCommand cmm = new SqlCommand(sql, cnx))
+                {
+                    cmm.Parameters.Add(new SqlParameter("@IdOrdenTrabajo", idOrdenTrabajo));
+                    using (SqlDataReader resultado = cmm.ExecuteReader())
+                    {
+                        if (resultado.HasRows)
+                        {
+                            while (resultado.Read())
+                            {
+                                ordEncontrado = new MovimientoDetalle()
+                                {
+                                    IdArticulo = (int?)resultado["IdArticulo"],
+                                    Cantidad = (decimal?)resultado["Cantidad"],
+                                    Articulo = (string)resultado["Articulo"],
+                                    StockActual = (decimal?)resultado["StockActual"],
+                                };
+                                ordEncontrados.Add(ordEncontrado);
+                            }
+                        }
+                    }
+                }
+            }
+            return ordEncontrados;
+        }
+
+        public void ModificarEstado(int idOrdenTrabajo, int idEstado)
+        {
+            OrdenTrabajo ordenTrabajoModificado = null;
+            string sql = "UPDATE OrdenTrabajo SET IdEstado=@idestado WHERE id=@id";
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
+            {
+                conexion.Open();
+                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                {
+                    comando.Parameters.Add(new SqlParameter("@id", idOrdenTrabajo));
+                    comando.Parameters.Add(new SqlParameter("@idestado", idEstado));
+                    comando.ExecuteNonQuery();
+                }
+            }
         }
 
     }

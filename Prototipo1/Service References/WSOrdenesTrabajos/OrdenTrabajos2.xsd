@@ -35,4 +35,21 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfOrdenTrabajo" nillable="true" type="tns:ArrayOfOrdenTrabajo" />
+  <xs:complexType name="ArrayOfMovimientoDetalle">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="MovimientoDetalle" nillable="true" type="tns:MovimientoDetalle" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMovimientoDetalle" nillable="true" type="tns:ArrayOfMovimientoDetalle" />
+  <xs:complexType name="MovimientoDetalle">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Articulo" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Cantidad" nillable="true" type="xs:decimal" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="IdArticulo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdMovimiento" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="StockActual" nillable="true" type="xs:decimal" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="MovimientoDetalle" nillable="true" type="tns:MovimientoDetalle" />
 </xs:schema>

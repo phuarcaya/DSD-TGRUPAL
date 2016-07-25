@@ -57,6 +57,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <None Include="Properties\DataSources\WS_Produccion.Articulo.datasource" />
     <None Include="Properties\DataSources\WS_Produccion.Movimiento.datasource" />
+    <None Include="Properties\DataSources\WS_Produccion.MovimientoDetalle.datasource" />
     <None Include="Properties\DataSources\WS_Produccion.OrdenTrabajo.datasource" />
     <None Include="Properties\DataSources\WS_Produccion.OrdenTrabajoDetalle.datasource" />
     <None Include="Properties\DataSources\WS_Produccion.ParametroDetalle.datasource" />
@@ -87,6 +88,12 @@
     </Compile>
     <Compile Include="View\BuscarArticulos.Designer.cs">
       <DependentUpon>BuscarArticulos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="View\BuscarOrdenesTrabajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="View\BuscarOrdenesTrabajo.Designer.cs">
+      <DependentUpon>BuscarOrdenesTrabajo.cs</DependentUpon>
     </Compile>
     <Compile Include="View\frmBuscador.cs">
       <SubType>Form</SubType>
@@ -157,6 +164,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="View\BuscarArticulos.resx">
       <DependentUpon>BuscarArticulos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="View\BuscarOrdenesTrabajo.resx">
+      <DependentUpon>BuscarOrdenesTrabajo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\frmBuscador.resx">
       <DependentUpon>frmBuscador.cs</DependentUpon>

@@ -20,7 +20,16 @@ namespace WS_Produccion
         void eliminarOrd(int id);
 
         [OperationContract]
-        List<OrdenTrabajo> listarOrd();
+        List<OrdenTrabajo> listarOrd(string idsEstado);
+
+        [OperationContract]
+        List<MovimientoDetalle> ListarLineaProduccion(int idOrdenTrabajo);
+
+        [OperationContract]
+        List<MovimientoDetalle> ListarMaterialesOrdenTrabajo(int idOrdenTrabajo);
+
+        [OperationContract]
+        void ModificarEstado(int idOrdenTrabajo, int idEstado);
     }
 
     [ServiceContract]

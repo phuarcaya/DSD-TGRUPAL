@@ -8,6 +8,7 @@ using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Prototipo1.WSOrdenesTrabajos;
 using WS_Produccion;
 using WS_ProduccionUtilitario;
 using Newtonsoft.Json.Linq;
@@ -72,6 +73,7 @@ namespace Prototipo1.View
                 TabControlMantenimiento.SelectedIndex = 1;
                 EstadoBotones(true);
                 txtNumero.Enabled = false;
+                txtOt.Enabled = false;
             }
         }
 
@@ -87,49 +89,60 @@ namespace Prototipo1.View
 
                 lblError.Text = string.Empty;
 
-                //OrdenTrabajo ordenTrabajo = new OrdenTrabajo();
-                //ordenTrabajo.Fecha = DateTime.Parse(dtpFecha.Text);
-                //ordenTrabajo.IdEstado = int.Parse(cboEstado.SelectedValue.ToString());
-                //ordenTrabajo.Activo = true;
+                Movimiento ordenMovimiento = new Movimiento();
+                ordenMovimiento.Fecha = DateTime.Parse(dtpFecha.Text);
+                ordenMovimiento.IdAlmacen = int.Parse(cboAlmacen.SelectedValue.ToString());
+                ordenMovimiento.IdOrdenTrabajo = int.Parse(txtOt.Text); ;
 
-                //if (ordenTrabajo.ListaDetalleOrdenTrabajo == null) ordenTrabajo.ListaDetalleOrdenTrabajo = new List<OrdenTrabajoDetalle>();
-                //foreach (DataRowView row in dvDetalle)
-                //{
-                //    OrdenTrabajoDetalle ordenTrabajoDetalle = new OrdenTrabajoDetalle();
-                //    ordenTrabajoDetalle.IdArticulo = Int32.Parse(row["IdArticulo"].ToString());
-                //    ordenTrabajoDetalle.Cantidad = decimal.Parse(row["Cantidad"].ToString());
+                if (TipoMovimiento == eTipoMovimiento.IngresoProductoTerminado)
+                {
+                    ordenMovimiento.TipoMovimiento = "I";
+                }
+                else
+                {
+                    ordenMovimiento.TipoMovimiento = "S";
+                }
 
-                //    ordenTrabajo.ListaDetalleOrdenTrabajo.Add(ordenTrabajoDetalle);
-                //}
+                if (ordenMovimiento.ListaMovimientoDetalles == null) ordenMovimiento.ListaMovimientoDetalles = new List<MovimientoDetalle>();
+                foreach (DataRowView row in dvDetalle)
+                {
+                    MovimientoDetalle MovimientoDetalle = new MovimientoDetalle();
+                    MovimientoDetalle.IdArticulo = Int32.Parse(row["IdArticulo"].ToString());
+                    MovimientoDetalle.Cantidad = decimal.Parse(row["Cantidad"].ToString());
 
-                //OrdenTrabajo ordenTrabajoCreado = null;
+                    ordenMovimiento.ListaMovimientoDetalles.Add(MovimientoDetalle);
+                }
 
-                //if (PropertyEvento.Sisco_Property_Mantenimiento == PropertyEvent.Sisco_Mantenimiento.Add)
-                //{
-                //    ordenTrabajo.FechaRegistro = DateTime.Now;
-                //    ordenTrabajoCreado = Proxy.crearOrd(ordenTrabajo);
-                //}
-                //else
-                //{
-                //    ordenTrabajo.FechaModificacion = DateTime.Now;
-                //    ordenTrabajo.Id = IdOrdenTrabajo;
-                //    ordenTrabajoCreado = Proxy.modificarOrd(ordenTrabajo);
-                //}
+                OrdenTrabajo ordenTrabajoCreado = null;
+
+                if (PropertyEvento.Sisco_Property_Mantenimiento == PropertyEvent.Sisco_Mantenimiento.Add)
+                {
+                    ordenMovimiento.FechaRegistro = DateTime.Now;
+
+                    //ordenTrabajoCreado = Proxy.crearOrd(ordenMovimiento);
+                }
+                else
+                {
+                    ordenMovimiento.FechaModificacion = DateTime.Now;
+                    ordenMovimiento.Id = IdMovimiento;
+
+                    //ordenTrabajoCreado = Proxy.modificarOrd(ordenMovimiento);
+                }
 
 
-                //if (ordenTrabajoCreado != null)
-                //{
-                //    lblError.Text = Funciones.RegistroGrabadoExito;
-                //    PropertyEvento.Sisco_Property_Mantenimiento = PropertyEvent.Sisco_Mantenimiento.Insert;
-                //    CargarDatos(ordenTrabajoCreado);
-                //}
-                //else
-                //{
-                //    lblError.Text = Funciones.ErrorGrabarRegistro;
-                //    return;
-                //}
+                if (ordenTrabajoCreado != null)
+                {
+                    lblError.Text = Funciones.RegistroGrabadoExito;
+                    PropertyEvento.Sisco_Property_Mantenimiento = PropertyEvent.Sisco_Mantenimiento.Insert;
+                   // CargarDatos(ordenTrabajoCreado);
+                }
+                else
+                {
+                    lblError.Text = Funciones.ErrorGrabarRegistro;
+                    return;
+                }
 
-                //EstadoBotones(false);
+                EstadoBotones(false);
             }
         }
 
@@ -137,19 +150,19 @@ namespace Prototipo1.View
         {
             if (PropertyEvento.Sisco_Property_Mantenimiento != PropertyEvent.Sisco_Mantenimiento.Modify && PropertyEvento.Sisco_Property_Mantenimiento != PropertyEvent.Sisco_Mantenimiento.Add)
             {
-                //if (IdOrdenTrabajo == 0)
-                //{
-                //    lblError.Text = Funciones.NoExisteRegistroMoficar;
-                //    return;
-                //}
-                //else
-                //{
-                //    PropertyEvento.Sisco_Property_Mantenimiento = PropertyEvent.Sisco_Mantenimiento.Modify;
-                //    TabControlMantenimiento.SelectedIndex = 1;
-                //    EstadoBotones(true);
-                //    txtNumero.Enabled = false;
-                //    cboEstado.Enabled = false;
-                //}
+                if (IdMovimiento == 0)
+                {
+                    lblError.Text = Funciones.NoExisteRegistroMoficar;
+                    return;
+                }
+                else
+                {
+                    PropertyEvento.Sisco_Property_Mantenimiento = PropertyEvent.Sisco_Mantenimiento.Modify;
+                    TabControlMantenimiento.SelectedIndex = 1;
+                    EstadoBotones(true);
+                    txtNumero.Enabled = false;
+                    txtOt.Enabled = false;
+                }
             }
         }
 
@@ -157,18 +170,18 @@ namespace Prototipo1.View
         {
             if (PropertyEvento.Sisco_Property_Mantenimiento == PropertyEvent.Sisco_Mantenimiento.Modify || PropertyEvento.Sisco_Property_Mantenimiento == PropertyEvent.Sisco_Mantenimiento.Add)
             {
-                //PropertyEvento.Sisco_Property_Mantenimiento = PropertyEvent.Sisco_Mantenimiento.Cancel;
-                //if (IdOrdenTrabajo != 0)
-                //{
-                //    var ordenTrabajo = Proxy.obtenerOrd(IdOrdenTrabajo);
-                //    CargarDatos(ordenTrabajo);
-                //}
-                //else
-                //{
-                //    TabControlMantenimiento.SelectedIndex = 0;
-                //    ListarDatos();
-                //}
-                //EstadoBotones(false);
+                PropertyEvento.Sisco_Property_Mantenimiento = PropertyEvent.Sisco_Mantenimiento.Cancel;
+                if (IdMovimiento != 0)
+                {
+                    var ordenTrabajo = ObtenerMovimiento(IdMovimiento);
+                    CargarDatos(ordenTrabajo);
+                }
+                else
+                {
+                    TabControlMantenimiento.SelectedIndex = 0;
+                    ListarDatos();
+                }
+                EstadoBotones(false);
             }
         }
 
@@ -313,28 +326,19 @@ namespace Prototipo1.View
         private bool ValidarGuardar()
         {
             bool Retorno = false;
+            if (string.IsNullOrEmpty(txtOt.Text))
+            {
+                MensajeValidacion = "Debe ingresar número de orden de trabajo.";
+                return true;
+            }
+
             if (dvDetalle.Count == 0)
             {
-                MensajeValidacion = "Debe ingresar linea de producción.";
+                MensajeValidacion = "Debe ingresar detalle.";
                 return true;
             }
 
             return Retorno;
-        }
-
-        private bool ExisteEnLista(int IdClienteEmpresa)
-        {
-            bool Resultado = false;
-            for (int row = 0; row <= dvDetalle.Count - 1; row++)
-            {
-                if (Int32.Parse(dvDetalle[row]["IdArticulo"].ToString()) == IdClienteEmpresa)
-                {
-                    Resultado = true;
-                    break;
-                }
-            }
-
-            return Resultado;
         }
         #endregion
 
@@ -345,34 +349,49 @@ namespace Prototipo1.View
 
         private void lklAgregar_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            BuscarArticulos result = new BuscarArticulos();
-            result.lblTitulo.Text = "Búsqueda: Linea producción";
-            result.TipoExistencia = "T";
+            BuscarOrdenesTrabajo result = new BuscarOrdenesTrabajo();
+            result.lblTitulo.Text = "Búsqueda: Ordenes de Trabajo";
+            result.idsEstadoOrdenTrabajo = EEstadoOrdenTrabajo.Pendiente.GetHashCode().ToString();
             result.ShowDialog();
             if (result.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
-                if (result.dvArticulos.Count > 0)
+                if (result.dvResultado.Count > 0)
                 {
                     if (dvDetalle.Table == null)
                     {
                         dvDetalle = Funciones.convertToDataTable<OrdenTrabajoDetalle>(new List<OrdenTrabajoDetalle>()).AsDataView();
                     }
 
-                    foreach (DataRowView DataRow in result.dvArticulos)
+                    foreach (DataRowView DataRow in result.dvResultado)
                     {
-                        if (!ExisteEnLista(Int32.Parse(DataRow["Id"].ToString())))
+                        WSOrdenesTrabajos.OrdenTrabajosClient proxyOrdenTrabajo = new OrdenTrabajosClient();
+                        List<MovimientoDetalle> movimientoList = new List<MovimientoDetalle>();
+
+                        int idOrdenTrabajo = Int32.Parse(DataRow["Id"].ToString());
+
+                        if (TipoMovimiento == eTipoMovimiento.IngresoProductoTerminado)
+                        {
+                            movimientoList = proxyOrdenTrabajo.ListarLineaProduccion(idOrdenTrabajo).ToList();
+                        }
+                        else
+                        {
+                            movimientoList = proxyOrdenTrabajo.ListarMaterialesOrdenTrabajo(idOrdenTrabajo).ToList();
+                        }
+
+                        movimientoList.ForEach(articulo =>
                         {
                             DataRowView vRow;
                             dvDetalle.AllowNew = true;
                             vRow = dvDetalle.AddNew();
                             vRow.BeginEdit();
                             vRow["Id"] = 0;
-                            vRow["IdArticulo"] = DataRow["Id"];
-                            vRow["Articulo"] = DataRow["Descripcion"];
-                            vRow["Cantidad"] = 1;
+                            vRow["IdArticulo"] = articulo.IdArticulo;
+                            vRow["Articulo"] = articulo.Articulo;
+                            vRow["Cantidad"] = articulo.Cantidad;
+                            vRow["StockActual"] = articulo.StockActual;
                             vRow.EndEdit();
                             dvDetalle.AllowNew = false;
-                        }
+                        });
                     }
 
                     CargarDetalle();

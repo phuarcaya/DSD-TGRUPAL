@@ -48,9 +48,24 @@ namespace WS_Produccion.Servicios
             ordDAO.Eliminar(id);
         }
 
-        public List<OrdenTrabajo> listarOrd()
+        public List<OrdenTrabajo> listarOrd(string idsEstado)
         {
-            return ordDAO.Listar();
+            return ordDAO.Listar(idsEstado);
+        }
+
+        public List<MovimientoDetalle> ListarLineaProduccion(int idOrdenTrabajo)
+        {
+            return ordDAO.ListarLineaProduccion(idOrdenTrabajo);
+        }
+
+        public List<MovimientoDetalle> ListarMaterialesOrdenTrabajo(int idOrdenTrabajo)
+        {
+            return ordDAO.ListarLineaProduccion(idOrdenTrabajo);
+        }
+
+        public void ModificarEstado(int idOrdenTrabajo, int idEstado)
+        {
+            ordDAO.ModificarEstado(idOrdenTrabajo, idEstado);
         }
 
         #region Detalle orden de trabajo
@@ -81,6 +96,7 @@ namespace WS_Produccion.Servicios
             ordDetDAO.Eliminar(id);
         }
         #endregion
+
     }
 
 }
