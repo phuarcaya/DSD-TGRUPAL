@@ -12,7 +12,7 @@ namespace WS_ProduccionTest
     public class movUnitTest
     {
         [TestMethod]
-        public void TestMethod1()
+        public void MovTestGet()
         {
             HttpWebRequest req2 = (HttpWebRequest)WebRequest.Create("http://localhost:30813/Servicios/movimientoRest.svc/movimientoRest/1");
             req2.Method = "GET";
