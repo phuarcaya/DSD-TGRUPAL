@@ -25,7 +25,6 @@ namespace Prototipo1.View
         private string MensajeValidacion { get; set; }
         private string MensajeError { get; set; }
         private int IdMovimiento { get; set; }
-        protected WSMovimientoAlmacenes.MovimientoAlmacenesClient Proxy = new WSMovimientoAlmacenes.MovimientoAlmacenesClient();
         #endregion
 
         public enum eTipoMovimiento
