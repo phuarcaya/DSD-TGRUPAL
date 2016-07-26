@@ -60,7 +60,7 @@ namespace WS_Produccion.Servicios
 
         public List<MovimientoDetalle> ListarMaterialesOrdenTrabajo(int idOrdenTrabajo)
         {
-            return ordDAO.ListarLineaProduccion(idOrdenTrabajo);
+            return ordDAO.ListarMaterialesOrdenTrabajo(idOrdenTrabajo);
         }
 
         public void ModificarEstado(int idOrdenTrabajo, int idEstado)

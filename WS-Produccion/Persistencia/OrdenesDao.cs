@@ -126,7 +126,7 @@ namespace WS_Produccion.Persistencia
                             FROM dbo.OrdenTrabajo ot
                             INNER JOIN ParametroDetalle est
 	                            ON est.Id = ot.IdEstado
-                        WHERE ((@IdEstado IS NULL) OR (ot.IdEstado IN(@IdEstado)))";
+                        WHERE ((@IdEstado = '') OR (ot.IdEstado IN(@IdEstado)))";
             using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
             {
                 cnx.Open();
@@ -201,12 +201,14 @@ namespace WS_Produccion.Persistencia
             List<MovimientoDetalle> ordEncontrados = new List<MovimientoDetalle>();
             MovimientoDetalle ordEncontrado = null;
             string sql = @"SELECT 
-	                            lprod.IdArticulo, lprod.Cantidad, art.Descripcion AS Articulo, art.StockActual
-                            FROM ArticuloFormulaProduccion lprod
+	                            mat.IdArticulo, mat.Cantidad, art.Descripcion AS Articulo, art.StockActual
+                            FROM OrdenTrabajoDetalle otd
+                            INNER JOIN Articulo lprod
+	                            ON lprod.Id = otd.IdArticulo
+                            INNER JOIN ArticuloFormulaProduccion mat
+	                            ON mat.IdFormulaProduccion = lprod.IdFormulaProduccion
                             INNER JOIN Articulo art
-	                            ON art.Id = lprod.IdArticulo
-                            INNER JOIN OrdenTrabajoDetalle otd
-	                            ON otd.IdArticulo = art.Id
+	                            ON art.Id = mat.IdArticulo
                             WHERE otd.IdOrdenTrabajo = @IdOrdenTrabajo";
             using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
             {

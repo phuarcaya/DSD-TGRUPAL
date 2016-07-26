@@ -15,7 +15,7 @@ namespace WS_Produccion
                 //return "Data Source=(local);Initial Catalog=DBProduccion;Integrated Security=True";
                 //return "Data Source=PHC;Initial Catalog=DBProduccion;Integrated Security=True"; //funciona
                 // no borrar la cadena de conexion solo comentarla
-                return "Data Source=NADIE-PC\\SQLEXPRESS;Initial Catalog=DBProduccion;Integrated Security=True"; //funciona
+                return "Data Source=10.4.40.131\\EDI_DESA;Initial Catalog=EDI_XXX;Persist Security Info=True;User ID=harwer;Password=harwer"; //funciona
 
             }
         }

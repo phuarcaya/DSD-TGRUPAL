@@ -266,8 +266,8 @@
         protected System.Windows.Forms.ToolTip ToolTip;
         public System.Windows.Forms.TabControl TabLista;
         public System.Windows.Forms.TabPage TabPage1;
-        public System.Windows.Forms.BindingNavigator BindingNavigator;
         protected System.Windows.Forms.Panel PanelCabecera;
+        public System.Windows.Forms.BindingNavigator BindingNavigator;
 
 
     }

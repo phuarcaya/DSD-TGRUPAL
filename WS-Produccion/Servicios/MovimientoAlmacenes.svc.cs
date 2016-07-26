@@ -6,33 +6,52 @@ using System.ServiceModel;
 using System.Text;
 using WS_Produccion.Excepciones;
 using WS_Produccion.Persistencia;
+using WS_ProduccionUtilitario;
 
 namespace WS_Produccion.Servicios
 {
     public class MovimientoAlmacenes : IMovimientoAlmacenes
     {
         private MovimientoDAO movDAO = new MovimientoDAO();
+
         public Movimiento crearMov(Movimiento movCrear)
         {
             ///verificar orden de trabajo aprobada=z crear movimiento
-            OrdenTrabajos ot = new OrdenTrabajos();
-            OrdenTrabajo ordot = new OrdenTrabajo();
+            //OrdenTrabajos ot = new OrdenTrabajos();
+            //OrdenTrabajo ordot = new OrdenTrabajo();
 
-            ordot = ot.obtenerOrd((int)movCrear.IdOrdenTrabajo);
-            if (ordot.IdEstado == 1)
+            //ordot = ot.obtenerOrd((int)movCrear.IdOrdenTrabajo);
+
+
+            //if (ordot.IdEstado == 1)
+            //{
+            //    throw new FaultException<OrdenAprobadaValidacion>(
+            //        new OrdenAprobadaValidacion()
+            //        {
+            //            codigo = "00001",
+            //            descripcion = "Orden no Aprobada"
+            //        },
+
+            //        new FaultReason("La orden aún no ha sido aprobada"));
+            //}
+
+            /////verificar si es jefe de almacen -- exception dos
+
+            var movCreado = movDAO.Crear(movCrear);
+            if (movCreado != null)
             {
-                throw new FaultException<OrdenAprobadaValidacion>(
-                    new OrdenAprobadaValidacion()
-                    {
-                        codigo = "00001",
-                        descripcion = "Orden no Aprobada"
-                    },
-
-                    new FaultReason("La orden aún no ha sido aprobada"));
+                //Cerra orden de trabajo
+                if (movCreado.TipoMovimiento.Equals("I"))
+                {
+                    new OrdenesDao().ModificarEstado(movCreado.IdOrdenTrabajo.Value, EEstadoOrdenTrabajo.Cerrado.GetHashCode());
+                }
+                else
+                {
+                    new OrdenesDao().ModificarEstado(movCreado.IdOrdenTrabajo.Value, EEstadoOrdenTrabajo.EnProcesoProduccion.GetHashCode());
+                }
             }
 
-            ///verificar si es jefe de almacen -- exception dos
-            return movDAO.Crear(movCrear);
+            return movCreado;
         }
 
         public Movimiento obtenerMov(string id)

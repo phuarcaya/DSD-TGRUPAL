@@ -14,6 +14,8 @@ using WS_ProduccionUtilitario;
 using Newtonsoft.Json.Linq;
 using System.IO;
 using System.Web.Script.Serialization;
+using System.ServiceModel;
+using WS_Produccion.Excepciones;
 namespace Prototipo1.View
 {
     public partial class MovimientoAlmacen : frmMantenimiento, IMantenimiento
@@ -79,70 +81,96 @@ namespace Prototipo1.View
 
         public void SISCO_Mantenimiento_Grabar()
         {
-            if (PropertyEvento.Sisco_Property_Mantenimiento == PropertyEvent.Sisco_Mantenimiento.Modify || PropertyEvento.Sisco_Property_Mantenimiento == PropertyEvent.Sisco_Mantenimiento.Add)
+            try
             {
-                if (ValidarGuardar())
+                if (PropertyEvento.Sisco_Property_Mantenimiento == PropertyEvent.Sisco_Mantenimiento.Modify || PropertyEvento.Sisco_Property_Mantenimiento == PropertyEvent.Sisco_Mantenimiento.Add)
                 {
-                    MessageBox.Show(MensajeValidacion, Funciones.Insfor_NombreEmpresa, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    if (ValidarGuardar())
+                    {
+                        MessageBox.Show(MensajeValidacion, Funciones.Insfor_NombreEmpresa, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    lblError.Text = string.Empty;
+
+                    Movimiento ordenMovimiento = new Movimiento();
+                    ordenMovimiento.Fecha = DateTime.Parse(dtpFecha.Text);
+                    ordenMovimiento.IdAlmacen = int.Parse(cboAlmacen.SelectedValue.ToString());
+                    ordenMovimiento.IdOrdenTrabajo = int.Parse(txtOt.Text); ;
+
+                    if (TipoMovimiento == eTipoMovimiento.IngresoProductoTerminado)
+                    {
+                        ordenMovimiento.TipoMovimiento = "I";
+                    }
+                    else
+                    {
+                        ordenMovimiento.TipoMovimiento = "S";
+                    }
+
+                    if (ordenMovimiento.ListaMovimientoDetalles == null) ordenMovimiento.ListaMovimientoDetalles = new List<MovimientoDetalle>();
+                    foreach (DataRowView row in dvDetalle)
+                    {
+                        MovimientoDetalle MovimientoDetalle = new MovimientoDetalle();
+                        MovimientoDetalle.IdArticulo = Int32.Parse(row["IdArticulo"].ToString());
+                        MovimientoDetalle.Cantidad = decimal.Parse(row["Cantidad"].ToString());
+
+                        ordenMovimiento.ListaMovimientoDetalles.Add(MovimientoDetalle);
+                    }
+
+                    Movimiento movimientoCreado = null;
+
+                    string url = Funciones.GetRutaServicioMovimientoAlmacenes;
+                    WebClient client = new WebClient();
+                    client.Credentials = System.Net.CredentialCache.DefaultCredentials;
+                    string recurso = "Movimiento";
+
+                    //var json = JObject.FromObject(ordenMovimiento);
+
+                    if (PropertyEvento.Sisco_Property_Mantenimiento == PropertyEvent.Sisco_Mantenimiento.Add)
+                    {
+                        ordenMovimiento.FechaRegistro = DateTime.Now;
+
+                        var json = new JavaScriptSerializer().Serialize(ordenMovimiento);
+                        var bytes = Encoding.Default.GetBytes(json);
+                        client.Headers.Add("Content-Type", "application/json");
+                        var response = client.UploadData(url + recurso, "POST", bytes);
+                        JToken token = JObject.Parse(System.Text.Encoding.UTF8.GetString(response));
+                        movimientoCreado = token.ToObject<Movimiento>();
+                    }
+                    else
+                    {
+                        ordenMovimiento.FechaModificacion = DateTime.Now;
+                        ordenMovimiento.Id = IdMovimiento;
+
+                        var json = new JavaScriptSerializer().Serialize(ordenMovimiento);
+                        var bytes = Encoding.Default.GetBytes(json);
+                        client.Headers.Add("Content-Type", "application/json");
+                        var response = client.UploadData(url + recurso, "PUT", bytes);
+
+                        JToken token = JObject.Parse(System.Text.Encoding.UTF8.GetString(response));
+                        movimientoCreado = token.ToObject<Movimiento>();
+                    }
+
+                    if (movimientoCreado != null)
+                    {
+                        lblError.Text = Funciones.RegistroGrabadoExito;
+                        PropertyEvento.Sisco_Property_Mantenimiento = PropertyEvent.Sisco_Mantenimiento.Insert;
+                        CargarDatos(movimientoCreado);
+                    }
+                    else
+                    {
+                        lblError.Text = Funciones.ErrorGrabarRegistro;
+                        return;
+                    }
+
+                    EstadoBotones(false);
                 }
-
-                lblError.Text = string.Empty;
-
-                Movimiento ordenMovimiento = new Movimiento();
-                ordenMovimiento.Fecha = DateTime.Parse(dtpFecha.Text);
-                ordenMovimiento.IdAlmacen = int.Parse(cboAlmacen.SelectedValue.ToString());
-                ordenMovimiento.IdOrdenTrabajo = int.Parse(txtOt.Text); ;
-
-                if (TipoMovimiento == eTipoMovimiento.IngresoProductoTerminado)
-                {
-                    ordenMovimiento.TipoMovimiento = "I";
-                }
-                else
-                {
-                    ordenMovimiento.TipoMovimiento = "S";
-                }
-
-                if (ordenMovimiento.ListaMovimientoDetalles == null) ordenMovimiento.ListaMovimientoDetalles = new List<MovimientoDetalle>();
-                foreach (DataRowView row in dvDetalle)
-                {
-                    MovimientoDetalle MovimientoDetalle = new MovimientoDetalle();
-                    MovimientoDetalle.IdArticulo = Int32.Parse(row["IdArticulo"].ToString());
-                    MovimientoDetalle.Cantidad = decimal.Parse(row["Cantidad"].ToString());
-
-                    ordenMovimiento.ListaMovimientoDetalles.Add(MovimientoDetalle);
-                }
-
-                OrdenTrabajo ordenTrabajoCreado = null;
-
-                if (PropertyEvento.Sisco_Property_Mantenimiento == PropertyEvent.Sisco_Mantenimiento.Add)
-                {
-                    ordenMovimiento.FechaRegistro = DateTime.Now;
-
-                    //ordenTrabajoCreado = Proxy.crearOrd(ordenMovimiento);
-                }
-                else
-                {
-                    ordenMovimiento.FechaModificacion = DateTime.Now;
-                    ordenMovimiento.Id = IdMovimiento;
-
-                    //ordenTrabajoCreado = Proxy.modificarOrd(ordenMovimiento);
-                }
-
-
-                if (ordenTrabajoCreado != null)
-                {
-                    lblError.Text = Funciones.RegistroGrabadoExito;
-                    PropertyEvento.Sisco_Property_Mantenimiento = PropertyEvent.Sisco_Mantenimiento.Insert;
-                   // CargarDatos(ordenTrabajoCreado);
-                }
-                else
-                {
-                    lblError.Text = Funciones.ErrorGrabarRegistro;
-                    return;
-                }
-
-                EstadoBotones(false);
+            }
+            catch (Exception error)
+            {
+                //FaultException<OrdenAprobadaValidacion>
+                // var error = ()ex;
+                MessageBox.Show(error.Message, Funciones.Insfor_NombreEmpresa, MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
         }
 
@@ -280,7 +308,7 @@ namespace Prototipo1.View
             }
 
             byte[] responseData = client.DownloadData(url + recurso);
-            JToken token = JObject.Parse(System.Text.Encoding.UTF8.GetString(responseData));
+            JToken token = JArray.Parse(System.Text.Encoding.UTF8.GetString(responseData));
             var result = token.ToObject<List<Movimiento>>();
 
             BindingSource.DataSource = result;
@@ -351,7 +379,15 @@ namespace Prototipo1.View
         {
             BuscarOrdenesTrabajo result = new BuscarOrdenesTrabajo();
             result.lblTitulo.Text = "Búsqueda: Ordenes de Trabajo";
-            result.idsEstadoOrdenTrabajo = EEstadoOrdenTrabajo.Pendiente.GetHashCode().ToString();
+            if (TipoMovimiento == eTipoMovimiento.IngresoProductoTerminado)
+            {
+                result.idsEstadoOrdenTrabajo = EEstadoOrdenTrabajo.EnProcesoProduccion.GetHashCode().ToString();
+            }
+            else
+            {
+                result.idsEstadoOrdenTrabajo = EEstadoOrdenTrabajo.Aprobado.GetHashCode().ToString();
+            }
+
             result.ShowDialog();
             if (result.DialogResult == System.Windows.Forms.DialogResult.OK)
             {
@@ -359,7 +395,7 @@ namespace Prototipo1.View
                 {
                     if (dvDetalle.Table == null)
                     {
-                        dvDetalle = Funciones.convertToDataTable<OrdenTrabajoDetalle>(new List<OrdenTrabajoDetalle>()).AsDataView();
+                        dvDetalle = Funciones.convertToDataTable<MovimientoDetalle>(new List<MovimientoDetalle>()).AsDataView();
                     }
 
                     foreach (DataRowView DataRow in result.dvResultado)
@@ -392,6 +428,8 @@ namespace Prototipo1.View
                             vRow.EndEdit();
                             dvDetalle.AllowNew = false;
                         });
+
+                        txtOt.Text = idOrdenTrabajo.ToString().PadLeft(6, '0');
                     }
 
                     CargarDetalle();

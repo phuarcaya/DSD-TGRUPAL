@@ -36,11 +36,10 @@ namespace WS_Produccion.Persistencia
                         x.IdMovimiento = (int)id;
                         new MovimientoDetalleDAO().Crear(x);
                     });
-
                 }
             }
 
-            MovsCreado = Obtener(MovsCrear.Id);
+            MovsCreado = Obtener((int)id);
             return MovsCreado;
         }
 

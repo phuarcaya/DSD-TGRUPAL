@@ -28,20 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgvListados = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cboEstado = new System.Windows.Forms.ComboBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dtpFechaInicio = new System.Windows.Forms.DateTimePicker();
+            this.label1 = new System.Windows.Forms.Label();
+            this.dtpFechaFinal = new System.Windows.Forms.DateTimePicker();
+            this.btnAprobar = new System.Windows.Forms.Button();
+            this.btnDesaprobar = new System.Windows.Forms.Button();
+            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column5 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
-            this.cboMes = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
-            this.label1 = new System.Windows.Forms.Label();
-            this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
-            this.btnRefrescar = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.Sel = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.TabLista.SuspendLayout();
             this.TabPage1.SuspendLayout();
             this.PanelCabecera.SuspendLayout();
@@ -50,183 +50,182 @@
             // 
             // PanelTitulo
             // 
-            this.PanelTitulo.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.PanelTitulo.Size = new System.Drawing.Size(1112, 52);
+            this.PanelTitulo.Margin = new System.Windows.Forms.Padding(4);
+            this.PanelTitulo.Size = new System.Drawing.Size(834, 42);
             // 
             // TabLista
             // 
-            this.TabLista.Location = new System.Drawing.Point(0, 144);
-            this.TabLista.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.TabLista.Size = new System.Drawing.Size(1096, 480);
+            this.TabLista.Location = new System.Drawing.Point(0, 117);
+            this.TabLista.Margin = new System.Windows.Forms.Padding(4);
+            this.TabLista.Size = new System.Drawing.Size(822, 390);
             // 
             // TabPage1
             // 
             this.TabPage1.Controls.Add(this.dgvListados);
-            this.TabPage1.Location = new System.Drawing.Point(4, 25);
-            this.TabPage1.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.TabPage1.Padding = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.TabPage1.Size = new System.Drawing.Size(1088, 451);
+            this.TabPage1.Margin = new System.Windows.Forms.Padding(4);
+            this.TabPage1.Padding = new System.Windows.Forms.Padding(4);
+            this.TabPage1.Size = new System.Drawing.Size(814, 363);
             this.TabPage1.Controls.SetChildIndex(this.dgvListados, 0);
             // 
             // PanelCabecera
             // 
-            this.PanelCabecera.Controls.Add(this.button1);
-            this.PanelCabecera.Controls.Add(this.btnRefrescar);
-            this.PanelCabecera.Controls.Add(this.cboMes);
+            this.PanelCabecera.Controls.Add(this.btnDesaprobar);
+            this.PanelCabecera.Controls.Add(this.btnAprobar);
+            this.PanelCabecera.Controls.Add(this.cboEstado);
             this.PanelCabecera.Controls.Add(this.label2);
-            this.PanelCabecera.Controls.Add(this.dateTimePicker2);
-            this.PanelCabecera.Controls.Add(this.dateTimePicker1);
+            this.PanelCabecera.Controls.Add(this.dtpFechaFinal);
+            this.PanelCabecera.Controls.Add(this.dtpFechaInicio);
             this.PanelCabecera.Controls.Add(this.label1);
-            this.PanelCabecera.Location = new System.Drawing.Point(0, 52);
-            this.PanelCabecera.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
-            this.PanelCabecera.Size = new System.Drawing.Size(1112, 85);
+            this.PanelCabecera.Location = new System.Drawing.Point(0, 42);
+            this.PanelCabecera.Margin = new System.Windows.Forms.Padding(4);
+            this.PanelCabecera.Size = new System.Drawing.Size(834, 69);
             // 
             // dgvListados
             // 
             this.dgvListados.AllowUserToAddRows = false;
             this.dgvListados.BackgroundColor = System.Drawing.SystemColors.Menu;
             this.dgvListados.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Gainsboro;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Book Antiqua", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.DarkSlateGray;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            this.dgvListados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.Gainsboro;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Book Antiqua", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.DarkSlateGray;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            this.dgvListados.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvListados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvListados.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
+            this.Id,
             this.Column2,
             this.Column4,
-            this.Column5});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.Snow;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.LightBlue;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvListados.DefaultCellStyle = dataGridViewCellStyle4;
+            this.Sel});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.Snow;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.LightBlue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvListados.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgvListados.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvListados.EnableHeadersVisualStyles = false;
             this.dgvListados.GridColor = System.Drawing.SystemColors.ControlLight;
-            this.dgvListados.Location = new System.Drawing.Point(5, 5);
-            this.dgvListados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvListados.Location = new System.Drawing.Point(4, 4);
             this.dgvListados.Name = "dgvListados";
             this.dgvListados.RowHeadersVisible = false;
             this.dgvListados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListados.Size = new System.Drawing.Size(1078, 414);
+            this.dgvListados.Size = new System.Drawing.Size(806, 330);
             this.dgvListados.TabIndex = 37;
             // 
-            // Column1
+            // cboEstado
             // 
-            this.Column1.HeaderText = "Número";
-            this.Column1.Name = "Column1";
-            this.Column1.Width = 120;
+            this.cboEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboEstado.Location = new System.Drawing.Point(79, 40);
+            this.cboEstado.Name = "cboEstado";
+            this.cboEstado.Size = new System.Drawing.Size(340, 21);
+            this.cboEstado.TabIndex = 49;
+            this.cboEstado.SelectedIndexChanged += new System.EventHandler(this.cboEstado_SelectedIndexChanged);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(16, 43);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(43, 13);
+            this.label2.TabIndex = 50;
+            this.label2.Text = "Estado:";
+            // 
+            // dtpFechaInicio
+            // 
+            this.dtpFechaInicio.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaInicio.Location = new System.Drawing.Point(79, 14);
+            this.dtpFechaInicio.MaxDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
+            this.dtpFechaInicio.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
+            this.dtpFechaInicio.Name = "dtpFechaInicio";
+            this.dtpFechaInicio.Size = new System.Drawing.Size(121, 20);
+            this.dtpFechaInicio.TabIndex = 48;
+            this.dtpFechaInicio.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(15, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(58, 13);
+            this.label1.TabIndex = 45;
+            this.label1.Text = "Fecha OT:";
+            // 
+            // dtpFechaFinal
+            // 
+            this.dtpFechaFinal.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtpFechaFinal.Location = new System.Drawing.Point(206, 14);
+            this.dtpFechaFinal.Name = "dtpFechaFinal";
+            this.dtpFechaFinal.Size = new System.Drawing.Size(121, 20);
+            this.dtpFechaFinal.TabIndex = 48;
+            this.dtpFechaFinal.ValueChanged += new System.EventHandler(this.dtpFechaFinal_ValueChanged);
+            // 
+            // btnAprobar
+            // 
+            this.btnAprobar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnAprobar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAprobar.ForeColor = System.Drawing.Color.Olive;
+            this.btnAprobar.Location = new System.Drawing.Point(556, 29);
+            this.btnAprobar.Name = "btnAprobar";
+            this.btnAprobar.Size = new System.Drawing.Size(130, 32);
+            this.btnAprobar.TabIndex = 51;
+            this.btnAprobar.Text = "Aprobar";
+            this.btnAprobar.UseVisualStyleBackColor = true;
+            this.btnAprobar.Click += new System.EventHandler(this.btnAprobar_Click);
+            // 
+            // btnDesaprobar
+            // 
+            this.btnDesaprobar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnDesaprobar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDesaprobar.ForeColor = System.Drawing.Color.Olive;
+            this.btnDesaprobar.Location = new System.Drawing.Point(692, 29);
+            this.btnDesaprobar.Name = "btnDesaprobar";
+            this.btnDesaprobar.Size = new System.Drawing.Size(130, 32);
+            this.btnDesaprobar.TabIndex = 51;
+            this.btnDesaprobar.Text = "Desaprobar";
+            this.btnDesaprobar.UseVisualStyleBackColor = true;
+            this.btnDesaprobar.Click += new System.EventHandler(this.btnDesaprobar_Click);
+            // 
+            // Id
+            // 
+            this.Id.DataPropertyName = "Id";
+            this.Id.HeaderText = "Número";
+            this.Id.Name = "Id";
+            this.Id.Width = 120;
             // 
             // Column2
             // 
+            this.Column2.DataPropertyName = "Fecha";
             this.Column2.HeaderText = "Fecha Generación";
             this.Column2.Name = "Column2";
             this.Column2.Width = 200;
             // 
             // Column4
             // 
+            this.Column4.DataPropertyName = "Estado";
             this.Column4.HeaderText = "Estado";
             this.Column4.Name = "Column4";
             this.Column4.Width = 300;
             // 
-            // Column5
+            // Sel
             // 
-            this.Column5.HeaderText = "Sel";
-            this.Column5.Name = "Column5";
-            this.Column5.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column5.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            // 
-            // cboMes
-            // 
-            this.cboMes.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboMes.Location = new System.Drawing.Point(105, 49);
-            this.cboMes.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.cboMes.Name = "cboMes";
-            this.cboMes.Size = new System.Drawing.Size(452, 24);
-            this.cboMes.TabIndex = 49;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(21, 53);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(56, 17);
-            this.label2.TabIndex = 50;
-            this.label2.Text = "Estado:";
-            // 
-            // dateTimePicker1
-            // 
-            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker1.Location = new System.Drawing.Point(105, 17);
-            this.dateTimePicker1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateTimePicker1.MaxDate = new System.DateTime(2020, 12, 31, 0, 0, 0, 0);
-            this.dateTimePicker1.MinDate = new System.DateTime(2015, 1, 1, 0, 0, 0, 0);
-            this.dateTimePicker1.Name = "dateTimePicker1";
-            this.dateTimePicker1.Size = new System.Drawing.Size(160, 22);
-            this.dateTimePicker1.TabIndex = 48;
-            this.dateTimePicker1.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(20, 25);
-            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(75, 17);
-            this.label1.TabIndex = 45;
-            this.label1.Text = "Fecha OT:";
-            // 
-            // dateTimePicker2
-            // 
-            this.dateTimePicker2.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dateTimePicker2.Location = new System.Drawing.Point(275, 17);
-            this.dateTimePicker2.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.dateTimePicker2.Name = "dateTimePicker2";
-            this.dateTimePicker2.Size = new System.Drawing.Size(160, 22);
-            this.dateTimePicker2.TabIndex = 48;
-            // 
-            // btnRefrescar
-            // 
-            this.btnRefrescar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnRefrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRefrescar.ForeColor = System.Drawing.Color.Olive;
-            this.btnRefrescar.Location = new System.Drawing.Point(741, 36);
-            this.btnRefrescar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.btnRefrescar.Name = "btnRefrescar";
-            this.btnRefrescar.Size = new System.Drawing.Size(173, 39);
-            this.btnRefrescar.TabIndex = 51;
-            this.btnRefrescar.Text = "Aprobar";
-            this.btnRefrescar.UseVisualStyleBackColor = true;
-            // 
-            // button1
-            // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.Olive;
-            this.button1.Location = new System.Drawing.Point(923, 36);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(173, 39);
-            this.button1.TabIndex = 51;
-            this.button1.Text = "Desaprobar";
-            this.button1.UseVisualStyleBackColor = true;
+            this.Sel.HeaderText = "Sel";
+            this.Sel.Name = "Sel";
+            this.Sel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Sel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             // 
             // Aprobar_Orden_Trabajo
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1112, 629);
-            this.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
+            this.ClientSize = new System.Drawing.Size(834, 511);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Aprobar_Orden_Trabajo";
             this.Text = "Aprobacion de Orden de Trabajo";
+            this.Load += new System.EventHandler(this.Aprobar_Orden_Trabajo_Load);
             this.TabLista.ResumeLayout(false);
             this.TabPage1.ResumeLayout(false);
             this.TabPage1.PerformLayout();
@@ -240,17 +239,17 @@
         #endregion
 
         public System.Windows.Forms.DataGridView dgvListados;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
+        private System.Windows.Forms.ComboBox cboEstado;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.DateTimePicker dtpFechaFinal;
+        private System.Windows.Forms.DateTimePicker dtpFechaInicio;
+        private System.Windows.Forms.Label label1;
+        public System.Windows.Forms.Button btnDesaprobar;
+        public System.Windows.Forms.Button btnAprobar;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column2;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn Column5;
-        private System.Windows.Forms.ComboBox cboMes;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker2;
-        private System.Windows.Forms.DateTimePicker dateTimePicker1;
-        private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Button button1;
-        public System.Windows.Forms.Button btnRefrescar;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn Sel;
 
     }
 }
