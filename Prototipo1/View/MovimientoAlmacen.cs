@@ -217,7 +217,16 @@ namespace Prototipo1.View
         {
             if (PropertyEvento.Sisco_Property_Mantenimiento != PropertyEvent.Sisco_Mantenimiento.Modify && PropertyEvento.Sisco_Property_Mantenimiento != PropertyEvent.Sisco_Mantenimiento.Add)
             {
-                PropertyEvento.Sisco_Property_Mantenimiento = PropertyEvent.Sisco_Mantenimiento.Delete;
+                if (MessageBox.Show("", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                {
+                    PropertyEvento.Sisco_Property_Mantenimiento = PropertyEvent.Sisco_Mantenimiento.Delete;
+
+                    string url = Funciones.GetRutaServicioMovimientoAlmacenes + "Movimiento/" + IdMovimiento;
+                    WebClient client = new WebClient();
+                    client.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
+                    string eliminado = client.UploadString(url, "DELETE", "");
+                }
             }
         }
 

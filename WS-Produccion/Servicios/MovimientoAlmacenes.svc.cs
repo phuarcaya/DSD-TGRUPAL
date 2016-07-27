@@ -16,26 +16,22 @@ namespace WS_Produccion.Servicios
 
         public Movimiento crearMov(Movimiento movCrear)
         {
-            ///verificar orden de trabajo aprobada=z crear movimiento
-            //OrdenTrabajos ot = new OrdenTrabajos();
-            //OrdenTrabajo ordot = new OrdenTrabajo();
+            if (movCrear.TipoMovimiento.Equals("I"))
+            {
+                var ordot = new OrdenTrabajos().obtenerOrd((int)movCrear.IdOrdenTrabajo);
 
-            //ordot = ot.obtenerOrd((int)movCrear.IdOrdenTrabajo);
+                if (ordot.IdEstado == 1)
+                {
+                    throw new FaultException<OrdenAprobadaValidacion>(
+                        new OrdenAprobadaValidacion()
+                        {
+                            codigo = "00001",
+                            descripcion = "Orden de trabajo no ha sido Aprobada"
+                        },
 
-
-            //if (ordot.IdEstado == 1)
-            //{
-            //    throw new FaultException<OrdenAprobadaValidacion>(
-            //        new OrdenAprobadaValidacion()
-            //        {
-            //            codigo = "00001",
-            //            descripcion = "Orden no Aprobada"
-            //        },
-
-            //        new FaultReason("La orden aún no ha sido aprobada"));
-            //}
-
-            /////verificar si es jefe de almacen -- exception dos
+                        new FaultReason("La orden aún no ha sido aprobada"));
+                }
+            }
 
             var movCreado = movDAO.Crear(movCrear);
             if (movCreado != null)
@@ -66,6 +62,7 @@ namespace WS_Produccion.Servicios
 
         public void eliminarMov(string id)
         {
+            new MovimientoDetalleDAO().EliminarMovimiento(int.Parse(id));
             movDAO.Eliminar(int.Parse(id));
         }
 
