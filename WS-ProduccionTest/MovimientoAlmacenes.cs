@@ -28,15 +28,16 @@ namespace WS_ProduccionTest
 
             Movimiento ordenMovimiento = new Movimiento();
             ordenMovimiento.Fecha = DateTime.Now;
+            ordenMovimiento.FechaRegistro = DateTime.Now;
             ordenMovimiento.IdAlmacen = 6;
-            ordenMovimiento.IdOrdenTrabajo = 1;
+            ordenMovimiento.IdOrdenTrabajo = 3;
             ordenMovimiento.TipoMovimiento = "I";
 
             if (ordenMovimiento.ListaMovimientoDetalles == null) ordenMovimiento.ListaMovimientoDetalles = new List<MovimientoDetalle>();
 
             MovimientoDetalle MovimientoDetalle = new MovimientoDetalle();
-            MovimientoDetalle.IdArticulo = 1;
-            MovimientoDetalle.Cantidad = 2;
+            MovimientoDetalle.IdArticulo = 9;
+            MovimientoDetalle.Cantidad = 5;
             ordenMovimiento.ListaMovimientoDetalles.Add(MovimientoDetalle);
 
             var json = new JavaScriptSerializer().Serialize(ordenMovimiento);
@@ -50,7 +51,7 @@ namespace WS_ProduccionTest
                 movimientoCreado = token.ToObject<Movimiento>();
 
                 Assert.AreEqual(ordenMovimiento.IdAlmacen, movimientoCreado.IdAlmacen);
-                Assert.AreEqual(ordenMovimiento.IdOrdenTrabajo, movimientoCreado.IdAlmacen);
+                Assert.AreEqual(ordenMovimiento.IdOrdenTrabajo, movimientoCreado.IdOrdenTrabajo);
                 Assert.AreEqual(ordenMovimiento.TipoMovimiento, movimientoCreado.TipoMovimiento);
             }
             catch (FaultException<OrdenAprobadaValidacion> error)
@@ -70,19 +71,18 @@ namespace WS_ProduccionTest
             client.Credentials = System.Net.CredentialCache.DefaultCredentials;
             string recurso = "Movimiento";
 
-
             Movimiento ordenMovimiento = new Movimiento();
             ordenMovimiento.Fecha = DateTime.Now;
-            ordenMovimiento.Id = 1;
+            ordenMovimiento.FechaModificacion = DateTime.Now;
             ordenMovimiento.IdAlmacen = 6;
-            ordenMovimiento.IdOrdenTrabajo = 1;
+            ordenMovimiento.IdOrdenTrabajo = 3;
             ordenMovimiento.TipoMovimiento = "I";
 
             if (ordenMovimiento.ListaMovimientoDetalles == null) ordenMovimiento.ListaMovimientoDetalles = new List<MovimientoDetalle>();
 
             MovimientoDetalle MovimientoDetalle = new MovimientoDetalle();
-            MovimientoDetalle.IdArticulo = 1;
-            MovimientoDetalle.Cantidad = 2;
+            MovimientoDetalle.IdArticulo = 9;
+            MovimientoDetalle.Cantidad = 5;
             ordenMovimiento.ListaMovimientoDetalles.Add(MovimientoDetalle);
 
             var json = new JavaScriptSerializer().Serialize(ordenMovimiento);
@@ -94,7 +94,7 @@ namespace WS_ProduccionTest
             movimientoCreado = token.ToObject<Movimiento>();
 
             Assert.AreEqual(ordenMovimiento.IdAlmacen, movimientoCreado.IdAlmacen);
-            Assert.AreEqual(ordenMovimiento.IdOrdenTrabajo, movimientoCreado.IdAlmacen);
+            Assert.AreEqual(ordenMovimiento.IdOrdenTrabajo, movimientoCreado.IdOrdenTrabajo);
             Assert.AreEqual(ordenMovimiento.TipoMovimiento, movimientoCreado.TipoMovimiento);
         }
 
@@ -105,21 +105,21 @@ namespace WS_ProduccionTest
             WebClient client = new WebClient();
             client.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
-            string recurso = "Movimiento/" + 1;
+            string recurso = "Movimiento/" + 4;
 
             byte[] responseData = client.DownloadData(url + recurso);
             JToken token = JObject.Parse(System.Text.Encoding.UTF8.GetString(responseData));
             var result = token.ToObject<Movimiento>();
 
-            Assert.AreEqual(6, result.IdAlmacen);
-            Assert.AreEqual(1, result.IdOrdenTrabajo);
+            Assert.AreEqual(6, result.IdAlmacen.Value);
+            Assert.AreEqual(3, result.IdOrdenTrabajo.Value);
             Assert.AreEqual("I", result.TipoMovimiento);
         }
 
         [TestMethod]
         public void TestMethodEliminarIngresoProductoTerminado()
         {
-            string url = GetRutaServicioMovimientoAlmacenes + "Movimiento/" + 1;
+            string url = GetRutaServicioMovimientoAlmacenes + "Movimiento/" + 4;
             WebClient client = new WebClient();
             client.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
