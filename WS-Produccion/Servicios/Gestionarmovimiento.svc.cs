@@ -8,13 +8,13 @@ using WS_Produccion.Persistencia;
 
 namespace WS_Produccion.Servicios
 {
-    public class movimientoRest : ImovimientoRest
+    public class GestionarMovimiento: IGestionarMovimiento
     {
         private MovimientoDAO dao = new MovimientoDAO();
 
-        public Movimiento borrarMov(int id)
+        public void borrarMov(string id)
         {
-            throw new NotImplementedException();
+            dao.Eliminar(int.Parse(id));
         }
 
         public Movimiento CrearMov(Movimiento movCrear)
@@ -24,12 +24,12 @@ namespace WS_Produccion.Servicios
 
         public Movimiento grabarMov(Movimiento movGrabar)
         {
-            throw new NotImplementedException();
+            return dao.Modificar(movGrabar);
         }
 
-        public List<Movimiento> listarMov()
+        public List<Movimiento> listarMov(string tipo)
         {
-            throw new NotImplementedException();
+            return dao.Listar(tipo);
         }
 
         public Movimiento obtenerMov(string id)

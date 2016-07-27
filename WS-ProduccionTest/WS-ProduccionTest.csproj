@@ -58,7 +58,12 @@
   <ItemGroup>
     <Compile Include="Movimiento.cs" />
     <Compile Include="movUnitTest.cs" />
-    <Compile Include="Service References\MovWS\Reference.cs">
+    <Compile Include="Service References\GesMovWS\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\MovAlmWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -83,17 +88,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
-    <None Include="Service References\MovWS\Movimientos.wsdl" />
-    <None Include="Service References\MovWS\Movimientos.xsd">
+    <None Include="Service References\GesMovWS\GestionarMovimiento.wsdl" />
+    <None Include="Service References\GesMovWS\GestionarMovimiento.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MovWS\Movimientos1.xsd">
+    <None Include="Service References\GesMovWS\GestionarMovimiento1.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MovWS\Movimientos2.xsd">
+    <None Include="Service References\GesMovWS\GestionarMovimiento2.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Service References\MovWS\WS_ProduccionTest.MovWS.Movimiento.datasource">
+    <None Include="Service References\GesMovWS\GestionarMovimiento3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\GesMovWS\WS_ProduccionTest.GesMovWS.Movimiento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Service References\MovAlmWS\MovimientoAlmacenes.wsdl" />
+    <None Include="Service References\MovAlmWS\MovimientoAlmacenes.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MovAlmWS\MovimientoAlmacenes1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MovAlmWS\MovimientoAlmacenes2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MovAlmWS\MovimientoAlmacenes3.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\MovAlmWS\WS_ProduccionTest.MovAlmWS.Movimiento.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\OrdWS\OrdenTrabajos.wsdl" />
@@ -105,6 +129,9 @@
     </None>
     <None Include="Service References\OrdWS\OrdenTrabajos2.xsd">
       <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\OrdWS\WS_ProduccionTest.OrdWS.MovimientoDetalle.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Service References\OrdWS\WS_ProduccionTest.OrdWS.OrdenTrabajo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
@@ -130,24 +157,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\MovWS\" />
+    <WCFMetadataStorage Include="Service References\GesMovWS\" />
+    <WCFMetadataStorage Include="Service References\MovAlmWS\" />
     <WCFMetadataStorage Include="Service References\OrdWS\" />
     <WCFMetadataStorage Include="Service References\ServiceArticulo\" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\MovWS\Movimientos.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\MovWS\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\MovWS\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\MovWS\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceArticulo\Articulos.disco" />
@@ -175,6 +188,36 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\OrdWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GesMovWS\GestionarMovimiento.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GesMovWS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GesMovWS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\GesMovWS\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MovAlmWS\MovimientoAlmacenes.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MovAlmWS\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MovAlmWS\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\MovAlmWS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>

@@ -26,19 +26,25 @@ namespace WS_ProduccionTest.OrdWS {
         private bool ActivoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime FechaField;
+        private string EstadoField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime FechaModificacionField;
+        private System.Nullable<System.DateTime> FechaField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private System.DateTime FechaRegistroField;
+        private System.Nullable<System.DateTime> FechaModificacionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<System.DateTime> FechaRegistroField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
         private int IdField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
-        private int IdEstadoField;
+        private System.Nullable<int> IdEstadoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle[] ListaDetalleOrdenTrabajoField;
         
         [global::System.ComponentModel.BrowsableAttribute(false)]
         public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
@@ -64,7 +70,20 @@ namespace WS_ProduccionTest.OrdWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime Fecha {
+        public string Estado {
+            get {
+                return this.EstadoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.EstadoField, value) != true)) {
+                    this.EstadoField = value;
+                    this.RaisePropertyChanged("Estado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<System.DateTime> Fecha {
             get {
                 return this.FechaField;
             }
@@ -77,7 +96,7 @@ namespace WS_ProduccionTest.OrdWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime FechaModificacion {
+        public System.Nullable<System.DateTime> FechaModificacion {
             get {
                 return this.FechaModificacionField;
             }
@@ -90,7 +109,7 @@ namespace WS_ProduccionTest.OrdWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public System.DateTime FechaRegistro {
+        public System.Nullable<System.DateTime> FechaRegistro {
             get {
                 return this.FechaRegistroField;
             }
@@ -116,7 +135,7 @@ namespace WS_ProduccionTest.OrdWS {
         }
         
         [System.Runtime.Serialization.DataMemberAttribute()]
-        public int IdEstado {
+        public System.Nullable<int> IdEstado {
             get {
                 return this.IdEstadoField;
             }
@@ -124,6 +143,19 @@ namespace WS_ProduccionTest.OrdWS {
                 if ((this.IdEstadoField.Equals(value) != true)) {
                     this.IdEstadoField = value;
                     this.RaisePropertyChanged("IdEstado");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle[] ListaDetalleOrdenTrabajo {
+            get {
+                return this.ListaDetalleOrdenTrabajoField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ListaDetalleOrdenTrabajoField, value) != true)) {
+                    this.ListaDetalleOrdenTrabajoField = value;
+                    this.RaisePropertyChanged("ListaDetalleOrdenTrabajo");
                 }
             }
         }
@@ -148,6 +180,9 @@ namespace WS_ProduccionTest.OrdWS {
         private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ArticuloField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
         private decimal CantidadField;
         
         [System.Runtime.Serialization.OptionalFieldAttribute()]
@@ -166,6 +201,19 @@ namespace WS_ProduccionTest.OrdWS {
             }
             set {
                 this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Articulo {
+            get {
+                return this.ArticuloField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ArticuloField, value) != true)) {
+                    this.ArticuloField = value;
+                    this.RaisePropertyChanged("Articulo");
+                }
             }
         }
         
@@ -231,6 +279,131 @@ namespace WS_ProduccionTest.OrdWS {
         }
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="MovimientoDetalle", Namespace="http://schemas.datacontract.org/2004/07/WS_Produccion")]
+    [System.SerializableAttribute()]
+    public partial class MovimientoDetalle : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string ArticuloField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> CantidadField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IdArticuloField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> IdMovimientoField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<decimal> StockActualField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Articulo {
+            get {
+                return this.ArticuloField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.ArticuloField, value) != true)) {
+                    this.ArticuloField = value;
+                    this.RaisePropertyChanged("Articulo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> Cantidad {
+            get {
+                return this.CantidadField;
+            }
+            set {
+                if ((this.CantidadField.Equals(value) != true)) {
+                    this.CantidadField = value;
+                    this.RaisePropertyChanged("Cantidad");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IdArticulo {
+            get {
+                return this.IdArticuloField;
+            }
+            set {
+                if ((this.IdArticuloField.Equals(value) != true)) {
+                    this.IdArticuloField = value;
+                    this.RaisePropertyChanged("IdArticulo");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> IdMovimiento {
+            get {
+                return this.IdMovimientoField;
+            }
+            set {
+                if ((this.IdMovimientoField.Equals(value) != true)) {
+                    this.IdMovimientoField = value;
+                    this.RaisePropertyChanged("IdMovimiento");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<decimal> StockActual {
+            get {
+                return this.StockActualField;
+            }
+            set {
+                if ((this.StockActualField.Equals(value) != true)) {
+                    this.StockActualField = value;
+                    this.RaisePropertyChanged("StockActual");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="OrdWS.IOrdenTrabajos")]
     public interface IOrdenTrabajos {
@@ -260,10 +433,28 @@ namespace WS_ProduccionTest.OrdWS {
         System.Threading.Tasks.Task eliminarOrdAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajos/listarOrd", ReplyAction="http://tempuri.org/IOrdenTrabajos/listarOrdResponse")]
-        WS_ProduccionTest.OrdWS.OrdenTrabajo[] listarOrd();
+        WS_ProduccionTest.OrdWS.OrdenTrabajo[] listarOrd(string idsEstado);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajos/listarOrd", ReplyAction="http://tempuri.org/IOrdenTrabajos/listarOrdResponse")]
-        System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.OrdenTrabajo[]> listarOrdAsync();
+        System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.OrdenTrabajo[]> listarOrdAsync(string idsEstado);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajos/ListarLineaProduccion", ReplyAction="http://tempuri.org/IOrdenTrabajos/ListarLineaProduccionResponse")]
+        WS_ProduccionTest.OrdWS.MovimientoDetalle[] ListarLineaProduccion(int idOrdenTrabajo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajos/ListarLineaProduccion", ReplyAction="http://tempuri.org/IOrdenTrabajos/ListarLineaProduccionResponse")]
+        System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.MovimientoDetalle[]> ListarLineaProduccionAsync(int idOrdenTrabajo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajos/ListarMaterialesOrdenTrabajo", ReplyAction="http://tempuri.org/IOrdenTrabajos/ListarMaterialesOrdenTrabajoResponse")]
+        WS_ProduccionTest.OrdWS.MovimientoDetalle[] ListarMaterialesOrdenTrabajo(int idOrdenTrabajo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajos/ListarMaterialesOrdenTrabajo", ReplyAction="http://tempuri.org/IOrdenTrabajos/ListarMaterialesOrdenTrabajoResponse")]
+        System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.MovimientoDetalle[]> ListarMaterialesOrdenTrabajoAsync(int idOrdenTrabajo);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajos/ModificarEstado", ReplyAction="http://tempuri.org/IOrdenTrabajos/ModificarEstadoResponse")]
+        void ModificarEstado(int idOrdenTrabajo, int idEstado);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajos/ModificarEstado", ReplyAction="http://tempuri.org/IOrdenTrabajos/ModificarEstadoResponse")]
+        System.Threading.Tasks.Task ModificarEstadoAsync(int idOrdenTrabajo, int idEstado);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -325,12 +516,36 @@ namespace WS_ProduccionTest.OrdWS {
             return base.Channel.eliminarOrdAsync(id);
         }
         
-        public WS_ProduccionTest.OrdWS.OrdenTrabajo[] listarOrd() {
-            return base.Channel.listarOrd();
+        public WS_ProduccionTest.OrdWS.OrdenTrabajo[] listarOrd(string idsEstado) {
+            return base.Channel.listarOrd(idsEstado);
         }
         
-        public System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.OrdenTrabajo[]> listarOrdAsync() {
-            return base.Channel.listarOrdAsync();
+        public System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.OrdenTrabajo[]> listarOrdAsync(string idsEstado) {
+            return base.Channel.listarOrdAsync(idsEstado);
+        }
+        
+        public WS_ProduccionTest.OrdWS.MovimientoDetalle[] ListarLineaProduccion(int idOrdenTrabajo) {
+            return base.Channel.ListarLineaProduccion(idOrdenTrabajo);
+        }
+        
+        public System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.MovimientoDetalle[]> ListarLineaProduccionAsync(int idOrdenTrabajo) {
+            return base.Channel.ListarLineaProduccionAsync(idOrdenTrabajo);
+        }
+        
+        public WS_ProduccionTest.OrdWS.MovimientoDetalle[] ListarMaterialesOrdenTrabajo(int idOrdenTrabajo) {
+            return base.Channel.ListarMaterialesOrdenTrabajo(idOrdenTrabajo);
+        }
+        
+        public System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.MovimientoDetalle[]> ListarMaterialesOrdenTrabajoAsync(int idOrdenTrabajo) {
+            return base.Channel.ListarMaterialesOrdenTrabajoAsync(idOrdenTrabajo);
+        }
+        
+        public void ModificarEstado(int idOrdenTrabajo, int idEstado) {
+            base.Channel.ModificarEstado(idOrdenTrabajo, idEstado);
+        }
+        
+        public System.Threading.Tasks.Task ModificarEstadoAsync(int idOrdenTrabajo, int idEstado) {
+            return base.Channel.ModificarEstadoAsync(idOrdenTrabajo, idEstado);
         }
     }
     
@@ -339,10 +554,10 @@ namespace WS_ProduccionTest.OrdWS {
     public interface IOrdenTrabajoDetalle {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/crearOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/crearOrdDetResponse")]
-        WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle crearOrdDet(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetCrear);
+        void crearOrdDet(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetCrear);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/crearOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/crearOrdDetResponse")]
-        System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle> crearOrdDetAsync(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetCrear);
+        System.Threading.Tasks.Task crearOrdDetAsync(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetCrear);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/obtenerOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/obtenerOrdDetResponse")]
         WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle obtenerOrdDet(int id);
@@ -351,10 +566,10 @@ namespace WS_ProduccionTest.OrdWS {
         System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle> obtenerOrdDetAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/modificarOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/modificarOrdDetResponse")]
-        WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle modificarOrdDet(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetModificar);
+        void modificarOrdDet(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetModificar);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/modificarOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/modificarOrdDetResponse")]
-        System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle> modificarOrdDetAsync(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetModificar);
+        System.Threading.Tasks.Task modificarOrdDetAsync(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetModificar);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/eliminarOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/eliminarOrdDetResponse")]
         void eliminarOrdDet(int id);
@@ -363,10 +578,10 @@ namespace WS_ProduccionTest.OrdWS {
         System.Threading.Tasks.Task eliminarOrdDetAsync(int id);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/listarOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/listarOrdDetResponse")]
-        WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle[] listarOrdDet();
+        WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle[] listarOrdDet(int idOrdenTrabajo);
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IOrdenTrabajoDetalle/listarOrdDet", ReplyAction="http://tempuri.org/IOrdenTrabajoDetalle/listarOrdDetResponse")]
-        System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle[]> listarOrdDetAsync();
+        System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle[]> listarOrdDetAsync(int idOrdenTrabajo);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -396,11 +611,11 @@ namespace WS_ProduccionTest.OrdWS {
                 base(binding, remoteAddress) {
         }
         
-        public WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle crearOrdDet(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetCrear) {
-            return base.Channel.crearOrdDet(ordDetCrear);
+        public void crearOrdDet(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetCrear) {
+            base.Channel.crearOrdDet(ordDetCrear);
         }
         
-        public System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle> crearOrdDetAsync(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetCrear) {
+        public System.Threading.Tasks.Task crearOrdDetAsync(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetCrear) {
             return base.Channel.crearOrdDetAsync(ordDetCrear);
         }
         
@@ -412,11 +627,11 @@ namespace WS_ProduccionTest.OrdWS {
             return base.Channel.obtenerOrdDetAsync(id);
         }
         
-        public WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle modificarOrdDet(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetModificar) {
-            return base.Channel.modificarOrdDet(ordDetModificar);
+        public void modificarOrdDet(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetModificar) {
+            base.Channel.modificarOrdDet(ordDetModificar);
         }
         
-        public System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle> modificarOrdDetAsync(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetModificar) {
+        public System.Threading.Tasks.Task modificarOrdDetAsync(WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle ordDetModificar) {
             return base.Channel.modificarOrdDetAsync(ordDetModificar);
         }
         
@@ -428,12 +643,12 @@ namespace WS_ProduccionTest.OrdWS {
             return base.Channel.eliminarOrdDetAsync(id);
         }
         
-        public WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle[] listarOrdDet() {
-            return base.Channel.listarOrdDet();
+        public WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle[] listarOrdDet(int idOrdenTrabajo) {
+            return base.Channel.listarOrdDet(idOrdenTrabajo);
         }
         
-        public System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle[]> listarOrdDetAsync() {
-            return base.Channel.listarOrdDetAsync();
+        public System.Threading.Tasks.Task<WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle[]> listarOrdDetAsync(int idOrdenTrabajo) {
+            return base.Channel.listarOrdDetAsync(idOrdenTrabajo);
         }
     }
 }

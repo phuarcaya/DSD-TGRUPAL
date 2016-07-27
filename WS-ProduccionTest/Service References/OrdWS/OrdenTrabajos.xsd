@@ -57,7 +57,9 @@
   </xs:element>
   <xs:element name="listarOrd">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idsEstado" nillable="true" type="xs:string" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="listarOrdResponse">
@@ -67,18 +69,57 @@
       </xs:sequence>
     </xs:complexType>
   </xs:element>
+  <xs:element name="ListarLineaProduccion">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idOrdenTrabajo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarLineaProduccionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="ListarLineaProduccionResult" nillable="true" type="q7:ArrayOfMovimientoDetalle" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarMaterialesOrdenTrabajo">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idOrdenTrabajo" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ListarMaterialesOrdenTrabajoResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="ListarMaterialesOrdenTrabajoResult" nillable="true" type="q8:ArrayOfMovimientoDetalle" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarEstado">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idOrdenTrabajo" type="xs:int" />
+        <xs:element minOccurs="0" name="idEstado" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ModificarEstadoResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="crearOrdDet">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="ordDetCrear" nillable="true" type="q7:OrdenTrabajoDetalle" />
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="ordDetCrear" nillable="true" type="q9:OrdenTrabajoDetalle" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="crearOrdDetResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="crearOrdDetResult" nillable="true" type="q8:OrdenTrabajoDetalle" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="obtenerOrdDet">
@@ -91,22 +132,20 @@
   <xs:element name="obtenerOrdDetResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="obtenerOrdDetResult" nillable="true" type="q9:OrdenTrabajoDetalle" />
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="obtenerOrdDetResult" nillable="true" type="q10:OrdenTrabajoDetalle" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="modificarOrdDet">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="ordDetModificar" nillable="true" type="q10:OrdenTrabajoDetalle" />
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="ordDetModificar" nillable="true" type="q11:OrdenTrabajoDetalle" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="modificarOrdDetResponse">
     <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/WS_Produccion" minOccurs="0" name="modificarOrdDetResult" nillable="true" type="q11:OrdenTrabajoDetalle" />
-      </xs:sequence>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
   <xs:element name="eliminarOrdDet">
@@ -123,7 +162,9 @@
   </xs:element>
   <xs:element name="listarOrdDet">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="idOrdenTrabajo" type="xs:int" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="listarOrdDetResponse">

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Linq;
+using System.ServiceModel;
 using System.Web;
+using WS_Produccion.Excepciones;
 
 namespace WS_Produccion.Persistencia
 {
@@ -64,15 +66,27 @@ namespace WS_Produccion.Persistencia
                                 FechaModificacion = resultado.IsDBNull(resultado.GetOrdinal("FechaModificacion")) ? (DateTime?)null : resultado.GetDateTime(resultado.GetOrdinal("FechaModificacion")),
                                 FechaRegistro = resultado.IsDBNull(resultado.GetOrdinal("FechaRegistro")) ? (DateTime?)null : resultado.GetDateTime(resultado.GetOrdinal("FechaRegistro")),
                                 TipoMovimiento = (string)resultado["TipoMovimiento"],
-                                IdAlmacen = (int)resultado["IdAlmacen"],
-                                IdOrdenTrabajo = (int)resultado["IdOrdenTrabajo"]
+                                //IdAlmacen = (int)resultado["IdAlmacen"],
+                                IdAlmacen = resultado.IsDBNull(resultado.GetOrdinal("IdAlmacen"))?(int?)null:resultado.GetInt32(resultado.GetOrdinal("IdAlmacen")),
+                                //IdOrdenTrabajo = (int)resultado["IdOrdenTrabajo"]
+                                IdOrdenTrabajo = resultado.IsDBNull(resultado.GetOrdinal("IdOrdenTrabajo")) ? (int?)null : resultado.GetInt32(resultado.GetOrdinal("IdOrdenTrabajo")),
                             };
                         }
                     }
                 }
             }
+            Errores err = new Errores();
 
-            movsEncontrado.ListaMovimientoDetalles = new MovimientoDetalleDAO().Listar(id);
+            try
+            {
+                movsEncontrado.ListaMovimientoDetalles = new MovimientoDetalleDAO().Listar(id);
+            }
+            catch(Exception e)
+            {
+                err.cod = "ObtMov-0001";
+                err.des = e.Message;
+            }
+            
             return movsEncontrado;
         }
 

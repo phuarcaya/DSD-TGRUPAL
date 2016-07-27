@@ -60,7 +60,7 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Servicios\movimientoRest.svc" />
+    <Content Include="Servicios\GestionarMovimiento.svc" />
     <Content Include="Servicios\Articulos.svc" />
     <Content Include="Servicios\ConsultasGenerales.svc" />
     <Content Include="Servicios\MovimientoAlmacenes.svc" />
@@ -78,15 +78,16 @@
     <Compile Include="Dominio\OrdenTrabajoDetalle.cs" />
     <Compile Include="Dominio\Parametro.cs" />
     <Compile Include="Dominio\ParametroDetalle.cs" />
+    <Compile Include="Excepciones\Errores.cs" />
     <Compile Include="Excepciones\OrdenAprobadaValidacion.cs" />
     <Compile Include="Excepciones\RepetidosExceptions.cs" />
     <Compile Include="Excepciones\SinStockExceptions.cs" />
     <Compile Include="Excepciones\validacionFecha.cs" />
-    <Compile Include="Interfaces\ImovimientoRest.cs" />
+    <Compile Include="Interfaces\IGestionarMovimiento.cs" />
     <Compile Include="Interfaces\IMovimientoDetalles.cs" />
     <Compile Include="Interfaces\IOrdenTrabajos.cs" />
-    <Compile Include="Servicios\movimientoRest.svc.cs">
-      <DependentUpon>movimientoRest.svc</DependentUpon>
+    <Compile Include="Servicios\GestionarMovimiento.svc.cs">
+      <DependentUpon>GestionarMovimiento.svc</DependentUpon>
     </Compile>
     <Compile Include="Persistencia\ArticuloDao.cs" />
     <Compile Include="Persistencia\MovimientoDAO.cs" />
@@ -129,6 +130,9 @@
       <Project>{8c434bc6-4d67-42be-821c-dc194d0ddbc8}</Project>
       <Name>WS-ProduccionUtilitario</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -5,6 +5,7 @@ using System.Runtime.Serialization;
 using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
+using WS_Produccion.Excepciones;
 
 namespace WS_Produccion.Servicios
 {
@@ -12,6 +13,7 @@ namespace WS_Produccion.Servicios
     public interface IMovimientoAlmacenes
     {
         //[FaultContract(typeof(exceptions))]
+        [FaultContract(typeof(Errores))]
         [OperationContract]
         [WebInvoke(Method = "POST", UriTemplate = "Movimiento", ResponseFormat = WebMessageFormat.Json, RequestFormat = WebMessageFormat.Json)]
         Movimiento crearMov(Movimiento movCrear);

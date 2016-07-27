@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import schemaLocation="http://localhost:30813/Servicios/Movimientos.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WS_Produccion" />
+  <xs:import schemaLocation="http://localhost:30813/Servicios/MovimientoAlmacenes.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/WS_Produccion" />
   <xs:element name="crearMov">
     <xs:complexType>
       <xs:sequence>
@@ -18,7 +18,7 @@
   <xs:element name="obtenerMov">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -46,7 +46,7 @@
   <xs:element name="eliminarMov">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element minOccurs="0" name="id" nillable="true" type="xs:string" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -57,7 +57,9 @@
   </xs:element>
   <xs:element name="listarMov">
     <xs:complexType>
-      <xs:sequence />
+      <xs:sequence>
+        <xs:element minOccurs="0" name="TipoMovimiento" nillable="true" type="xs:string" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="listarMovResponse">

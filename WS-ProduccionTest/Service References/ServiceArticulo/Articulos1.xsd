@@ -11,4 +11,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="Articulo" nillable="true" type="tns:Articulo" />
+  <xs:complexType name="ArrayOfArticulo">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Articulo" nillable="true" type="tns:Articulo" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfArticulo" nillable="true" type="tns:ArrayOfArticulo" />
 </xs:schema>

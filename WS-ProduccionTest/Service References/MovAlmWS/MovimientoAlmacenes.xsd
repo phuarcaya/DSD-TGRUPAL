@@ -1,40 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/WS_Produccion" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/WS_Produccion" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:complexType name="OrdenTrabajo">
+  <xs:complexType name="Movimiento">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Activo" type="xs:boolean" />
-      <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Almacen" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaModificacion" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaRegistro" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="IdEstado" nillable="true" type="xs:int" />
-      <xs:element minOccurs="0" name="ListaDetalleOrdenTrabajo" nillable="true" type="tns:ArrayOfOrdenTrabajoDetalle" />
+      <xs:element minOccurs="0" name="IdAlmacen" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="IdOrdenTrabajo" nillable="true" type="xs:int" />
+      <xs:element minOccurs="0" name="ListaMovimientoDetalles" nillable="true" type="tns:ArrayOfMovimientoDetalle" />
+      <xs:element minOccurs="0" name="TipoMovimiento" nillable="true" type="xs:string" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="OrdenTrabajo" nillable="true" type="tns:OrdenTrabajo" />
-  <xs:complexType name="ArrayOfOrdenTrabajoDetalle">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrdenTrabajoDetalle" nillable="true" type="tns:OrdenTrabajoDetalle" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfOrdenTrabajoDetalle" nillable="true" type="tns:ArrayOfOrdenTrabajoDetalle" />
-  <xs:complexType name="OrdenTrabajoDetalle">
-    <xs:sequence>
-      <xs:element minOccurs="0" name="Articulo" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Cantidad" type="xs:decimal" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="IdArticulo" type="xs:int" />
-      <xs:element minOccurs="0" name="IdOrdenTrabajo" type="xs:int" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="OrdenTrabajoDetalle" nillable="true" type="tns:OrdenTrabajoDetalle" />
-  <xs:complexType name="ArrayOfOrdenTrabajo">
-    <xs:sequence>
-      <xs:element minOccurs="0" maxOccurs="unbounded" name="OrdenTrabajo" nillable="true" type="tns:OrdenTrabajo" />
-    </xs:sequence>
-  </xs:complexType>
-  <xs:element name="ArrayOfOrdenTrabajo" nillable="true" type="tns:ArrayOfOrdenTrabajo" />
+  <xs:element name="Movimiento" nillable="true" type="tns:Movimiento" />
   <xs:complexType name="ArrayOfMovimientoDetalle">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="MovimientoDetalle" nillable="true" type="tns:MovimientoDetalle" />
@@ -52,4 +31,10 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="MovimientoDetalle" nillable="true" type="tns:MovimientoDetalle" />
+  <xs:complexType name="ArrayOfMovimiento">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="Movimiento" nillable="true" type="tns:Movimiento" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfMovimiento" nillable="true" type="tns:ArrayOfMovimiento" />
 </xs:schema>
