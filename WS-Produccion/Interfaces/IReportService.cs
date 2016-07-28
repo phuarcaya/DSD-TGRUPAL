@@ -16,7 +16,7 @@ namespace WS_Produccion
         [WebInvoke(Method ="GET",UriTemplate = "ReportService/{id}",ResponseFormat =WebMessageFormat.Json)]
         OrdenTrabajo obtenerOrden(int id);
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "ReportService", ResponseFormat = WebMessageFormat.Json)]
+        [WebInvoke(Method = "GET", UriTemplate = "ReportService/listar", ResponseFormat = WebMessageFormat.Json)]
         List<OrdenTrabajo> ListarOrden();
     }
 }
