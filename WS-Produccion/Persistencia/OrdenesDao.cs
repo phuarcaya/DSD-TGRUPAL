@@ -244,6 +244,7 @@ namespace WS_Produccion.Persistencia
             string sql = "UPDATE OrdenTrabajo SET IdEstado=@idestado WHERE id=@id";
             using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
             {
+
                 conexion.Open();
                 using (SqlCommand comando = new SqlCommand(sql, conexion))
                 {
@@ -254,8 +255,37 @@ namespace WS_Produccion.Persistencia
             }
         }
 
-       
-        
+
+        public List<OrdenTrabajo> Listar()
+        {
+            List<OrdenTrabajo> ordenesEncontrados = new List<OrdenTrabajo>();
+            OrdenTrabajo ordendetrabajoEncontrado = null;
+            string sql = "SELECT * FROM t_asesor";
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
+            {
+                conexion.Open();
+                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                {
+                    using (SqlDataReader resultado = comando.ExecuteReader())
+                    {
+                        while (resultado.Read())
+                        {
+                            ordendetrabajoEncontrado = new OrdenTrabajo()
+                            {
+                                Id = (int)resultado["Numero"],
+                                Fecha = (DateTime)resultado["Fecha"],
+                                FechaRegistro = (DateTime)resultado["FechaRegistro"],
+                                FechaModificacion = (DateTime)resultado["FechaModificacion"],
+                                IdEstado=(int)resultado["IdEstado"],
+                                Activo=(bool)resultado["Activo"]
+                            };
+                            ordenesEncontrados.Add(ordendetrabajoEncontrado);
+                        }
+                    }
+                }
+            }
+            return ordenesEncontrados;
+        }
 
     }
 }

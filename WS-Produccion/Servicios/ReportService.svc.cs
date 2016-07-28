@@ -14,7 +14,8 @@ namespace WS_Produccion
         private OrdenesDao dao = new OrdenesDao();
         public List<OrdenTrabajo> ListarOrden()
         {
-            throw new NotImplementedException();
+            return dao.Listar();
+            
         }
 
         public OrdenTrabajo obtenerOrden(int id)
