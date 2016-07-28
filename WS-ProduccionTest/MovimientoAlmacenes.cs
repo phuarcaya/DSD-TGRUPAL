@@ -111,9 +111,9 @@ namespace WS_ProduccionTest
             JToken token = JObject.Parse(System.Text.Encoding.UTF8.GetString(responseData));
             var result = token.ToObject<Movimiento>();
 
-            Assert.AreEqual(6, result.IdAlmacen.Value);
-            Assert.AreEqual(3, result.IdOrdenTrabajo.Value);
-            Assert.AreEqual("I", result.TipoMovimiento);
+            Assert.AreEqual(5, result.IdAlmacen.Value);
+            Assert.AreEqual(1, result.IdOrdenTrabajo.Value);
+            Assert.AreEqual("S", result.TipoMovimiento);
         }
 
         [TestMethod]

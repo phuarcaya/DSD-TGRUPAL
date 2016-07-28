@@ -74,9 +74,9 @@
             this.panel1.BackColor = System.Drawing.Color.Gainsboro;
             this.panel1.Controls.Add(this.lblError);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 487);
+            this.panel1.Location = new System.Drawing.Point(0, 493);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(834, 24);
+            this.panel1.Size = new System.Drawing.Size(844, 24);
             this.panel1.TabIndex = 16;
             // 
             // lblError
@@ -110,14 +110,14 @@
             this.bindingNavigatorMoveNextItem,
             this.bindingNavigatorMoveLastItem,
             this.bindingNavigatorSeparator2});
-            this.BindingNavigatorListado.Location = new System.Drawing.Point(0, 462);
+            this.BindingNavigatorListado.Location = new System.Drawing.Point(0, 468);
             this.BindingNavigatorListado.MoveFirstItem = this.bindingNavigatorMoveFirstItem;
             this.BindingNavigatorListado.MoveLastItem = this.bindingNavigatorMoveLastItem;
             this.BindingNavigatorListado.MoveNextItem = this.bindingNavigatorMoveNextItem;
             this.BindingNavigatorListado.MovePreviousItem = this.bindingNavigatorMovePreviousItem;
             this.BindingNavigatorListado.Name = "BindingNavigatorListado";
             this.BindingNavigatorListado.PositionItem = this.bindingNavigatorPositionItem;
-            this.BindingNavigatorListado.Size = new System.Drawing.Size(834, 25);
+            this.BindingNavigatorListado.Size = new System.Drawing.Size(844, 25);
             this.BindingNavigatorListado.TabIndex = 18;
             this.BindingNavigatorListado.Text = "bindingNavigator1";
             // 
@@ -207,9 +207,9 @@
             this.toolStripSeparator4,
             this.btnLista,
             this.btnCerrar});
-            this.toolMantenimiento.Location = new System.Drawing.Point(796, 47);
+            this.toolMantenimiento.Location = new System.Drawing.Point(806, 47);
             this.toolMantenimiento.Name = "toolMantenimiento";
-            this.toolMantenimiento.Size = new System.Drawing.Size(38, 415);
+            this.toolMantenimiento.Size = new System.Drawing.Size(38, 421);
             this.toolMantenimiento.Stretch = true;
             this.toolMantenimiento.TabIndex = 22;
             // 
@@ -296,7 +296,7 @@
             this.btnCerrar.Image = ((System.Drawing.Image)(resources.GetObject("btnCerrar.Image")));
             this.btnCerrar.ImageTransparentColor = System.Drawing.Color.Transparent;
             this.btnCerrar.Name = "btnCerrar";
-            this.btnCerrar.Size = new System.Drawing.Size(37, 47);
+            this.btnCerrar.Size = new System.Drawing.Size(35, 47);
             this.btnCerrar.Text = "Cerrar";
             this.btnCerrar.TextDirection = System.Windows.Forms.ToolStripTextDirection.Vertical90;
             this.btnCerrar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
@@ -309,7 +309,7 @@
             this.TabPageRegistro.Location = new System.Drawing.Point(4, 22);
             this.TabPageRegistro.Name = "TabPageRegistro";
             this.TabPageRegistro.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageRegistro.Size = new System.Drawing.Size(789, 388);
+            this.TabPageRegistro.Size = new System.Drawing.Size(799, 394);
             this.TabPageRegistro.TabIndex = 1;
             this.TabPageRegistro.Text = "Registro";
             this.TabPageRegistro.UseVisualStyleBackColor = true;
@@ -321,7 +321,7 @@
             this.TabPageListado.Location = new System.Drawing.Point(4, 22);
             this.TabPageListado.Name = "TabPageListado";
             this.TabPageListado.Padding = new System.Windows.Forms.Padding(3);
-            this.TabPageListado.Size = new System.Drawing.Size(789, 388);
+            this.TabPageListado.Size = new System.Drawing.Size(799, 394);
             this.TabPageListado.TabIndex = 0;
             this.TabPageListado.Text = "Listado";
             this.TabPageListado.UseVisualStyleBackColor = true;
@@ -333,7 +333,7 @@
             this.groupBox1.Controls.Add(this.btnRefrescar);
             this.groupBox1.Location = new System.Drawing.Point(3, 3);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(783, 51);
+            this.groupBox1.Size = new System.Drawing.Size(793, 51);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -343,7 +343,7 @@
             this.btnRefrescar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefrescar.ForeColor = System.Drawing.Color.Olive;
             this.btnRefrescar.Image = global::Prototipo1.Properties.Resources.Refresh;
-            this.btnRefrescar.Location = new System.Drawing.Point(698, 13);
+            this.btnRefrescar.Location = new System.Drawing.Point(708, 13);
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Size = new System.Drawing.Size(79, 32);
             this.btnRefrescar.TabIndex = 0;
@@ -360,7 +360,7 @@
             this.TabControlMantenimiento.Location = new System.Drawing.Point(0, 47);
             this.TabControlMantenimiento.Name = "TabControlMantenimiento";
             this.TabControlMantenimiento.SelectedIndex = 0;
-            this.TabControlMantenimiento.Size = new System.Drawing.Size(797, 414);
+            this.TabControlMantenimiento.Size = new System.Drawing.Size(807, 420);
             this.TabControlMantenimiento.TabIndex = 17;
             // 
             // toolTip1
@@ -378,7 +378,7 @@
             this.PanelTitulo.Dock = System.Windows.Forms.DockStyle.Top;
             this.PanelTitulo.Location = new System.Drawing.Point(0, 0);
             this.PanelTitulo.Name = "PanelTitulo";
-            this.PanelTitulo.Size = new System.Drawing.Size(834, 47);
+            this.PanelTitulo.Size = new System.Drawing.Size(844, 47);
             this.PanelTitulo.TabIndex = 15;
             // 
             // lblTitulo
@@ -398,7 +398,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(834, 511);
+            this.ClientSize = new System.Drawing.Size(844, 517);
             this.Controls.Add(this.toolMantenimiento);
             this.Controls.Add(this.BindingNavigatorListado);
             this.Controls.Add(this.TabControlMantenimiento);

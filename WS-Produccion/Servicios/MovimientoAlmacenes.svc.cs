@@ -62,8 +62,21 @@ namespace WS_Produccion.Servicios
 
         public void eliminarMov(string id)
         {
-            new MovimientoDetalleDAO().EliminarMovimiento(int.Parse(id));
-            movDAO.Eliminar(int.Parse(id));
+            var movimiento = obtenerMov(id);
+            if (movimiento != null)
+            {
+                new MovimientoDetalleDAO().EliminarMovimiento(int.Parse(id));
+                movDAO.Eliminar(int.Parse(id));
+
+                if (movimiento.TipoMovimiento.Equals("I"))
+                {
+                    new OrdenTrabajos().ModificarEstado(movimiento.IdOrdenTrabajo.Value, EEstadoOrdenTrabajo.EnProcesoProduccion.GetHashCode());
+                }
+                else
+                {
+                    new OrdenTrabajos().ModificarEstado(movimiento.IdOrdenTrabajo.Value, EEstadoOrdenTrabajo.Aprobado.GetHashCode());
+                }
+            }
         }
 
         public List<Movimiento> listarMov(string TipoMovimiento)

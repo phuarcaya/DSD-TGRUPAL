@@ -217,7 +217,7 @@ namespace Prototipo1.View
         {
             if (PropertyEvento.Sisco_Property_Mantenimiento != PropertyEvent.Sisco_Mantenimiento.Modify && PropertyEvento.Sisco_Property_Mantenimiento != PropertyEvent.Sisco_Mantenimiento.Add)
             {
-                if (MessageBox.Show("", "", MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
+                if (MessageBox.Show("Estás seguro de eliminar el registro?", Funciones.Insfor_NombreEmpresa, MessageBoxButtons.YesNo, MessageBoxIcon.Information) == DialogResult.Yes)
                 {
                     PropertyEvento.Sisco_Property_Mantenimiento = PropertyEvent.Sisco_Mantenimiento.Delete;
 
@@ -226,6 +226,9 @@ namespace Prototipo1.View
                     client.Credentials = System.Net.CredentialCache.DefaultCredentials;
 
                     string eliminado = client.UploadString(url, "DELETE", "");
+
+                    lblError.Text = Funciones.RegistroEliminadoExito;
+                    SISCO_Mantenimiento_Listado();
                 }
             }
         }
