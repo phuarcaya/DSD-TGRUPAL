@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
+﻿using System.ServiceModel;
 using WS_Produccion.Excepciones;
 using WS_Produccion.Persistencia;
 using WS_Produccion.Servicios;
