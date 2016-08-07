@@ -6,6 +6,7 @@ using System.Text;
 using System.Collections.Generic;
 using System.ServiceModel;
 using WS_Produccion.Excepciones;
+using Newtonsoft.Json.Linq;
 
 namespace WS_ProduccionTest
 {
