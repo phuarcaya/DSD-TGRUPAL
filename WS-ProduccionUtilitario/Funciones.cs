@@ -197,7 +197,8 @@ namespace Prototipo1.View
             Modify = 3,
             Cancel = 4,
             Delete = 5,
-            List = 6
+            List = 6,
+            encolado = 7
         };
         #endregion
     }

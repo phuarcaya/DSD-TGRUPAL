@@ -18,5 +18,6 @@ namespace WS_ProduccionUtilitario
         void SISCO_Mantenimiento_Cancelar();
         void SISCO_Mantenimiento_Eliminar();
         void SISCO_Mantenimiento_Listado();
+        void SISCO_Mantenimiento_encolado();
     }
 }
