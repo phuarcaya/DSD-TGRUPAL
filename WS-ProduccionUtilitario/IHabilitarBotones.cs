@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace WS_ProduccionUtilitario
+﻿namespace WS_ProduccionUtilitario
 {
-   public interface IHabilitarBotones
+    public interface IHabilitarBotones
     {
         void SISCO_Mantenimiento_Nuevo();
         void SISCO_Mantenimiento_Grabar();

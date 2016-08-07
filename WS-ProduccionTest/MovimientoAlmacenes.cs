@@ -3,7 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Net;
 using System.Web.Script.Serialization;
 using System.Text;
-using Newtonsoft.Json.Linq;
 using System.Collections.Generic;
 using System.ServiceModel;
 using WS_Produccion.Excepciones;
