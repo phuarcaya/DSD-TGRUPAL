@@ -1,22 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.ServiceModel;
-using System.Text;
+﻿using System.ServiceModel;
 using WS_Produccion.Excepciones;
 using WS_Produccion.Persistencia;
+using WS_Produccion.Servicios;
 
-namespace WS_Produccion.Servicios
+namespace WS_Produccion
 {
 
-    public class OrdenTrabajo : IOrdenTrabajo
+    public class OrdenesTrabajo : IOrdenTrabajo
     {
         private OrdenesDao ordenesDAO = new OrdenesDao();
 
         public OrdenTrabajo CrearOrdenTrabajo(OrdenTrabajo OrdenTraabajoACrear)
         {
-            if (ordenesDAO.Obtener(OrdenTraabajoACrear.id) != null) //ya existe
+            if (ordenesDAO.Obtener(OrdenTraabajoACrear.Id) != null) //ya existe
             {
                 throw new FaultException<RepetidosExceptions>(
                     new RepetidosExceptions()
