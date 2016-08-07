@@ -6,6 +6,7 @@ namespace WS_Produccion
     [DataContract]
     public class Articulo
     {
+
         [DataMember]
         public Int32 Id { get; set; }
 
