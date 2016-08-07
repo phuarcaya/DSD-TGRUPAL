@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data.SqlClient;
-using System.Linq;
-using System.ServiceModel;
-using System.Web;
 using WS_Produccion.Excepciones;
 
 namespace WS_Produccion.Persistencia
