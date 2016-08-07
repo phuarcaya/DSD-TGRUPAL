@@ -22,7 +22,7 @@ namespace WS_ProduccionTest
 
         /// <summary>
         ///Obtiene o establece el contexto de las pruebas que proporciona
-        ///información y funcionalidad para la serie de pruebas actual.
+        ///información y funcionalidad para la serie de pruebas actual. Test
         ///</summary>
         public TestContext TestContext
         {
