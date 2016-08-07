@@ -6,6 +6,30 @@ namespace WS_Produccion.Persistencia
 {
     public class ArticuloDao
     {
+        public Articulo Crear(Articulo articuloACrear)
+        {
+            Articulo articuloCreado = null;
+            string sql = "INSERT INTO Articulo (id, Descripcion, TipoExistencia, StockActual, IdFormulaProduccion) VALUES (@id, @Descripcion, @TipoExistencia, @StockActual, @IdFormulaProduccion)";
+            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
+            {
+                conexion.Open();
+                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                {
+                    comando.Parameters.Add(new SqlParameter("@id", articuloACrear.Id));
+                    comando.Parameters.Add(new SqlParameter("@Descripcion", articuloACrear.Descripcion));
+                    comando.Parameters.Add(new SqlParameter("@TipoExistencia", articuloACrear.TipoExistencia));
+                    comando.Parameters.Add(new SqlParameter("@StockActual", articuloACrear.StockActual));
+                    comando.Parameters.Add(new SqlParameter("@Activo", articuloACrear.Activo));
+                    comando.Parameters.Add(new SqlParameter("@IdFormulaProduccion", articuloACrear.IdFormulaProduccion));
+
+                    comando.ExecuteNonQuery();
+
+                }
+
+            }
+            articuloCreado = Obtener(articuloACrear.Id);
+            return articuloCreado;
+        }
 
         public Articulo Modificar(Articulo articuloAmodificar)
         {
