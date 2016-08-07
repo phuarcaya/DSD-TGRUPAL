@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -65,7 +66,9 @@ namespace Prototipo1.View
                 ordenTrabajo.IdEstado = int.Parse(cboEstado.SelectedValue.ToString());
                 ordenTrabajo.Activo = true;
 
-                if (ordenTrabajo.ListaDetalleOrdenTrabajo == null) ordenTrabajo.ListaDetalleOrdenTrabajo = new List<OrdenTrabajoDetalle>();
+                if (ordenTrabajo.ListaDetalleOrdenTrabajo == null)
+                    ordenTrabajo.ListaDetalleOrdenTrabajo = new List<OrdenTrabajoDetalle>();
+
                 foreach (DataRowView row in dvDetalle)
                 {
                     OrdenTrabajoDetalle ordenTrabajoDetalle = new OrdenTrabajoDetalle();
@@ -162,8 +165,68 @@ namespace Prototipo1.View
                 TabControlMantenimiento.SelectedIndex = 0;
             }
         }
-
         #endregion
+
+        public void SISCO_Mantenimiento_encolado()
+        {
+            string rutacola = @".\private$\lots";
+            if (!MessageQueue.Exists(rutacola))
+                MessageQueue.Create(rutacola);
+
+            MessageQueue cola = new MessageQueue(rutacola);
+            System.Messaging.Message mess = new System.Messaging.Message();
+            mess.Label = "Registro de Orden";
+
+            lblError.Text = string.Empty;
+
+            OrdenTrabajo ordenTrabajo = new OrdenTrabajo();
+            ordenTrabajo.Fecha = DateTime.Parse(dtpFecha.Text);
+            ordenTrabajo.IdEstado = int.Parse(cboEstado.SelectedValue.ToString());
+            ordenTrabajo.Activo = true;
+
+            if (ordenTrabajo.ListaDetalleOrdenTrabajo == null)
+                ordenTrabajo.ListaDetalleOrdenTrabajo = new List<OrdenTrabajoDetalle>();
+
+            foreach (DataRowView row in dvDetalle)
+            {
+                OrdenTrabajoDetalle ordenTrabajoDetalle = new OrdenTrabajoDetalle();
+                ordenTrabajoDetalle.IdArticulo = Int32.Parse(row["IdArticulo"].ToString());
+                ordenTrabajoDetalle.Cantidad = decimal.Parse(row["Cantidad"].ToString());
+                ordenTrabajo.ListaDetalleOrdenTrabajo.Add(ordenTrabajoDetalle);
+            }
+
+            mess.Body = ordenTrabajo;
+            cola.Send(mess);
+        }
+
+        public void desencolamiento()
+        {
+            string rutacola = @".\private$\lots";
+            if (!MessageQueue.Exists(rutacola))
+                MessageQueue.Create(rutacola);
+            MessageQueue cola = new MessageQueue(rutacola);
+            cola.Formatter = new XmlMessageFormatter(new Type[] { typeof(OrdenTrabajo) });
+            System.Messaging.Message mensaje = cola.Receive();
+            OrdenTrabajo otcrear = (OrdenTrabajo)mensaje.Body;
+
+            OrdenTrabajo ordenTrabajoCreado = null;
+
+            otcrear.FechaRegistro = DateTime.Now;
+            ordenTrabajoCreado = Proxy.crearOrd(otcrear);
+
+            if (ordenTrabajoCreado != null)
+            {
+                lblError.Text = Funciones.RegistroGrabadoExito;
+                PropertyEvento.Sisco_Property_Mantenimiento = PropertyEvent.Sisco_Mantenimiento.Insert;
+                CargarDatos(ordenTrabajoCreado);
+            }
+            else
+            {
+                lblError.Text = Funciones.ErrorGrabarRegistro;
+                return;
+            }
+        }
+
 
         #region Metodos basicos
         private void EstadoTabRegistro(bool blnEstado)

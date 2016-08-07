@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Runtime.Serialization;
-using System.Collections;
 using System.Collections.Generic;
 
 namespace WS_Produccion

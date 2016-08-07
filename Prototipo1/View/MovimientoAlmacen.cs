@@ -243,6 +243,10 @@ namespace Prototipo1.View
             }
         }
 
+        public void SISCO_Mantenimiento_encolado()
+        {
+
+        }
         #endregion
 
         #region Metodos basicos

@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-namespace WS_ProduccionUtilitario
+﻿namespace WS_ProduccionUtilitario
 {
     /// <summary>
     /// <Proposito>Da funciones al mantenimiento de botones del mdi</Proposito>
@@ -18,5 +13,6 @@ namespace WS_ProduccionUtilitario
         void SISCO_Mantenimiento_Cancelar();
         void SISCO_Mantenimiento_Eliminar();
         void SISCO_Mantenimiento_Listado();
+        void SISCO_Mantenimiento_encolado();
     }
 }

@@ -65,6 +65,11 @@
             // 
             this.PanelTitulo.Size = new System.Drawing.Size(834, 41);
             // 
+            // panel1
+            // 
+            this.panel1.Location = new System.Drawing.Point(0, 487);
+            this.panel1.Size = new System.Drawing.Size(834, 24);
+            // 
             // TabPageRegistro
             // 
             this.TabPageRegistro.Controls.Add(this.lklAgregar);
@@ -86,7 +91,7 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Size = new System.Drawing.Size(776, 51);
+            this.groupBox1.Size = new System.Drawing.Size(762, 51);
             // 
             // btnRefrescar
             // 
@@ -136,7 +141,7 @@
             this.dgvListados.ReadOnly = true;
             this.dgvListados.RowHeadersVisible = false;
             this.dgvListados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvListados.Size = new System.Drawing.Size(770, 323);
+            this.dgvListados.Size = new System.Drawing.Size(756, 315);
             this.dgvListados.TabIndex = 35;
             this.dgvListados.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvListados_CellContentClick);
             this.dgvListados.SelectionChanged += new System.EventHandler(this.dgvListados_SelectionChanged);

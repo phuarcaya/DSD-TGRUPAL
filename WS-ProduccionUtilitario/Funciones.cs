@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using System.Windows.Forms;
 using System.Data;
 using System.ComponentModel;
@@ -197,7 +196,8 @@ namespace Prototipo1.View
             Modify = 3,
             Cancel = 4,
             Delete = 5,
-            List = 6
+            List = 6,
+            encolado = 7
         };
         #endregion
     }
