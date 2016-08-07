@@ -41,6 +41,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -113,6 +114,7 @@
     <Compile Include="Servicios\OrdenTrabajos.svc.cs">
       <DependentUpon>OrdenTrabajos.svc</DependentUpon>
     </Compile>
+    <Compile Include="Utilitarios\Mensajeria.cs" />
     <Compile Include="Utilitarios\Utilitarios.cs" />
   </ItemGroup>
   <ItemGroup>

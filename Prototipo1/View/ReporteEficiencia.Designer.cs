@@ -82,6 +82,7 @@
             this.btnRefrescar.TabIndex = 55;
             this.btnRefrescar.Text = "Consultar";
             this.btnRefrescar.UseVisualStyleBackColor = true;
+            this.btnRefrescar.Click += new System.EventHandler(this.btnRefrescar_Click);
             // 
             // dateTimePicker2
             // 
@@ -148,35 +149,41 @@
             // 
             // Column1
             // 
+            this.Column1.DataPropertyName = "Id";
             this.Column1.HeaderText = "N° OT";
             this.Column1.Name = "Column1";
             this.Column1.Width = 120;
             // 
             // Column2
             // 
+            this.Column2.DataPropertyName = "Fecha";
             this.Column2.HeaderText = "Fecha Generación";
             this.Column2.Name = "Column2";
             this.Column2.Width = 200;
             // 
             // Column3
             // 
+            this.Column3.DataPropertyName = "FechaInicio";
             this.Column3.HeaderText = "Fecha Inicio";
             this.Column3.Name = "Column3";
             this.Column3.Width = 200;
             // 
             // Column4
             // 
+            this.Column4.DataPropertyName = "FechaFinal";
             this.Column4.HeaderText = "Fecha Final";
             this.Column4.Name = "Column4";
             this.Column4.Width = 200;
             // 
             // Column5
             // 
+            this.Column5.DataPropertyName = "NumeroDias";
             this.Column5.HeaderText = "Cant. Días";
             this.Column5.Name = "Column5";
             // 
             // Column6
             // 
+            this.Column6.DataPropertyName = "Eficiencia";
             this.Column6.HeaderText = "Eficiencia";
             this.Column6.Name = "Column6";
             this.Column6.Width = 300;

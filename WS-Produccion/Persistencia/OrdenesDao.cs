@@ -256,35 +256,53 @@ namespace WS_Produccion.Persistencia
         }
 
 
-        public List<OrdenTrabajo> Listar()
+        public List<OrdenTrabajo> ListarEficiencia(string fechaInicial, string fechFinal)
         {
-            List<OrdenTrabajo> ordenesEncontrados = new List<OrdenTrabajo>();
-            OrdenTrabajo ordendetrabajoEncontrado = null;
-            string sql = "SELECT * FROM t_asesor";
-            using (SqlConnection conexion = new SqlConnection(Utilitarios.CadenaConexion))
+            List<OrdenTrabajo> ordEncontrados = new List<OrdenTrabajo>();
+            OrdenTrabajo ordEncontrado = null;
+            string sql = @"SELECT 
+	                            ot.Id, ot.Fecha,
+	                            sal.Fecha AS FechaInicio,
+	                            ing.Fecha AS FechaFinal,
+	                            datediff(day,sal.Fecha,ing.Fecha) AS NumeroDias,
+	                            (CASE WHEN datediff(day,sal.Fecha,ing.Fecha) < 30 THEN 'Dentro de Tiempo' ELSE 'Fuera de Tiempo' END) AS Eficiencia
+                            FROM OrdenTrabajo ot
+                            INNER JOIN Movimiento sal
+	                            ON sal.IdOrdenTrabajo = ot.Id
+	                            AND sal.TipoMovimiento = 'S'
+                            INNER JOIN Movimiento ing
+	                            ON ing.IdOrdenTrabajo = ot.Id
+	                            AND ing.TipoMovimiento = 'I'
+                            WHERE (ot.Fecha >= @FechaInicio AND ot.Fecha <= @FechaFinal)";
+            using (SqlConnection cnx = new SqlConnection(Utilitarios.CadenaConexion))
             {
-                conexion.Open();
-                using (SqlCommand comando = new SqlCommand(sql, conexion))
+                cnx.Open();
+                using (SqlCommand cmm = new SqlCommand(sql, cnx))
                 {
-                    using (SqlDataReader resultado = comando.ExecuteReader())
+                    cmm.Parameters.Add(new SqlParameter("@FechaInicio", fechaInicial));
+                    cmm.Parameters.Add(new SqlParameter("@FechaFinal", fechFinal));
+                    using (SqlDataReader resultado = cmm.ExecuteReader())
                     {
-                        while (resultado.Read())
+                        if (resultado.HasRows)
                         {
-                            ordendetrabajoEncontrado = new OrdenTrabajo()
+                            while (resultado.Read())
                             {
-                                Id = (int)resultado["Numero"],
-                                Fecha = (DateTime)resultado["Fecha"],
-                                FechaRegistro = (DateTime)resultado["FechaRegistro"],
-                                FechaModificacion = (DateTime)resultado["FechaModificacion"],
-                                IdEstado=(int)resultado["IdEstado"],
-                                Activo=(bool)resultado["Activo"]
-                            };
-                            ordenesEncontrados.Add(ordendetrabajoEncontrado);
+                                ordEncontrado = new OrdenTrabajo()
+                                {
+                                    Id = (int)resultado["Id"],
+                                    Fecha = resultado.IsDBNull(resultado.GetOrdinal("Fecha")) ? (DateTime?)null : resultado.GetDateTime(resultado.GetOrdinal("Fecha")),
+                                    FechaInicio = resultado.IsDBNull(resultado.GetOrdinal("FechaInicio")) ? (DateTime?)null : resultado.GetDateTime(resultado.GetOrdinal("FechaInicio")),
+                                    FechaFinal = resultado.IsDBNull(resultado.GetOrdinal("FechaFinal")) ? (DateTime?)null : resultado.GetDateTime(resultado.GetOrdinal("FechaFinal")),
+                                    NumeroDias = (Int32)resultado["NumeroDias"],
+                                    Eficiencia = (string)resultado["Eficiencia"]
+                                };
+                                ordEncontrados.Add(ordEncontrado);
+                            }
                         }
                     }
                 }
             }
-            return ordenesEncontrados;
+            return ordEncontrados;
         }
 
     }

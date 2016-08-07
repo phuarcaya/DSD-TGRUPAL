@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="cK+c5v2P+/P1xngk2C9su0fMA+g=">
+<SavedWcfConfigurationInformation xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Version="9.1" CheckSum="rKLZjqvP4RlY+8dv0R+gOXuU6YI=">
   <bindingConfigurations>
     <bindingConfiguration bindingType="basicHttpBinding" name="BasicHttpBinding_IOrdenTrabajos">
       <properties>
@@ -221,7 +221,7 @@
     </bindingConfiguration>
   </bindingConfigurations>
   <endpoints>
-    <endpoint name="BasicHttpBinding_IOrdenTrabajos" contract="OrdWS.IOrdenTrabajos" bindingType="basicHttpBinding" address="http://localhost:30813/Servicios/OrdenTrabajos.svc" bindingConfiguration="BasicHttpBinding_IOrdenTrabajos">
+    <endpoint name="BasicHttpBinding_IOrdenTrabajos" contract="WSOrdenTrabajos.IOrdenTrabajos" bindingType="basicHttpBinding" address="http://localhost:30813/Servicios/OrdenTrabajos.svc" bindingConfiguration="BasicHttpBinding_IOrdenTrabajos">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:30813/Servicios/OrdenTrabajos.svc</serializedValue>
@@ -236,7 +236,7 @@
           <serializedValue>BasicHttpBinding_IOrdenTrabajos</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>OrdWS.IOrdenTrabajos</serializedValue>
+          <serializedValue>WSOrdenTrabajos.IOrdenTrabajos</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>
@@ -306,7 +306,7 @@
         </property>
       </properties>
     </endpoint>
-    <endpoint name="BasicHttpBinding_IOrdenTrabajoDetalle" contract="OrdWS.IOrdenTrabajoDetalle" bindingType="basicHttpBinding" address="http://localhost:30813/Servicios/OrdenTrabajos.svc" bindingConfiguration="BasicHttpBinding_IOrdenTrabajoDetalle">
+    <endpoint name="BasicHttpBinding_IOrdenTrabajoDetalle" contract="WSOrdenTrabajos.IOrdenTrabajoDetalle" bindingType="basicHttpBinding" address="http://localhost:30813/Servicios/OrdenTrabajos.svc" bindingConfiguration="BasicHttpBinding_IOrdenTrabajoDetalle">
       <properties>
         <property path="/address" isComplexType="false" isExplicitlyDefined="true" clrType="System.Uri, System, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>http://localhost:30813/Servicios/OrdenTrabajos.svc</serializedValue>
@@ -321,7 +321,7 @@
           <serializedValue>BasicHttpBinding_IOrdenTrabajoDetalle</serializedValue>
         </property>
         <property path="/contract" isComplexType="false" isExplicitlyDefined="true" clrType="System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
-          <serializedValue>OrdWS.IOrdenTrabajoDetalle</serializedValue>
+          <serializedValue>WSOrdenTrabajos.IOrdenTrabajoDetalle</serializedValue>
         </property>
         <property path="/headers" isComplexType="true" isExplicitlyDefined="false" clrType="System.ServiceModel.Configuration.AddressHeaderCollectionElement, System.ServiceModel, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
           <serializedValue>System.ServiceModel.Configuration.AddressHeaderCollectionElement</serializedValue>

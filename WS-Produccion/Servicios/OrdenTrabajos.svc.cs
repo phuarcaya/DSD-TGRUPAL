@@ -19,8 +19,34 @@ namespace WS_Produccion.Servicios
                     codigo = "1000",
                     descripcion = "La fecha debe ser menor a la fecha de hoy."
                 },
-                new FaultReason("Fecha es mayor a la Fecha de Hoy"));
+                new FaultReason("Error al intertar crear la orden"));
             }
+
+
+            if (ordCrear.Fecha == null)
+            {
+                ordCrear.Fecha = DateTime.Now;
+                new Mensajeria().EscribirMensaje(ordCrear);
+                throw new FaultException<validacionFecha>(new validacionFecha()
+                {
+                    codigo = "1000",
+                    descripcion = "No ha ingresado la fecha."
+                },
+                new FaultReason("Error al intertar crear la orden"));
+            }
+
+            if (ordCrear.ListaDetalleOrdenTrabajo.Count == 0)
+            {
+                new Mensajeria().EscribirMensaje(ordCrear);
+
+                throw new FaultException<validacionFecha>(new validacionFecha()
+                {
+                    codigo = "1000",
+                    descripcion = "No ha ingresado producto terminado"
+                },
+                new FaultReason("Error al intertar crear la orden"));
+            }
+
             return ordDAO.Crear(ordCrear);
         }
 
@@ -65,6 +91,27 @@ namespace WS_Produccion.Servicios
 
         public void ModificarEstado(int idOrdenTrabajo, int idEstado)
         {
+            if (idEstado == 0)
+            {
+                throw new FaultException<validacionFecha>(new validacionFecha()
+                {
+                    codigo = "101",
+                    descripcion = "El estado de la orden de trabajo debe estar pendiente"
+                },
+               new FaultReason("Error al aprobar orden de trabajo"));
+            }
+
+            if (idOrdenTrabajo == 0)
+            {
+                throw new FaultException<validacionFecha>(new validacionFecha()
+                {
+                    codigo = "101",
+                    descripcion = "No se ha seleccionado orden de trabajo"
+                },
+               new FaultReason("Error al aprobar orden de trabajo"));
+            }
+
+
             ordDAO.ModificarEstado(idOrdenTrabajo, idEstado);
         }
 
@@ -97,6 +144,10 @@ namespace WS_Produccion.Servicios
         }
         #endregion
 
+        public void RegistrarOrdenTrabajoErronea()
+        {
+            new Mensajeria().AnularOrdenTrabajo();
+        }
     }
 
 }

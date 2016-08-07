@@ -55,6 +55,12 @@
   <wsdl:message name="IOrdenTrabajos_ModificarEstado_OutputMessage">
     <wsdl:part name="parameters" element="tns:ModificarEstadoResponse" />
   </wsdl:message>
+  <wsdl:message name="IOrdenTrabajos_RegistrarOrdenTrabajoErronea_InputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarOrdenTrabajoErronea" />
+  </wsdl:message>
+  <wsdl:message name="IOrdenTrabajos_RegistrarOrdenTrabajoErronea_OutputMessage">
+    <wsdl:part name="parameters" element="tns:RegistrarOrdenTrabajoErroneaResponse" />
+  </wsdl:message>
   <wsdl:message name="IOrdenTrabajoDetalle_crearOrdDet_InputMessage">
     <wsdl:part name="parameters" element="tns:crearOrdDet" />
   </wsdl:message>
@@ -117,6 +123,10 @@
     <wsdl:operation name="ModificarEstado">
       <wsdl:input wsaw:Action="http://tempuri.org/IOrdenTrabajos/ModificarEstado" message="tns:IOrdenTrabajos_ModificarEstado_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IOrdenTrabajos/ModificarEstadoResponse" message="tns:IOrdenTrabajos_ModificarEstado_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarOrdenTrabajoErronea">
+      <wsdl:input wsaw:Action="http://tempuri.org/IOrdenTrabajos/RegistrarOrdenTrabajoErronea" message="tns:IOrdenTrabajos_RegistrarOrdenTrabajoErronea_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IOrdenTrabajos/RegistrarOrdenTrabajoErroneaResponse" message="tns:IOrdenTrabajos_RegistrarOrdenTrabajoErronea_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:portType name="IOrdenTrabajoDetalle">
@@ -208,6 +218,15 @@
     </wsdl:operation>
     <wsdl:operation name="ModificarEstado">
       <soap:operation soapAction="http://tempuri.org/IOrdenTrabajos/ModificarEstado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RegistrarOrdenTrabajoErronea">
+      <soap:operation soapAction="http://tempuri.org/IOrdenTrabajos/RegistrarOrdenTrabajoErronea" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>

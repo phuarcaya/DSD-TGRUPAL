@@ -14,7 +14,7 @@
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <ReferencePath>$(ProgramFiles)\Common Files\microsoft shared\VSTT\$(VisualStudioVersion)\UITestExtensionPackages</ReferencePath>
-    <IsCodedUITest>False</IsCodedUITest>
+    <IsCodedUITest>True</IsCodedUITest>
     <TestProjectType>UnitTest</TestProjectType>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -40,10 +40,16 @@
       <HintPath>..\..\..\04-09-2015-0\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net" />
+    <Reference Include="System.Net.Http" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
   </ItemGroup>
   <Choose>
     <When Condition="('$(VisualStudioVersion)' == '10.0' or '$(VisualStudioVersion)' == '') and '$(TargetFrameworkVersion)' == 'v3.5'">
@@ -60,8 +66,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="AprobacionOrdenTrabajoTest.cs" />
+    <Compile Include="MensajeriaTest.cs" />
     <Compile Include="Movimiento.cs" />
-    <Compile Include="movUnitTest.cs" />
+    <Compile Include="ReporteTest.cs" />
     <Compile Include="Service References\GesMovWS\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -72,27 +80,33 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="Service References\OrdWS\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Service References\ServiceArticulo\Reference.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
-    <Compile Include="UnitTest1.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="PruebaUnitariaOrdenes.cs" />
-    <Compile Include="MovimientoAlmacenes.cs" />
-    <Compile Include="WCFServiceTest.cs" />
+    <Compile Include="OrdenesTrabajoTest.cs" />
+    <Compile Include="MovimientoAlmacenesTest.cs" />
+    <Compile Include="Service References\WSOrdenTrabajos\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="Service References\WSReportes\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
+    <None Include="Properties\DataSources\WS_Produccion.MovimientoDetalle.datasource" />
+    <None Include="Properties\DataSources\WS_Produccion.OrdenTrabajo.datasource" />
+    <None Include="Properties\DataSources\WS_Produccion.OrdenTrabajoDetalle.datasource" />
     <None Include="Service References\GesMovWS\GestionarMovimiento.wsdl" />
     <None Include="Service References\GesMovWS\GestionarMovimiento.xsd">
       <SubType>Designer</SubType>
@@ -125,25 +139,6 @@
     <None Include="Service References\MovAlmWS\WS_ProduccionTest.MovAlmWS.Movimiento.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
-    <None Include="Service References\OrdWS\OrdenTrabajos.wsdl" />
-    <None Include="Service References\OrdWS\OrdenTrabajos.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrdWS\OrdenTrabajos1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrdWS\OrdenTrabajos2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\OrdWS\WS_ProduccionTest.OrdWS.MovimientoDetalle.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\OrdWS\WS_ProduccionTest.OrdWS.OrdenTrabajo.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
-    <None Include="Service References\OrdWS\WS_ProduccionTest.OrdWS.OrdenTrabajoDetalle.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </None>
     <None Include="Service References\ServiceArticulo\Articulos.wsdl" />
     <None Include="Service References\ServiceArticulo\Articulos.xsd">
       <SubType>Designer</SubType>
@@ -160,12 +155,33 @@
     <None Include="Service References\ServiceArticulo\WS_ProduccionTest.ServiceArticulo.Articulo.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
+    <None Include="Service References\WSOrdenTrabajos\OrdenTrabajos.wsdl" />
+    <None Include="Service References\WSOrdenTrabajos\OrdenTrabajos.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSOrdenTrabajos\OrdenTrabajos1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSOrdenTrabajos\OrdenTrabajos2.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSReportes\ReportService.wsdl" />
+    <None Include="Service References\WSReportes\ReportService.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSReportes\ReportService1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Service References\WSReportes\ReportService2.xsd">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadataStorage Include="Service References\GesMovWS\" />
     <WCFMetadataStorage Include="Service References\MovAlmWS\" />
-    <WCFMetadataStorage Include="Service References\OrdWS\" />
     <WCFMetadataStorage Include="Service References\ServiceArticulo\" />
+    <WCFMetadataStorage Include="Service References\WSOrdenTrabajos\" />
+    <WCFMetadataStorage Include="Service References\WSReportes\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceArticulo\Articulos.disco" />
@@ -178,21 +194,6 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Service References\ServiceArticulo\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrdWS\OrdenTrabajos.disco" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrdWS\configuration91.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrdWS\configuration.svcinfo" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Service References\OrdWS\Reference.svcmap">
       <Generator>WCF Proxy Generator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
@@ -228,10 +229,44 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\WS-ProduccionUtilitario\WS-ProduccionUtilitario.csproj">
+      <Project>{8c434bc6-4d67-42be-821c-dc194d0ddbc8}</Project>
+      <Name>WS-ProduccionUtilitario</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WS-Produccion\WS-Produccion.csproj">
       <Project>{0dbdfd8d-9397-4a75-a17b-88f672a60b2d}</Project>
       <Name>WS-Produccion</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSOrdenTrabajos\OrdenTrabajos.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSOrdenTrabajos\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSOrdenTrabajos\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSOrdenTrabajos\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSReportes\ReportService.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSReportes\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSReportes\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\WSReportes\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

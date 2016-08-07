@@ -110,6 +110,16 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
+  <xs:element name="RegistrarOrdenTrabajoErronea">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegistrarOrdenTrabajoErroneaResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
   <xs:element name="crearOrdDet">
     <xs:complexType>
       <xs:sequence>

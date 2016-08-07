@@ -32,6 +32,19 @@ namespace WS_Produccion
         #region externas
         [DataMember]
         public string Estado { get; set; }
+
+        [DataMember]
+        public DateTime? FechaInicio { get; set; }
+
+        [DataMember]
+        public DateTime? FechaFinal { get; set; }
+
+        [DataMember]
+        public int NumeroDias { get; set; }
+
+        [DataMember]
+        public string Eficiencia { get; set; }
+
         #endregion
     }
 }

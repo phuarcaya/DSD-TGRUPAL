@@ -13,10 +13,9 @@ namespace WS_Produccion
     public interface IReportService
     {
         [OperationContract]
-        [WebInvoke(Method ="GET",UriTemplate = "ReportService/{id}",ResponseFormat =WebMessageFormat.Json)]
         OrdenTrabajo obtenerOrden(int id);
+
         [OperationContract]
-        [WebInvoke(Method = "GET", UriTemplate = "ReportService/listar", ResponseFormat = WebMessageFormat.Json)]
-        List<OrdenTrabajo> ListarOrden();
+        List<OrdenTrabajo> ListarEficiencia(string fechaInicial, string fechFinal);
     }
 }

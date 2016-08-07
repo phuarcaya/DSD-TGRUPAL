@@ -30,6 +30,9 @@ namespace WS_Produccion
 
         [OperationContract]
         void ModificarEstado(int idOrdenTrabajo, int idEstado);
+
+        [OperationContract]
+        void RegistrarOrdenTrabajoErronea();
     }
 
     [ServiceContract]

@@ -3,13 +3,17 @@
   <xs:complexType name="OrdenTrabajo">
     <xs:sequence>
       <xs:element minOccurs="0" name="Activo" type="xs:boolean" />
+      <xs:element minOccurs="0" name="Eficiencia" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Estado" nillable="true" type="xs:string" />
       <xs:element minOccurs="0" name="Fecha" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaFinal" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="FechaInicio" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaModificacion" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="FechaRegistro" nillable="true" type="xs:dateTime" />
       <xs:element minOccurs="0" name="Id" type="xs:int" />
       <xs:element minOccurs="0" name="IdEstado" nillable="true" type="xs:int" />
       <xs:element minOccurs="0" name="ListaDetalleOrdenTrabajo" nillable="true" type="tns:ArrayOfOrdenTrabajoDetalle" />
+      <xs:element minOccurs="0" name="NumeroDias" type="xs:int" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="OrdenTrabajo" nillable="true" type="tns:OrdenTrabajo" />

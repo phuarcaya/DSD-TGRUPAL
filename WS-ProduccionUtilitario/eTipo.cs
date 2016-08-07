@@ -19,6 +19,7 @@ namespace WS_ProduccionUtilitario
         Pendiente = 1,
         Aprobado = 2,
         EnProcesoProduccion = 3,
-        Cerrado = 4
+        Cerrado = 4,
+        Anulado = 57
     }
 }

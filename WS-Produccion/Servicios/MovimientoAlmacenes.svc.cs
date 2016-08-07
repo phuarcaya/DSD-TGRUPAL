@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.Serialization;
 using System.ServiceModel;
+using System.ServiceModel.Web;
 using System.Text;
 using WS_Produccion.Excepciones;
 using WS_Produccion.Persistencia;
@@ -22,14 +23,16 @@ namespace WS_Produccion.Servicios
 
                 if (ordot.IdEstado == 1)
                 {
-                    throw new FaultException<OrdenAprobadaValidacion>(
-                        new OrdenAprobadaValidacion()
-                        {
-                            codigo = "00001",
-                            descripcion = "Orden de trabajo no ha sido Aprobada"
-                        },
+                    throw new WebFaultException<string>(
+                        "Orden de trabajo no ha sido Aprobada", System.Net.HttpStatusCode.InternalServerError
+                        );  
+                }
 
-                        new FaultReason("La orden aún no ha sido aprobada"));
+                if (movCrear.IdOrdenTrabajo  == null)
+                {
+                    throw new WebFaultException<string>(
+                        "No existe orden de trabajo", System.Net.HttpStatusCode.InternalServerError
+                        );
                 }
             }
 
